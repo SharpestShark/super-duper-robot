@@ -3,6 +3,7 @@
 
 </head>
 <body>
+  <div id="speedometer"></div>
 <div>
   <p onmousedown="throttle(true)" onmouseup"throttle(false)">
     <svg width="300" height="500">
@@ -14,6 +15,7 @@
 <script>
   
   function throttle(press) {
+    var speedometer = document.getElementById("speedometer");
     let amount;
     if (press == true) {
       amount = 0.1;
@@ -25,7 +27,8 @@
       }
     }
     function acc() {
-      return amount = amount * 1.1;
+      amount = amount * 1.1;
+      return speedometer.innerHTML = amount;
     }
   }
 </script>
