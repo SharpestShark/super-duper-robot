@@ -4,13 +4,18 @@
 </head>
 <body>
 <div>
-  <p onclick="throttle">
+  <p onmousedown="throttle()">
     <svg width="300" height="500">
       <rect y="0" width="100" height="150" style="fill:rgb(90,90,90);stroke-width:1.5;stroke:rgb(0,0,0)" />
       <rect y="150" width="140" height="150" style="fill:rgb(90,90,90);stroke-width:1.5;stroke:rgb(0,0,0)" />
     </svg>
   </p>
 </div>
-
+<script>
+  function throttle() {
+    speed = 100;
+    move = true;
+  }
+</script>
 </body>
 </html
