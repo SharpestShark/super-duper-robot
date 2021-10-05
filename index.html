@@ -4,7 +4,7 @@
 </head>
 <body>
 <div>
-  <p onmousedown="throttle()">
+  <p onmousedown="throttle(true)" onmouseup"throttle(false)">
     <svg width="300" height="500">
       <rect y="0" width="100" height="150" style="fill:rgb(90,90,90);stroke-width:1.5;stroke:rgb(0,0,0)" />
       <rect y="150" width="140" height="150" style="fill:rgb(90,90,90);stroke-width:1.5;stroke:rgb(0,0,0)" />
@@ -12,9 +12,21 @@
   </p>
 </div>
 <script>
-  function throttle() {
-    speed = 100;
-    move = true;
+  
+  function throttle(press) {
+    let amount;
+    if (press == true) {
+      amount = 0.1;
+      let acceleration = window.setInterval(acc, 500);
+    } else if (press == false) {
+      window.clearInterval(acceleration);
+      while (amount != "0") {
+        amount = amount / 1.8;
+      }
+    }
+    function acc() {
+      return amount = amount * 1.1;
+    }
   }
 </script>
 </body>
