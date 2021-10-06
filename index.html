@@ -23,9 +23,12 @@
   var random3 = Math.floor(Math.random() * 200);
   var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d");
-  ctx.beginPath();
-  ctx.arc(random3, random2, random, 0, 2 * Math.PI);
-  ctx.stroke();
+  for (let i = 0; i < 9; i++) {
+    ctx.beginPath();
+    ctx.arc(random3, random2, random, 0, 2 * Math.PI);
+    ctx.stroke();
+    console.log(i);
+  }
   function throttle(press) {
     let acceleration;
     if (!acceleration) {
