@@ -14,11 +14,13 @@
     </svg>
   </p>
 </div>
-  <canvas id="myCanvas" width="100%" height="100%"></canvas>
+  <canvas id="myCanvas" width="200" height="300"></canvas>
 <script>
+  var width = window.innerWidth;
+  var height = window.innerHeight;
   var random = Math.floor(Math.random() * 30);
-  var random2 = Math.floor(Math.random() * window.innerHeight);
-  var random3 = Math.floor(Math.random() * window.innerWidth);
+  var random2 = Math.floor(Math.random() * 300);
+  var random3 = Math.floor(Math.random() * 200);
   var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d");
   ctx.beginPath();
