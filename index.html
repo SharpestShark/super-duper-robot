@@ -22,8 +22,8 @@
   var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d");
   ctx.beginPath();
-ctx.arc(random3, random2, random, 0, 2 * Math.PI);
-ctx.stroke();
+  ctx.arc(random3, random2, random, 0, 2 * Math.PI);
+  ctx.stroke();
   function throttle(press) {
     var speedometer = document.getElementById("speedometer");
     let amount, acceleration, time;
@@ -41,6 +41,7 @@ ctx.stroke();
       time++;
       amount = time * 1.1;
       speedometer.innerHTML = amount;
+      return amount;
     }
   }
 </script>
