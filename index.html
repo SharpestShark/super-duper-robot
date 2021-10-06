@@ -30,7 +30,8 @@
     var random3 = Math.floor(Math.random() * 200);
     ctx.beginPath();
     ctx.arc(random3, random2, random, 0, 2 * Math.PI);
-    ctx.stroke();
+    ctx.fillStyle = #090909;
+    ctx.fill();
     i++;
   }
   function throttle(press) {
