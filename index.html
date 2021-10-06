@@ -12,8 +12,16 @@
     </svg>
   </p>
 </div>
+  <canvas id="myCanvas" width="100%" height="100%"></canvas>
 <script>
-  
+  var random = Math.floor(Math.random() * 30);
+  var random2 = Math.floor(Math.random() * window.innerHeight);
+  var random3 = Math.floor(Math.random() * window.innerWidth);
+  var canvas = document.getElementById("myCanvas");
+  var ctx = canvas.getContext("2d");
+  ctx.beginPath();
+ctx.arc(random3, random2, random, 0, 2 * Math.PI);
+ctx.stroke();
   function throttle(press) {
     var speedometer = document.getElementById("speedometer");
     let amount, acceleration, time;
