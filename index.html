@@ -18,18 +18,19 @@
 <script>
   var width = window.innerWidth;
   var height = window.innerHeight;
-  var random = Math.floor(Math.random() * 30);
+/*  var random = Math.floor(Math.random() * 30);
   var random2 = Math.floor(Math.random() * 300);
-  var random3 = Math.floor(Math.random() * 200);
+  var random3 = Math.floor(Math.random() * 200);*/
   var canvas = document.getElementById("myCanvas");
   var ctx = canvas.getContext("2d");
+  var i = 0;
   while (i < 9) {
+    var random = Math.floor(Math.random() * 30);
+    var random2 = Math.floor(Math.random() * 300);
+    var random3 = Math.floor(Math.random() * 200);
     ctx.beginPath();
     ctx.arc(random3, random2, random, 0, 2 * Math.PI);
     ctx.stroke();
-    random = Math.floor(Math.random() * 30);
-    random2 = Math.floor(Math.random() * 300);
-    random3 = Math.floor(Math.random() * 200);
     i++;
   }
   function throttle(press) {
