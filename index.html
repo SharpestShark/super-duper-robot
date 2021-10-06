@@ -17,10 +17,10 @@
   function throttle(press) {
     var speedometer = document.getElementById("speedometer");
     let amount, acceleration, time;
-    if (press == true) {
+    if (press === true) {
       amount = 0.1;
       acceleration = window.setInterval(acc, 500);
-    } else if (press == false) {
+    } else if (press === false) {
       window.clearInterval(acceleration);
       while (amount != "0") {
         amount = amount / 1.8;
