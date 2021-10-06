@@ -34,10 +34,10 @@
     if (!acceleration) {
     var speedometer = document.getElementById("speedometer");
     let amount, time;
+    let acceleration = window.setInterval(acc, 500);
     if (press === true) {
       amount = 0.1;
       time = 0;
-      acceleration = window.setInterval(acc, 500);
     } else {
       window.clearInterval(acceleration);
       while (amount != "0") {
@@ -52,6 +52,7 @@
     }
     } else {
       window.clearInterval(acceleration);
+      return;
     }
   }
 </script>
