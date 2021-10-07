@@ -6,7 +6,7 @@
 <body style="user-select: none;-webkit-user-select: none;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;">
   <div id="speedometer"></div>
 <div>
-  <p onmousedown="throttle(true)" ontouchstart="throttle(true)" ontouchend="throttle()" onmouseup="throttle()">
+  <p onmousedown="throttle(true)" ontouchstart="throttle(true)" ontouchend="clearInterval(acceleration)" onmouseup="clearInterval(acceleration)">
     <svg width="140" height="300">
       <!--<rect y="0" width="100" height="150" style="fill:rgb(90,90,90);stroke-width:1.5;stroke:rgb(0,0,0)" />
       <rect y="150" width="140" height="150" style="fill:rgb(90,90,90);stroke-width:1.5;stroke:rgb(0,0,0)" />-->
