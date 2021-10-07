@@ -35,14 +35,14 @@
     i++;
   }
   function throttle(press) {
-    let acceleration;
-    if (!acceleration) {
+    var acceleration;
+    if (acceleration === 0) {
     var speedometer = document.getElementById("speedometer");
     let amount, time;
-    let acceleration = window.setInterval(acc, 500);
     if (press === true) {
       amount = 0.1;
       time = 0;
+      acceleration = window.setInterval(acc(), 1000);
     } else {
       window.clearInterval(acceleration);
       while (amount != "0") {
