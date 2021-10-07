@@ -26,8 +26,8 @@
   var i = 0;
   while (i < 9) {
     var randRadius = Math.floor(Math.random() * 30) + 40;
-    var randY = Math.floor(Math.random() * 300);
-    var randX = Math.floor(Math.random() * 200);
+    var randY = Math.floor(Math.random() * 300) + randRadius;
+    var randX = Math.floor(Math.random() * 200) + randRadius;
     ctx.beginPath();
     ctx.arc(randX, randY, randRadius, 0, 2 * Math.PI);
     ctx.fillStyle = "#090909";
