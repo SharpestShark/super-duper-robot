@@ -61,18 +61,17 @@
     if (press === true) {
       amount = 0.1;
       time = 0;
-      acceleration = window.setInterval(acc(), 1000);
+      acceleration = window.setInterval(acc(amount), 1000);
     } else {
       window.clearInterval(acceleration);
       while (amount != "0") {
         return amount--;
       }
     }
-    function acc() {
+    function acc(amount) {
       time++;
-      amount = time * 1.9;
+      amount = Math.pow(amount, 2);
       speedometer.innerHTML = amount;
-      return amount;
     }
   }
   }
