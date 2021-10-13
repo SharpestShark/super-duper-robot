@@ -40,9 +40,9 @@
     });*/
     var randRadius = Math.floor(Math.random() * 30) + 40;
 	  var randY = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
-    while (randY <= (randY + randRadius) || randY >= (randY - randRadius)) {return randY = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);};
+    while (randY <= (randY + randRadius) || randY >= (randY - randRadius)) {randY = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);};
     var randX = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
-	  while (randX <= (randX + randRadius) || randX>= (randX - randRadius)) {return randX = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);};
+	  while (randX <= (randX + randRadius) || randX>= (randX - randRadius)) {randX = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);};
     ctx.beginPath();
     ctx.arc(randX, randY, randRadius, 0, 2 * Math.PI);
     ctx.fillStyle = "rgba(62, 128, 0, 0.75)";
