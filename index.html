@@ -25,6 +25,7 @@
   var ctx = canvas.getContext("2d");
   var i = 0;
   let coords;
+  let x_y = {"x": "0","y": "0"};
   let out = document.getElementById('speedometer');
   // alt color: rgba(47, 97, 0, 0.8)
   while (i < 9) {
@@ -36,6 +37,7 @@
     ctx.fillStyle = "rgba(62, 128, 0, 0.75)";
     ctx.fill();
     i++;
+    x_y = [{"x": randX,"y": randY},x_y];
     coords = 'X = ' + randX + '<br>' + 'Y = ' + randY + '<br>' + 'r = ' + randRadius;
     out.innerHTML = out.innerHTML + '<br>' + i + '<br>' + coords;
   }
