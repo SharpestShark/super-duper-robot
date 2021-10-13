@@ -28,7 +28,15 @@
   let x_y = {"x": "0","y": "0"};
   let out = document.getElementById('speedometer');
   // alt color: rgba(47, 97, 0, 0.8)
+ 
   while (i < 9) {
+    var data = JSON.stringify(x_y);
+    var found = data.find(function(item, i){
+		if(item.x === (randX - randRadius) || item.x === (randX + randRadius)){
+      randX = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
+			return i;
+		}
+	});
     var randRadius = Math.floor(Math.random() * 30) + 40;
     var randY = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
     var randX = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
