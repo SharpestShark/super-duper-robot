@@ -31,21 +31,25 @@
  
   while (i < 9) {
     var data = JSON.stringify(x_y);
+	  var index = -1;
     var found = data.find(function(item, i){
-		if(item.x === (randX - randRadius) || item.x === (randX + randRadius)){
-      randX = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
-			return i;
-		}
-	});
+	    if(item.x <= ){
+		    index = i;
+		    return i;
+	    }
+    });
     var randRadius = Math.floor(Math.random() * 30) + 40;
-    var randY = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
+	  var randY = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
+    while (randY <= (randY + randRadius) || randY >= (randY - randRadius)) {return randY = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);};
     var randX = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
+	  while (randX <= (randX + randRadius) || randX>= (randX - randRadius)) {return randX = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);};
     ctx.beginPath();
     ctx.arc(randX, randY, randRadius, 0, 2 * Math.PI);
     ctx.fillStyle = "rgba(62, 128, 0, 0.75)";
     ctx.fill();
     i++;
-    x_y = [{"x": randX,"y": randY},x_y];
+    x_yNew = {"x": randX,"y": randY};
+	  x_y = x_y + x_yNew;
     coords = 'X = ' + randX + '<br>' + 'Y = ' + randY + '<br>' + 'r = ' + randRadius;
     out.innerHTML = out.innerHTML + '<br>' + i + '<br>' + coords;
   }
