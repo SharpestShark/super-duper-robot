@@ -32,12 +32,12 @@
   while (i < 9) {
     var data = JSON.stringify(x_y);
 	  var index = -1;
-    // var found = data.find(function(item, i){
+    /* var found = data.find(function(item, i){
 	    if(item.x != randX){
 		    index = i;
 		    return i;
 	    }
-    });
+    });*/
     var randRadius = Math.floor(Math.random() * 30) + 40;
 	  var randY = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
     while (randY <= (randY + randRadius) || randY >= (randY - randRadius)) {return randY = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);};
