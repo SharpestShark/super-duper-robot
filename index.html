@@ -16,21 +16,21 @@
 </div>
   <canvas id="myCanvas" onmousemove="showCoords(event)" onmouseout="clearCoor()" width="500" height="500"></canvas>
 <script>
-  var width = window.innerWidth;
-  var height = window.innerHeight;
-/*  var random = Math.floor(Math.random() * 30);
-  var random2 = Math.floor(Math.random() * 300);
-  var random3 = Math.floor(Math.random() * 200);*/
-  var canvas = document.getElementById("myCanvas");
-  var ctx = canvas.getContext("2d");
-  var i = 0;
-  let coords;
-  let x_y = {"x": "0","y": "0"};
-  let out = document.getElementById('speedometer');
-  // alt color: rgba(47, 97, 0, 0.8)
+	var width = window.innerWidth;
+	var height = window.innerHeight;
+	/*  var random = Math.floor(Math.random() * 30);
+	var random2 = Math.floor(Math.random() * 300);
+	var random3 = Math.floor(Math.random() * 200);*/
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	var i = 0;
+	let coords;
+	// let x_y = {"x": "0","y": "0"};
+	let out = document.getElementById('speedometer');
+	// alt color: rgba(47, 97, 0, 0.8)
  
-  while (i < 9) {
-    var data = JSON.stringify(x_y);
+	while (i < 9) {
+	  var data = JSON.stringify(x_y);
 	  var index = -1;
     /* var found = data.find(function(item, i){
 	    if(item.x != randX){
@@ -38,53 +38,56 @@
 		    return i;
 	    }
     });*/
-    var randRadius = Math.floor(Math.random() * 30) + 40;
+	  var randRadius = Math.floor(Math.random() * 30) + 40;
 	  var randY = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
-    while (randY <= (randY + randRadius) || randY >= (randY - randRadius)) {randY = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);};
-    var randX = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
-	  while (randX <= (randX + randRadius) || randX>= (randX - randRadius)) {randX = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);};
+	  if (randY <= (randY + randRadius) || randY >= (randY - randRadius)) {
+		  randY = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
+	  }
+	  var randX = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
+	  if (randX <= (randX + randRadius) || randX>= (randX - randRadius)) {
+		  randX = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
+	  }
     ctx.beginPath();
     ctx.arc(randX, randY, randRadius, 0, 2 * Math.PI);
     ctx.fillStyle = "rgba(62, 128, 0, 0.75)";
     ctx.fill();
     i++;
-    x_yNew = {"x": randX,"y": randY};
-	  x_y = x_y + x_yNew;
+    //x_yNew = {"x": randX,"y": randY};
+	  //x_y = x_y + x_yNew;
     coords = 'X = ' + randX + '<br>' + 'Y = ' + randY + '<br>' + 'r = ' + randRadius;
     out.innerHTML = out.innerHTML + '<br>' + i + '<br>' + coords;
   }
   function throttle(press) {
     var acceleration;
-    if (acceleration === 0) {
-    var speedometer = document.getElementById("speedometer");
-    let amount, time;
-    if (press === true) {
-      amount = 0.1;
-      time = 0;
-      acceleration = window.setInterval(acc(amount), 1000);
-    } else {
-      window.clearInterval(acceleration);
-      while (amount != "0") {
-        return amount--;
-      }
-    }
-    function acc(amount) {
-      time++;
-      amount = Math.pow(amount, 2);
-      speedometer.innerHTML = amount;
-    }
+	  if (acceleration === 0) {
+		  var speedometer = document.getElementById("speedometer");
+		  let amount, time;
+		  if (press === true) {
+			  amount = 0.1;
+			  time = 0;
+			  acceleration = window.setInterval(acc(amount), 1000);
+		  } else {
+			  window.clearInterval(acceleration);
+			  while (amount != "0") {
+				  return amount--;
+			  }
+		  }
+	  }
   }
-  }
-  function showCoords(event) {
-  var x = event.clientX;
-  var y = event.clientY;
-  var coor = "X coords: " + x + ", Y coords: " + y;
-  document.getElementById("myCanvas").setAttribute("title",coor);
-}
-
-function clearCoor() {
-  document.getElementById("myCanvas").setAttribute("title","");
-}
+	function acc(amount) {
+		time++;
+		amount = Math.pow(amount, 2);
+		speedometer.innerHTML = amount;
+	}
+	function showCoords(event) {
+		var x = event.clientX;
+		var y = event.clientY;
+		var coor = "X coords: " + x + ", Y coords: " + y;
+		document.getElementById("myCanvas").setAttribute("title",coor);
+	}
+	function clearCoor() {
+		document.getElementById("myCanvas").setAttribute("title","");
+	}
 </script>
 </body>
 </html>
