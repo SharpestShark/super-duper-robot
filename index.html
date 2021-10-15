@@ -29,7 +29,7 @@
 	// let x_y = {"x": "0","y": "0"};
 	let out = document.getElementById('speedometer').innerHTML;
 	// alt color: rgba(47, 97, 0, 0.8)
-const xy = [{"x":"0","y":"0"},{"x":"0","y":"0"}];
+const xy = '[{"x":"0","y":"0"},{"x":"0","y":"0"}]';
 	  // var data = JSON.stringify(x_y);
 	  var index = -1;
     /* var found = data.find(function(item, i){
@@ -86,7 +86,6 @@ console.log(err);
 	function acc(amount) {
 		amount = Math.pow(amount, 2);
 		speedometer.innerHTML = amount;
-		if 
 	}
 	function showCoords(event) {
 		var x = event.clientX;
