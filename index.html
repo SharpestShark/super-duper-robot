@@ -29,8 +29,7 @@
 	// let x_y = {"x": "0","y": "0"};
 	let out = document.getElementById('speedometer').innerHTML;
 	// alt color: rgba(47, 97, 0, 0.8)
-const values = '[{"x":"0","y":"0"},{"x":"0","y":"0"}]';
-		const xy = JSON.parse(values);
+let xy = [{"x":0,"y":0},{"x":0,"y":0}];
 	  // var data = JSON.stringify(x_y);
 	  var index = -1;
     /* var found = data.find(function(item, i){
@@ -39,7 +38,7 @@ const values = '[{"x":"0","y":"0"},{"x":"0","y":"0"}]';
 		    return i;
 	    }
     });*/
-		xy.x[0] = 78;
+		xy[0].x = 78;
 		xy.y[0] = 67;
 	  randRadius = Math.floor(Math.random() * 30) + 40;
 	  /* randY = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
