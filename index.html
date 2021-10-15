@@ -52,7 +52,7 @@ let xy = [{"x":0,"y":0},{"x":0,"y":0}];
 	var l = xy.length;
 		for (let i = 0; i < l; i++) {
     ctx.beginPath();
-    ctx.arc(xy.x[i], xy.y[i], randRadius, 0, 2 * Math.PI);
+    ctx.arc(xy[i].x, xy[i].y, randRadius, 0, 2 * Math.PI);
     ctx.fillStyle = "rgba(62, 128, 0, 0.75)";
     ctx.fill();
     //x_yNew = {"x": randX,"y": randY};
