@@ -7,7 +7,7 @@
   <div id="speedometer"></div>
 <div>
   <p onmousedown="acc(1.8)" ontouchstart="acc(1.8)" ontouchend="clearTimeout(loop);amount = amount / 1.3;" onmouseup="clearTimeout(loop);amount = amount / 1.3;">
-    <svg width="140" height="300">
+    <svg width="140" height="300" id="mySVG">
       <!--<rect y="0" width="100" height="150" style="fill:rgb(90,90,90);stroke-width:1.5;stroke:rgb(0,0,0)" />
       <rect y="150" width="140" height="150" style="fill:rgb(90,90,90);stroke-width:1.5;stroke:rgb(0,0,0)" />-->
       <polygon points="0,0 100,0 140,150 140,300 0,300" style="fill:rgb(90,90,90);stroke-width:1.5;stroke:rgb(0,0,0);" />
@@ -88,6 +88,7 @@ console.log(err);
   }
 	function acc(amount) {
 		if (amount < 500) {
+			document.getElementById('mySVG').addEventListener('ontouchend', function e);
 			var loop = setTimeout(function() {
 				amount = amount * 1.1;
 				animate(amount);
@@ -99,6 +100,9 @@ console.log(err);
 				amount = amount / 1.3;
 			}
 		}
+	}
+	function deccl(amount) {
+
 	}
 	function showCoords(event) {
 		var x = event.clientX;
