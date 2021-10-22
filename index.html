@@ -85,12 +85,10 @@ console.log(err);
   }
 	function acc(amount) {
 		while (amount < 80) {
-			setTimeout(function () {
-				amount = amount * 1.3;
-			}, 1000);
+			amount = amount * 1.3;
 			speedometer.innerHTML = amount;
 		}
-		
+		return;
 	}
 	function showCoords(event) {
 		var x = event.clientX;
