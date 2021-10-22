@@ -87,7 +87,7 @@ console.log(err);
   }
 	function acc(amount) {
 		if (amount < 500) {
-			amount = amount * 1.1;
+			let amount = amount * 1.1;
 			speedometer.innerHTML = amount;
 			console.log(amount);
 			animate(amount);
