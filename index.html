@@ -84,8 +84,11 @@ console.log(err);
 	  }
   }
 	function acc(amount) {
-		amount = Math.pow(amount, 2);
-		speedometer.innerHTML = amount;
+		while (amount < 80) {
+			amount = Math.pow(amount, 2);
+			speedometer.innerHTML = amount;
+		}
+		
 	}
 	function showCoords(event) {
 		var x = event.clientX;
