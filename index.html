@@ -93,7 +93,7 @@ console.log(err);
 			}, 2000);
 			speedometer.innerHTML = amount;
 			console.log(amount);
-			if (amount < 499) {
+			if (amount >= 500) {
 				clearTimeout(loop);
 			}
 		}
