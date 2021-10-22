@@ -87,11 +87,11 @@ console.log(err);
   }
 	function acc(amount) {
 		if (amount < 500) {
-			var amount = amount * 1.1;
+			var amountNew = amount * 1.1;
+			amount = amountNew;
 			speedometer.innerHTML = amount;
 			console.log(amount);
 			animate(amount);
-			return amount;
 		}
 	}
 	function showCoords(event) {
