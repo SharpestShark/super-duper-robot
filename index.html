@@ -90,6 +90,7 @@ console.log(err);
 			amount = amount * 1.1;
 			speedometer.innerHTML = amount;
 			console.log(amount);
+			setTimeout(animate(amount), 1000);
 		}
 	}
 	function showCoords(event) {
