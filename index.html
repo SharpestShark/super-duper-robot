@@ -16,6 +16,7 @@
 </div>
   <canvas id="myCanvas" onmousemove="showCoords(event)" onmouseout="clearCoor()" width="500" height="500"></canvas>
 <script>
+	let xy = [{"x":0,"y":0},{"x":0,"y":0}];
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
 	ctx.beginPath();
@@ -37,7 +38,6 @@ try {
 	// let x_y = {"x": "0","y": "0"};
 	let out = document.getElementById('speedometer').innerHTML;
 	// alt color: rgba(47, 97, 0, 0.8)
-let xy = [{"x":0,"y":0},{"x":0,"y":0}];
 	  // var data = JSON.stringify(x_y);
 	  var index = -1;
     /* var found = data.find(function(item, i){
@@ -46,7 +46,7 @@ let xy = [{"x":0,"y":0},{"x":0,"y":0}];
 		    return i;
 	    }
     });*/
-		xy[0].x = 500 - (amount * 100);
+		xy[0].x = 500 - (amount * 50);
 		xy[0].y = 67;
 	  /* randY = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
 	  if (randY <= (randY + randRadius) || randY >= (randY - randRadius)) {
@@ -111,12 +111,8 @@ function throttle(press) {
 				animate(amount);
 				speedometer.innerHTML = amount;
 			}, 100);
-			if (amount >= 500) {
-	var decc = setTimeout(function() {
-		amount /= 1.4;
-		animate(amount);
-		speedometer.innerHTML = amount;
-	}, 100);
+			if (xy[i].x >= 500) {
+				clearInterval(loop);
 			}
 		}
 	}
