@@ -88,28 +88,20 @@ console.log(err);
   }
 	function acc(amount) {
 		if (amount < 500) {
-			var loop = setTimeout(function() {
-				amount = amount * 1.1;
-				animate(amount);
-				speedometer.innerHTML = amount;
-			}, 2000);
-			if (amount >= 500) {
-				clearTimeout(loop);
-				amount = amount / 1.3;
-			}
-			document.getElementById('mySVG').addEventListener('ontouchend', function () {
-				clearTimeout(loop);
-				amount = amount / 1.4;
-			});
 			document.getElementById('mySVG').addEventListener('ontouchstart', function () {
 				var loop = setTimeout(function() {
 					amount = amount * 1.1;
 					animate(amount);
 					speedometer.innerHTML = amount;
-					console.log(amount);
-				}, 2000);
+				}, 500);
 				amount = amount / 1.4;
 			});
+			if (amount >= 500) {
+				document.getElementById('mySVG').addEventListener('ontouchend', function () {
+					clearTimeout(loop);
+					amount = amount / 1.4;
+				});
+			}
 		}
 	}
 	function deccl(amount) {
