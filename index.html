@@ -69,7 +69,20 @@ console.log(err);
 	}
 	</script>
 <script>
-  function throttle(press) {
+document.getElementById('mySVG').addEventListener('ontouchstart', function () {
+	var speedometer = document.getElementById("speedometer");
+	var loop = setTimeout(function() {
+		amount = amount * 1.1;
+		animate(amount);
+		speedometer.innerHTML = amount;
+	}, 500);
+});
+document.getElementById('mySVG').addEventListener('ontouchend', function () {
+	clearTimeout(loop);
+	amount = amount / 1.4;
+});
+	
+function throttle(press) {
     var acceleration;
 	  if (acceleration === 0) {
 		  var speedometer = document.getElementById("speedometer");
@@ -88,18 +101,14 @@ console.log(err);
   }
 	function acc(amount) {
 		if (amount < 500) {
-			document.getElementById('mySVG').addEventListener('ontouchstart', function () {
-				var loop = setTimeout(function() {
-					amount = amount * 1.1;
-					animate(amount);
-					speedometer.innerHTML = amount;
-				}, 500);
-			});
+			var loop = setTimeout(function() {
+				amount = amount * 1.1;
+				animate(amount);
+				speedometer.innerHTML = amount;
+			}, 500);
 			if (amount >= 500) {
-				document.getElementById('mySVG').addEventListener('ontouchend', function () {
-					clearTimeout(loop);
-					amount = amount / 1.4;
-				});
+				clearTimeout(loop);
+				amount = amount / 1.4;
 			}
 		}
 	}
