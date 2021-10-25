@@ -16,6 +16,12 @@
 </div>
   <canvas id="myCanvas" onmousemove="showCoords(event)" onmouseout="clearCoor()" width="500" height="500"></canvas>
 <script>
+	var canvas = document.getElementById("myCanvas");
+	var ctx = canvas.getContext("2d");
+	ctx.beginPath();
+	ctx.arc(250, 250, 50, 0, 2 * Math.PI);
+	ctx.fillStyle = "rgba(0, 0, 0, 0.85)";
+	ctx.fill();
 	function animate(amount) {
 try {
 		var width = window.innerWidth;
