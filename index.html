@@ -111,7 +111,7 @@ function throttle(press) {
 				animate(amount);
 				speedometer.innerHTML = amount;
 			}, 100);
-			if (xy[i].x >= 500) {
+			if (xy[0].x <= 0) {
 				clearInterval(loop);
 			}
 		}
