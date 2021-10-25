@@ -102,6 +102,15 @@ console.log(err);
 				clearTimeout(loop);
 				amount = amount / 1.4;
 			});
+			document.getElementById('mySVG').addEventListener('ontouchstart', function () {
+				var loop = setTimeout(function() {
+					amount = amount * 1.1;
+					animate(amount);
+					speedometer.innerHTML = amount;
+					console.log(amount);
+				}, 2000);
+				amount = amount / 1.4;
+			});
 		}
 	}
 	function deccl(amount) {
