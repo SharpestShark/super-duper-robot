@@ -80,8 +80,11 @@ document.getElementById('mySVG').addEventListener('ontouchstart', function () {
 	acc(1.8);
 });
 document.getElementById('mySVG').addEventListener('ontouchend', function () {
-	clearTimeout(loop);
-	amount /= 1.4;
+	var decc = setTimeout(function() {
+		amount /= 1.4;
+		animate(amount);
+		speedometer.innerHTML = amount;
+	}, 20);
 });
 	
 function throttle(press) {
