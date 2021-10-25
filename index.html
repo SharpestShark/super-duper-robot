@@ -58,10 +58,11 @@ let xy = [{"x":0,"y":0},{"x":0,"y":0}];
 	  }*/
 	var l = xy.length;
 		for (let i = 0; i < l; i++) {
-    ctx.beginPath();
-    ctx.arc(xy[i].x, xy[i].y, randRadius, 0, 2 * Math.PI);
-    ctx.fillStyle = "rgba(62, 128, 0, 0.5)";
-    ctx.fill();
+			ctx.clear();
+			ctx.beginPath();
+			ctx.arc(xy[i].x, xy[i].y, randRadius, 0, 2 * Math.PI);
+			ctx.fillStyle = "rgba(62, 128, 0, 0.5)";
+			ctx.fill();
     //x_yNew = {"x": randX,"y": randY};
 	  //x_y = x_y + x_yNew;
     coords = 'X = ' + randX + '<br>' + 'Y = ' + randY + '<br>' + 'r = ' + randRadius;
