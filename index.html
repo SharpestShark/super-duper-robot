@@ -70,12 +70,7 @@ console.log(err);
 	</script>
 <script>
 document.getElementById('mySVG').addEventListener('ontouchstart', function () {
-	var speedometer = document.getElementById("speedometer");
-	var loop = setTimeout(function() {
-		amount = amount * 1.1;
-		animate(amount);
-		speedometer.innerHTML = amount;
-	}, 500);
+	acc(1.8);
 });
 document.getElementById('mySVG').addEventListener('ontouchend', function () {
 	clearTimeout(loop);
