@@ -54,14 +54,14 @@ let xy = [{"x":0,"y":0},{"x":0,"y":0}];
 		for (let i = 0; i < l; i++) {
     ctx.beginPath();
     ctx.arc(xy[i].x, xy[i].y, randRadius, 0, 2 * Math.PI);
-    ctx.fillStyle = "rgba(62, 128, 0, 0.75)";
+    ctx.fillStyle = "rgba(62, 128, 0, 0.5)";
     ctx.fill();
     //x_yNew = {"x": randX,"y": randY};
 	  //x_y = x_y + x_yNew;
     coords = 'X = ' + randX + '<br>' + 'Y = ' + randY + '<br>' + 'r = ' + randRadius;
     out = out + '<br>' + xy[i].x;
-			acc(amount);
   }
+	acc(amount);
 	    } catch(err) {
 console.log(err);
 		    document.getElementById('speedometer').innerHTML = err.message;
@@ -92,7 +92,6 @@ console.log(err);
 				amount = amount * 1.1;
 				animate(amount);
 				speedometer.innerHTML = amount;
-				console.log(amount);
 			}, 2000);
 			if (amount >= 500) {
 				clearTimeout(loop);
