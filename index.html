@@ -56,9 +56,9 @@ let xy = [{"x":0,"y":0},{"x":0,"y":0}];
 	  if (randX <= (randX + randRadius) || randX>= (randX - randRadius)) {
 		  randX = Math.floor(Math.random() * (500 - (randRadius) + 1)) + (randRadius * 2);
 	  }*/
+	ctx.clearRect(0,0,500,500);
 	var l = xy.length;
 		for (let i = 0; i < l; i++) {
-			ctx.clearRect(0,0,500,500);
 			ctx.beginPath();
 			ctx.arc(xy[i].x, xy[i].y, randRadius, 0, 2 * Math.PI);
 			ctx.fillStyle = "rgba(62, 128, 0, 0.5)";
