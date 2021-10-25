@@ -81,7 +81,7 @@ document.getElementById('mySVG').addEventListener('ontouchstart', function () {
 });
 document.getElementById('mySVG').addEventListener('ontouchend', function () {
 	clearTimeout(loop);
-	amount = amount / 1.4;
+	amount /= 1.4;
 });
 	
 function throttle(press) {
@@ -104,10 +104,10 @@ function throttle(press) {
 	function acc(amount) {
 		if (amount < 500) {
 			var loop = setTimeout(function() {
-				amount = amount * 1.1;
+				amount *= 1.1;
 				animate(amount);
 				speedometer.innerHTML = amount;
-			}, 500);
+			}, 20);
 			if (amount >= 500) {
 				clearTimeout(loop);
 				amount = amount / 1.4;
