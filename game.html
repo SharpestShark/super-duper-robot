@@ -3,10 +3,12 @@
     <title>super-duper game</title>
   </head>
   <body>
+    <img src="/img/background.png"></img>
     <canvas width="window.width" height="window.height"></canvas>
     <script>
       var canvas = document.getElementById('gameCanvas');
       var ctx = canvas.getContext("2d");
+      var background = document.getElementById('img');
       var pat = ctx.createPattern(background, "repeat");
       ctx.rect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = pat;
