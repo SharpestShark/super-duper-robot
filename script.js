@@ -33,5 +33,6 @@ function component(width, height, color, x, y) {
 
 function updateScene() {
   scene.clear();
+  player.x += 1;
   player.update();
 }
