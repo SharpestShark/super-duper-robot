@@ -1,8 +1,11 @@
 var player;
+var obstacles = [{"tree":["x": "20","y":"40","radius":"15","color":""],"rock":["x":"40","y":"20","radius":"15","color":""]}];
+
 
 function start() {
   scene.start();
   player = new component(30, 30, "red", 10, 120);
+  for (object of obstacles)
 }
 
 var scene = {
