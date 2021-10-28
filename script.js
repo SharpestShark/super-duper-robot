@@ -1,20 +1,20 @@
 var player, tree, rock;
-var obstacles = [{
-	"tree": [{
+var obstacles = {
+	"tree": {
 		"width": "15",
 		"height": "15",
 		"color": "#030303",
 		"x": "40",
-    "y": "20"
-	}],
-	"rock": [{
+		"y": "20"
+	},
+	"rock": {
 		"width": "15",
 		"height": "15",
 		"color": "#ffffff",
 		"x": "20",
-    "y": "40"
-	}]
-}];
+		"y": "40"
+	}
+};
 
 
 function start() {
