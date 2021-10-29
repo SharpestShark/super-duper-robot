@@ -25,7 +25,7 @@ function start() {
   player = new component(30, 30, "red", 10, 120);
   tree = background.tree;
   rock = background.rock;
-	console.log(JSON.toString(obstacles.tree));
+	console.log(JSON.stringify(obstacles.tree));
 }
 
 var scene = {
