@@ -3,14 +3,14 @@ const obstacles = {
 	"tree": {
 		"width": "15",
 		"height": "15",
-		"color": "#030303",
+		"color": "rgba(62, 128, 0, 0.5)",
 		"x": "60",
 		"y": "140"
 	},
 	"rock": {
 		"width": "15",
 		"height": "15",
-		"color": "#ffffff",
+		"color": "#030303",
 		"x": "35",
 		"y": "105"
 	}
