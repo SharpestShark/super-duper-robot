@@ -20,12 +20,13 @@ var obstacles = {
 function start() {
   scene.start();
   player = new component(30, 30, "red", 10, 120);
-  for (let object of obstacles) {
-    var background = {
-      tree: new component(object.tree.width,object.tree.height,object.tree.color,object.tree.x,object.tree.y),
-      rock: new component(object.rock.width,object.rock.height,object.rock.color,object.rock.x,object.rock.y)
-    }
+  for (let object in obstacles) {
+
   }
+	var background = {
+		tree: function() {new component(obstacles.tree.width,obstacles.tree.height,obstacles.tree.color,obstacles.tree.x,obstacles.tree.y);},
+		rock: function() {new component(obstacles.rock.width,obstacles.rock.height,obstacles.rock.color,obstacles.rock.x,obstacles.rock.y);}
+	}
   tree = background.tree;
   rock = background.rock;
 }
