@@ -1,5 +1,5 @@
 var player, tree, rock;
-var obstacles = {
+const obstacles = {
 	"tree": {
 		"width": "15",
 		"height": "15",
@@ -25,6 +25,7 @@ function start() {
   player = new component(30, 30, "red", 10, 120);
   tree = background.tree();
   rock = background.rock();
+	console.log(JSON.toString(obstacles.tree));
 }
 
 var scene = {
