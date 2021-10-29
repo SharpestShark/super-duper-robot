@@ -58,4 +58,6 @@ function updateScene() {
   scene.clear();
   player.x += 1;
   player.update();
+	tree.update();
+	rock.update();
 }
