@@ -15,20 +15,16 @@ var obstacles = {
 		"y": "40"
 	}
 };
-
+var background = {
+	tree: new component(obstacles.tree.width,obstacles.tree.height,obstacles.tree.color,obstacles.tree.x,obstacles.tree.y),
+	rock: new component(obstacles.rock.width,obstacles.rock.height,obstacles.rock.color,obstacles.rock.x,obstacles.rock.y),
+}
 
 function start() {
   scene.start();
   player = new component(30, 30, "red", 10, 120);
-  for (let object in obstacles) {
-
-  }
-	var background = {
-		tree: function() {new component(obstacles.tree.width,obstacles.tree.height,obstacles.tree.color,obstacles.tree.x,obstacles.tree.y);},
-		rock: function() {new component(obstacles.rock.width,obstacles.rock.height,obstacles.rock.color,obstacles.rock.x,obstacles.rock.y);}
-	}
-  tree = background.tree;
-  rock = background.rock;
+  tree = background.tree();
+  rock = background.rock();
 }
 
 var scene = {
