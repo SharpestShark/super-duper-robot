@@ -4,15 +4,15 @@ const obstacles = {
 		"width": "15",
 		"height": "15",
 		"color": "#030303",
-		"x": "40",
-		"y": "20"
+		"x": "60",
+		"y": "140"
 	},
 	"rock": {
 		"width": "15",
 		"height": "15",
 		"color": "#ffffff",
-		"x": "20",
-		"y": "40"
+		"x": "35",
+		"y": "105"
 	}
 };
 var background = {
@@ -23,8 +23,8 @@ var background = {
 function start() {
   scene.start();
   player = new component(30, 30, "red", 10, 120);
-  tree = background.tree();
-  rock = background.rock();
+  tree = background.tree;
+  rock = background.rock;
 	console.log(JSON.toString(obstacles.tree));
 }
 
