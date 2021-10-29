@@ -45,6 +45,8 @@ var scene = {
 function component(width, height, color, x, y) {
   this.width = width;
   this.height = height;
+  this.speedX = 0;
+  this.speedY = 0;
   this.x = x;
   this.y = y; 
   this.update = function(){
@@ -52,12 +54,32 @@ function component(width, height, color, x, y) {
     ctx.fillStyle = color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
+  this.newPos = function() {
+    this.x += this.speedX;
+    this.y += this.speedY; 
+  } 
 }
 
 function updateScene() {
   scene.clear();
-  player.x += 1;
+  player.newPos();
   player.update();
-	tree.update();
-	rock.update();
+  tree.update();
+  rock.update();
+}
+
+function moveup() {
+  player.speedY -= 1; 
+}
+
+function movedown() {
+  player.speedY += 1; 
+}
+
+function moveleft() {
+  player.speedX -= 1;
+}
+
+function moveright() {
+  player.speedX += 1;
 }
