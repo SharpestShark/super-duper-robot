@@ -83,3 +83,8 @@ function moveleft() {
 function moveright() {
   player.speedX += 1;
 }
+
+function stopMove() {
+  player.speedX = 0;
+  player.speedY = 0; 
+}
