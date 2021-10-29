@@ -10,7 +10,7 @@ const obstacles = {
 	"rock": {
 		"width": "15",
 		"height": "15",
-		"color": "#030303",
+		"color": "#131313",
 		"x": "35",
 		"y": "105"
 	}
