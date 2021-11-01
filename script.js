@@ -24,10 +24,12 @@ function start() {
   player = new component(30, 30, "red", 10, 120);
   tree = background.tree;
   rock = background.rock;
-  myUpBtn = new component(30, 30, "blue", 50, 10);
-  myDownBtn = new component(30, 30, "blue", 50, 70);
-  myLeftBtn = new component(30, 30, "blue", 20, 40);
-  myRightBtn = new component(30, 30, "blue", 80, 40);
+  if (navigator.userAgentData["mobile"] == 0) {
+      myUpBtn = new component(30, 30, "blue", 50, 10);
+      myDownBtn = new component(30, 30, "blue", 50, 70);
+      myLeftBtn = new component(30, 30, "blue", 20, 40);
+      myRightBtn = new component(30, 30, "blue", 80, 40);
+  }
   console.log(JSON.stringify(obstacles.tree));
   scene.start();
 }
