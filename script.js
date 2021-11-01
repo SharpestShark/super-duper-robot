@@ -37,10 +37,11 @@ var scene = {
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
     this.interval = setInterval(updateScene, 20);
     window.addEventListener('keydown', function (e) {
-      scene.key = e.keyCode;
+      scene.keys = (scene.keys || []);
+      scene.keys[e.keyCode] = true;
     })
     window.addEventListener('keyup', function (e) {
-      scene.key = false;
+      scene.keys[e.keyCode] = false; 
     })
   },
   clear : function() {
@@ -70,10 +71,10 @@ function updateScene() {
   scene.clear();
   player.speedX = 0;
   player.speedY = 0; 
-  if (scene.key && scene.key == 37) {player.speedX = -1; }
-  if (scene.key && scene.key == 39) {player.speedX = 1; }
-  if (scene.key && scene.key == 38) {player.speedY = -1; }
-  if (scene.key && scene.key == 40) {player.speedY = 1; }
+  if (scene.keys && scene.keys[37]) {player.speedX = -1; }
+  if (scene.keys && scene.keys[39]) {player.speedX = 1; }
+  if (scene.keys && scene.keys[38]) {player.speedY = -1; }
+  if (scene.keys && scene.keys[40]) {player.speedY = 1; }
   player.newPos();
   player.update();
   tree.update();
