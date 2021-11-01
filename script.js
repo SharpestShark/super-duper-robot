@@ -43,6 +43,10 @@ var scene = {
     window.addEventListener('keyup', function (e) {
       scene.keys[e.keyCode] = false; 
     })
+    window.addEventListener('touchmove', function (e) {
+      scene.x = e.touches[0].screenX;
+      scene.y = e.touches[0].screenY;
+    })
   },
   clear : function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -69,6 +73,10 @@ function component(width, height, color, x, y) {
 
 function updateScene() {
   scene.clear();
+  if (scene.x && scene.y) {
+    scene.x = scene.x;
+    scene.y = scene.y; 
+  }
   player.speedX = 0;
   player.speedY = 0; 
   if (scene.keys && scene.keys[37]) {player.speedX = -1; }
