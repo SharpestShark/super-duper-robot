@@ -101,6 +101,26 @@ function component(width, height, color, x, y) {
   }
 }
 
+function arrowBtn(x,y,pointX,pointY) {
+	this.x = x;
+	this.y = y;
+	this.pX = pointX;
+	this.pY = pointY;
+	this.update = function() {
+		ctx = scene.ctx;
+		ctx.arc(100, 50, 25, 0, 1.5 * Math.PI,true);
+		ctx.lineTo(50, 25);
+		ctx.arc(50, 50, 25,1.5 * Math.PI,Math.PI,true);
+		ctx.lineTo(25,100);
+		ctx.arc(50, 100, 25,Math.PI,.5 * Math.PI,true);
+		ctx.lineTo(100,125);
+		ctx.arc(100, 100, 25,.5 * Math.PI,0,true);
+		ctx.lineTo(125,50);
+		ctx.fillStyle = "#000";
+		ctx.fill();
+	}
+}
+
 function updateScene() {
   scene.clear();
   if (navigator.platform.startsWith('Win')) {
