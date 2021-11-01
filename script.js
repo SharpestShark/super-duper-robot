@@ -1,4 +1,4 @@
-var player, tree, rock;
+var player, tree, rock, myUpBtn, myDownBtn, myLeftBtn, myRightBtn;
 const obstacles = {
 	"tree": {
 		"width": "15",
@@ -21,11 +21,15 @@ var background = {
 }
 
 function start() {
-  scene.start();
   player = new component(30, 30, "red", 10, 120);
   tree = background.tree;
   rock = background.rock;
-	console.log(JSON.stringify(obstacles.tree));
+  myUpBtn = new component(30, 30, "blue", 50, 10);
+  myDownBtn = new component(30, 30, "blue", 50, 70);
+  myLeftBtn = new component(30, 30, "blue", 20, 40);
+  myRightBtn = new component(30, 30, "blue", 80, 40);
+  console.log(JSON.stringify(obstacles.tree));
+  scene.start();
 }
 
 var scene = {
