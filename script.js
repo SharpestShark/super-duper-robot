@@ -118,7 +118,6 @@ function updateScene() {
   myDownBtn.update(); 
   myLeftBtn.update(); 
   myRightBtn.update();
-  player.newPos();
   player.update();
   tree.update();
   rock.update();
