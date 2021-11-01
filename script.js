@@ -40,6 +40,22 @@ var scene = {
     this.context = this.canvas.getContext("2d");
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
     this.interval = setInterval(updateScene, 20);
+    window.addEventListener('mousedown', function (e) {
+      scene.x = e.pageX;
+      scene.y = e.pageY;
+    })
+    window.addEventListener('mouseup', function (e) {
+      scene.x = false;
+      scene.y = false;
+    })
+    window.addEventListener('touchstart', function (e) {
+      scene.x = e.pageX;
+      scene.y = e.pageY;
+    })
+    window.addEventListener('touchend', function (e) {
+      scene.x = false;
+      scene.y = false;
+    })
     window.addEventListener('keydown', function (e) {
       scene.keys = (scene.keys || []);
       scene.keys[e.keyCode] = true;
@@ -69,24 +85,39 @@ function component(width, height, color, x, y) {
     ctx.fillStyle = color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
-  this.newPos = function() {
-    this.x += this.speedX;
-    this.y += this.speedY; 
-  } 
+  this.clicked = function() {
+    var myleft = this.x;
+    var myright = this.x + (this.width);
+    var mytop = this.y;
+    var mybottom = this.y + (this.height);
+    var clicked = true;
+    if ((mybottom < myGameArea.y) || (mytop > myGameArea.y) || (myright < myGameArea.x) || (myleft > myGameArea.x)) {
+      clicked = false;
+    }
+    return clicked;
+  }
 }
 
 function updateScene() {
   scene.clear();
   if (scene.x && scene.y) {
-    player.x = scene.x;
-    player.y = scene.y; 
+    if (myUpBtn.clicked()) {
+      player.y -= 1;
+    }
+    if (myDownBtn.clicked()) {
+      player.y += 1;
+    }
+    if (myLeftBtn.clicked()) {
+      player.x += -1;
+    }
+    if (myRightBtn.clicked()) {
+      player.x += 1;
+    }
   }
-  player.speedX = 0;
-  player.speedY = 0; 
-  if (scene.keys && scene.keys[37]) {player.speedX = -1; }
-  if (scene.keys && scene.keys[39]) {player.speedX = 1; }
-  if (scene.keys && scene.keys[38]) {player.speedY = -1; }
-  if (scene.keys && scene.keys[40]) {player.speedY = 1; }
+  myUpBtn.update(); 
+  myDownBtn.update(); 
+  myLeftBtn.update(); 
+  myRightBtn.update();
   player.newPos();
   player.update();
   tree.update();
