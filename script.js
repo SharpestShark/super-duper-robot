@@ -59,9 +59,10 @@ var scene = {
     window.addEventListener('keydown', function (e) {
       scene.keys = (scene.keys || []);
       scene.keys[e.keyCode] = true;
+      console.log(e.keyCode);
     })
     window.addEventListener('keyup', function (e) {
-      scene.keys[e.keyCode] = false; 
+      scene.keys[e.keyCode] = false;
     })
     window.addEventListener('touchmove', function (e) {
       scene.x = e.touches[0].screenX;
@@ -100,6 +101,14 @@ function component(width, height, color, x, y) {
 
 function updateScene() {
   scene.clear();
+  if (navigator.platform.startsWith('Win')) {
+  	player.speedX = 0;
+    player.speedY = 0;
+    if (scene.key && scene.key == 37 || scene.key == 65) {myGamePiece.speedX = -1; }
+    if (scene.key && scene.key == 39 || scene.key == 68) {myGamePiece.speedX = 1; }
+    if (scene.key && scene.key == 38 || scene.key == 87) {myGamePiece.speedY = -1; }
+    if (scene.key && scene.key == 40 || scene.key == 83) {myGamePiece.speedY = 1; }
+  }
   if (scene.x && scene.y) {
     if (myUpBtn.clicked()) {
       player.y -= 1;
