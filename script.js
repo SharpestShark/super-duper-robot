@@ -102,12 +102,12 @@ function component(width, height, color, x, y) {
 function updateScene() {
   scene.clear();
   if (navigator.platform.startsWith('Win')) {
-  	player.speedX = 0;
+    player.speedX = 0;
     player.speedY = 0;
-    if (scene.key && scene.key == 37 || scene.key == 65) {myGamePiece.speedX = -1; }
-    if (scene.key && scene.key == 39 || scene.key == 68) {myGamePiece.speedX = 1; }
-    if (scene.key && scene.key == 38 || scene.key == 87) {myGamePiece.speedY = -1; }
-    if (scene.key && scene.key == 40 || scene.key == 83) {myGamePiece.speedY = 1; }
+    if (scene.keys && scene.keys[37] || scene.keys[65]) {player.speedX = -1; }
+    if (scene.keys && scene.keys[39] || scene.keys[68]) {player.speedX = 1; }
+    if (scene.keys && scene.keys[38] || scene.keys[87]) {player.speedY = -1; }
+    if (scene.keys && scene.keys[40] || scene.keys[83]) {player.speedY = 1; }
   }
   if (scene.x && scene.y) {
     if (myUpBtn.clicked()) {
