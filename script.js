@@ -36,6 +36,12 @@ var scene = {
     this.context = this.canvas.getContext("2d");
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
     this.interval = setInterval(updateScene, 20);
+    window.addEventListener('keydown', function (e) {
+      scene.key = e.keyCode;
+    })
+    window.addEventListener('keyup', function (e) {
+      scene.key = false;
+    })
   },
   clear : function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -62,6 +68,12 @@ function component(width, height, color, x, y) {
 
 function updateScene() {
   scene.clear();
+  player.speedX = 0;
+  player.speedY = 0; 
+  if (scene.key && scene.key == 37) {player.speedX = -1; }
+  if (scene.key && scene.key == 39) {player.speedX = 1; }
+  if (scene.key && scene.key == 38) {player.speedY = -1; }
+  if (scene.key && scene.key == 40) {player.speedY = 1; }
   player.newPos();
   player.update();
   tree.update();
