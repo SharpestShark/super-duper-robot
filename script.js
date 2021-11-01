@@ -74,8 +74,8 @@ function component(width, height, color, x, y) {
 function updateScene() {
   scene.clear();
   if (scene.x && scene.y) {
-    scene.x = scene.x;
-    scene.y = scene.y; 
+    player.x = scene.x;
+    player.y = scene.y; 
   }
   player.speedX = 0;
   player.speedY = 0; 
