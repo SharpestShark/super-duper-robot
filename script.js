@@ -24,7 +24,7 @@ function start() {
   player = new component(30, 30, "red", 10, 120);
   tree = background.tree;
   rock = background.rock;
-  if (navigator.userAgentData["mobile"] == 0) {
+  if (navigator.userAgentData["mobile"] == 1) {
       myUpBtn = new component(30, 30, "blue", 50, 10);
       myDownBtn = new component(30, 30, "blue", 50, 70);
       myLeftBtn = new component(30, 30, "blue", 20, 40);
