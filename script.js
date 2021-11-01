@@ -91,7 +91,7 @@ function component(width, height, color, x, y) {
     var mytop = this.y;
     var mybottom = this.y + (this.height);
     var clicked = true;
-    if ((mybottom < myGameArea.y) || (mytop > myGameArea.y) || (myright < myGameArea.x) || (myleft > myGameArea.x)) {
+    if ((mybottom < scene.y) || (mytop > scene.y) || (myright < scene.x) || (myleft > scene.x)) {
       clicked = false;
     }
     return clicked;
