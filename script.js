@@ -45,6 +45,7 @@ var scene = {
     this.canvas.height = 1000;
     this.context = this.canvas.getContext("2d");
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+    this.frameNo = 0;
     this.interval = setInterval(updateScene, 20);
     window.addEventListener('mousedown', function (e) {
       scene.x = e.pageX;
@@ -81,6 +82,11 @@ var scene = {
   stop : function() {
     clearInterval(this.interval);
   }
+}
+
+function everyinterval(n) {
+  if ((scene.frameNo / n) % 1 == 0) {return true;}
+  return false;
 }
 
 function component(width, height, color, x, y) {
@@ -169,6 +175,24 @@ ctx.fill();
 }
 
 function updateScene() {
+  var x, y;
+  for (i = 0; i < myObstacles.length; i += 1) {
+    if (player.crashWith(myObstacles[i])) {
+      scene.stop();
+      return;
+    } 
+  }
+  scene.clear();
+  scene.frameNo += 1;
+  if (scene.frameNo == 1 || everyinterval(150)) {
+    x = scene.canvas.width;
+    y = scene.canvas.height - 200
+    myObstacles.push(new component(10, 200, "green", x, y));
+  }
+  for (i = 0; i < myObstacles.length; i += 1) {
+    myObstacles[i].x += -1;
+    myObstacles[i].update();
+  }
   if (player.crashWith(myObstacle)) {
     scene.stop();
   } else {
