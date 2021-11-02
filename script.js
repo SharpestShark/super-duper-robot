@@ -169,8 +169,8 @@ ctx.fill();
 }
 
 function updateScene() {
-  if (myGamePiece.crashWith(myObstacle)) {
-    myGameArea.stop();
+  if (player.crashWith(myObstacle)) {
+    scene.stop();
   } else {
   scene.clear();
   if (navigator.platform.startsWith('Win')) {
