@@ -1,4 +1,5 @@
 var player, myObstacle, tree, rock, myUpBtn, myDownBtn, myLeftBtn, myRightBtn;
+var myObstacles = [];
 const obstacles = {
 	"tree": {
 		"width": "15",
@@ -175,8 +176,8 @@ ctx.fill();
 }
 
 function updateScene() {
-  var x, y;
-  for (i = 0; i < myObstacles.length; i += 1) {
+var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, maxGap;
+  for (var i = 0; i < myObstacles.length; i += 1) {
     if (player.crashWith(myObstacles[i])) {
       scene.stop();
       return;
@@ -186,17 +187,23 @@ function updateScene() {
   scene.frameNo += 1;
   if (scene.frameNo == 1 || everyinterval(150)) {
     x = scene.canvas.width;
-    y = scene.canvas.height - 200
-    myObstacles.push(new component(10, 200, "green", x, y));
+    y = scene.canvas.height;
+    minWidth = 20;
+    maxWidth = 40;
+    minHeight = 20;
+    maxHeight = 40;
+    height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+    width = Math.floor(Math.random()*(maxWidth-minWidth+1)+minHeight);
+    minGap = 5;
+    maxGap = 80;
+    x -= Math.floor(Math.random()*(y+1));
+    y -= Math.floor(Math.random()*(y+1));
+    myObstacles.push(new component(width, height, "rgba(62, 128, 0, 0.5)", x, y);
   }
   for (i = 0; i < myObstacles.length; i += 1) {
     myObstacles[i].x += -1;
     myObstacles[i].update();
   }
-  if (player.crashWith(myObstacle)) {
-    scene.stop();
-  } else {
-  scene.clear();
   if (navigator.platform.startsWith('Win')) {
     player.speedX = 0;
     player.speedY = 0;
