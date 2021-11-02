@@ -25,7 +25,7 @@ function start() {
   tree = background.tree;
   rock = background.rock;
   if (navigator.userAgentData["mobile"] == 1) {
-      myUpBtn = new component(30, 30, "blue", 50, 10);
+      myUpBtn = new arrowBtn(50, 10, 30);
       myDownBtn = new component(30, 30, "blue", 50, 70);
       myLeftBtn = new component(30, 30, "blue", 20, 40);
       myRightBtn = new component(30, 30, "blue", 80, 40);
@@ -101,24 +101,46 @@ function component(width, height, color, x, y) {
   }
 }
 
-function arrowBtn(x,y,pointX,pointY) {
-	this.x = x;
-	this.y = y;
-	this.pX = pointX;
-	this.pY = pointY;
-	this.update = function() {
-		ctx = scene.ctx;
-		ctx.arc(100, 50, 25, 0, 1.5 * Math.PI,true);
-		ctx.lineTo(50, 25);
-		ctx.arc(50, 50, 25,1.5 * Math.PI,Math.PI,true);
-		ctx.lineTo(25,100);
-		ctx.arc(50, 100, 25,Math.PI,.5 * Math.PI,true);
-		ctx.lineTo(100,125);
-		ctx.arc(100, 100, 25,.5 * Math.PI,0,true);
-		ctx.lineTo(125,50);
-		ctx.fillStyle = "#000";
-		ctx.fill();
-	}
+function arrowBtn(x,y,r) {
+  this.x = x;
+  this.y = y;
+  this.r = r;
+  this.update = function() {
+    ctx = scene.context;
+    ctx.beginPath();
+    ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
+    ctx.lineTo(x+(3*r), y);
+ctx.arc(x+(3*r), y+r, r,1.5 * Math.PI,0);
+ctx.lineTo(x+(4*r),y+(3*r));
+ctx.arc(x+(3*r), y+(3*r), r,0,.5 * Math.PI);
+ctx.lineTo(x+r,y+(4*r));
+ctx.arc(x+r, y+(3*r), r,.5 * Math.PI,Math.PI);
+ctx.lineTo(x,y+r);
+ctx.fillStyle = '#000';
+ctx.fill();
+ctx.beginPath();
+//inner arrow
+ctx.moveTo(x+r,y+r);
+ctx.lineTo(x+(2*r),y+r);
+ctx.lineTo(x+(3*r),y+(2*r));
+ctx.lineTo(x+(2*r),y+(3*r));
+ctx.lineTo(x+r,y+(3*r));
+ctx.lineTo(x+(2*r),y+(2*r));
+ctx.lineTo(x+r,y+r);
+ctx.fillStyle = "#fff";
+ctx.fill();
+  }
+  this.clicked = function() {
+    var myleft = this.x;
+    var myright = this.x + (this.width);
+    var mytop = this.y;
+    var mybottom = this.y + (this.height);
+    var clicked = true;
+    if ((mybottom < scene.y) || (mytop > scene.y) || (myright < scene.x) || (myleft > scene.x)) {
+      clicked = false;
+    }
+    return clicked;
+  }
 }
 
 function updateScene() {
