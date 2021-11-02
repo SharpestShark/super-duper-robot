@@ -198,7 +198,7 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
     maxGap = 80;
     x -= Math.floor(Math.random()*(y+1));
     y -= Math.floor(Math.random()*(y+1));
-    myObstacles.push(new component(width, height, "rgba(62, 128, 0, 0.5)", x, y);
+    myObstacles.push(new component(width, height, "rgba(62, 128, 0, 0.5)", x, y));
   }
   for (i = 0; i < myObstacles.length; i += 1) {
     myObstacles[i].x += -1;
