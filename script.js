@@ -201,14 +201,24 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
     myObstacles.push(new component(width, height, "rgba(62, 128, 0, 0.5)", x, y));
   }
   for (i = 0; i < myObstacles.length; i += 1) {
-    myObstacles[i].x += -1;
-    myObstacles[i].update();
+	  myObstacles[i].update();
   }
+  var i;
   if (navigator.platform.startsWith('Win')) {
-    if (scene.keys && (scene.keys[37] || scene.keys[65])) {player.x -= 1; }
-    if (scene.keys && (scene.keys[39] || scene.keys[68])) {player.x += 1; }
-    if (scene.keys && (scene.keys[38] || scene.keys[87])) {player.y -= 1; }
-    if (scene.keys && (scene.keys[40] || scene.keys[83])) {player.y += 1; }
+  if (scene.keys && (scene.keys[37] || scene.keys[65])) {player.x -= 1;for (i = 0; i < myObstacles.length; i += 1) {
+    myObstacles[i].x += 1;myObstacles[i].update();
+  }
+							  }
+  if (scene.keys && (scene.keys[39] || scene.keys[68])) {player.x += 1;for (i = 0; i < myObstacles.length; i += 1) {
+    myObstacles[i].x -= 1;myObstacles[i].update();
+	}
+}
+    if (scene.keys && (scene.keys[38] || scene.keys[87])) {player.y -= 1;for (i = 0; i < myObstacles.length; i += 1) {
+myObstacles[i].y += 1;myObstacles[i].update();
+} }
+    if (scene.keys && (scene.keys[40] || scene.keys[83])) {player.y += 1;for (i = 0; i < myObstacles.length; i += 1) {
+myObstacles[i].y -= 1;myObstacles[i].update();
+} }
   }
   if (scene.x && scene.y) {
     if (myUpBtn.clicked()) {
