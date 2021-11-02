@@ -76,6 +76,9 @@ var scene = {
   },
   clear : function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+  },
+  stop : function() {
+    clearInterval(this.interval);
   }
 }
 
@@ -101,6 +104,24 @@ function component(width, height, color, x, y) {
       clicked = false;
     }
     return clicked;
+  },
+  this.crashWith = function(otherobj) {
+    var myleft = this.x;
+    var myright = this.x + (this.width);
+    var mytop = this.y;
+    var mybottom = this.y + (this.height);
+    var otherleft = otherobj.x;
+    var otherright = otherobj.x + (otherobj.width);
+    var othertop = otherobj.y;
+    var otherbottom = otherobj.y + (otherobj.height);
+    var crash = true;
+    if ((mybottom < othertop) ||
+    (mytop > otherbottom) ||
+    (myright < otherleft) ||
+    (myleft > otherright)) {
+      crash = false;
+    }
+    return crash;
   }
 }
 
@@ -147,6 +168,9 @@ ctx.fill();
 }
 
 function updateScene() {
+  if (myGamePiece.crashWith(myObstacle)) {
+    myGameArea.stop();
+  } else {
   scene.clear();
   if (navigator.platform.startsWith('Win')) {
     player.speedX = 0;
@@ -177,6 +201,7 @@ function updateScene() {
   player.update();
   tree.update();
   rock.update();
+  }
 }
 
 function moveup() {
