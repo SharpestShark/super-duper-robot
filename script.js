@@ -205,10 +205,10 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
     myObstacles[i].update();
   }
   if (navigator.platform.startsWith('Win')) {
-    if (scene.keys && scene.keys[37] || scene.keys[65]) {player.x -= 1; }
-    if (scene.keys && scene.keys[39] || scene.keys[68]) {player.x += 1; }
-    if (scene.keys && scene.keys[38] || scene.keys[87]) {player.y -= 1; }
-    if (scene.keys && scene.keys[40] || scene.keys[83]) {player.y += 1; }
+    if (scene.keys && (scene.keys[37] || scene.keys[65])) {player.x -= 1; }
+    if (scene.keys && (scene.keys[39] || scene.keys[68])) {player.x += 1; }
+    if (scene.keys && (scene.keys[38] || scene.keys[87])) {player.y -= 1; }
+    if (scene.keys && (scene.keys[40] || scene.keys[83])) {player.y += 1; }
   }
   if (scene.x && scene.y) {
     if (myUpBtn.clicked()) {
