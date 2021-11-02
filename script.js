@@ -25,8 +25,8 @@ function start() {
   tree = background.tree;
   rock = background.rock;
   if (navigator.platform = 'iPad') {
-      myUpBtn = new arrowBtn(50, 10, 15);
-      myDownBtn = new arrowBtn(50, 70, 15);
+      myUpBtn = new arrowBtn(70, 10, 15);
+      myDownBtn = new arrowBtn(50, 70, 5);
       myLeftBtn = new arrowBtn(20, 40, 15);
       myRightBtn = new arrowBtn(80, 40, 15);
   }
