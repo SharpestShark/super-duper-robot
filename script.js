@@ -234,7 +234,6 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   player.update();
   tree.update();
   rock.update();
-  }
 }
 
 function moveup() {
