@@ -24,11 +24,14 @@ function start() {
   player = new component(30, 30, "red", 10, 120);
   tree = background.tree;
   rock = background.rock;
+	var x = 20;
+	var y = 20;
+	var m = 40;
   if (navigator.platform = 'iPad') {
-      myUpBtn = new arrowBtn(60, 30, 10);
-      myDownBtn = new arrowBtn(60, 90, 10);
-      myLeftBtn = new arrowBtn(30, 60, 10);
-      myRightBtn = new arrowBtn(90, 60, 10);
+      myUpBtn = new arrowBtn(x+m, y, 10);
+      myDownBtn = new arrowBtn(x+m, y+(2*m), 10);
+      myLeftBtn = new arrowBtn(x, y+m, 10);
+      myRightBtn = new arrowBtn(x+(2*m), y+m, 10);
   }
   console.log(JSON.stringify(obstacles.tree));
   scene.start();
