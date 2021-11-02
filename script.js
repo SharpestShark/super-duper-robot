@@ -132,9 +132,9 @@ ctx.fill();
   }
   this.clicked = function() {
     var myleft = this.x;
-    var myright = this.x + (this.width);
+    var myright = this.x + (2 * this.r);
     var mytop = this.y;
-    var mybottom = this.y + (this.height);
+    var mybottom = this.y + (2 * this.r);
     var clicked = true;
     if ((mybottom < scene.y) || (mytop > scene.y) || (myright < scene.x) || (myleft > scene.x)) {
       clicked = false;
