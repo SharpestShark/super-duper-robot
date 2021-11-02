@@ -23,7 +23,6 @@ var background = {
 
 function start() {
   player = new component(30, 30, "red", 10, 120);
-  myObstacle = new component(10, 200, "green", 300, 120); 
   tree = background.tree;
   rock = background.rock;
 	var x = 20;
@@ -35,7 +34,6 @@ function start() {
       myLeftBtn = new arrowBtn(x, y+m, 10);
       myRightBtn = new arrowBtn(x+(2*m), y+m, 10);
   }
-  console.log(JSON.stringify(obstacles.tree));
   scene.start();
 }
 
@@ -205,40 +203,68 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   }
   var i;
   if (navigator.platform.startsWith('Win')) {
-  if (scene.keys && (scene.keys[37] || scene.keys[65])) {player.x -= 1;for (i = 0; i < myObstacles.length; i += 1) {
-    myObstacles[i].x += 1;myObstacles[i].update();
+  if (scene.keys && (scene.keys[37] || scene.keys[65])) {
+    player.x -= 1;
+    for (i = 0; i < myObstacles.length; i += 1) {
+      myObstacles[i].x += 1;
+      myObstacles[i].update();
+    }
   }
-							  }
-  if (scene.keys && (scene.keys[39] || scene.keys[68])) {player.x += 1;for (i = 0; i < myObstacles.length; i += 1) {
-    myObstacles[i].x -= 1;myObstacles[i].update();
-	}
+  if (scene.keys && (scene.keys[39] || scene.keys[68])) {
+    player.x += 1;
+    for (i = 0; i < myObstacles.length; i += 1) {
+      myObstacles[i].x -= 1;
+      myObstacles[i].update();
+    }
+  }
+  if (scene.keys && (scene.keys[38] || scene.keys[87])) {
+    player.y -= 1;
+    for (i = 0; i < myObstacles.length; i += 1) {
+      myObstacles[i].y += 1;myObstacles[i].update();
+    }
+  }
+  if (scene.keys && (scene.keys[40] || scene.keys[83])) {
+    player.y += 1;
+    for (i = 0; i < myObstacles.length; i += 1) {
+      myObstacles[i].y -= 1;
+      myObstacles[i].update();
+    }
+  }
 }
-    if (scene.keys && (scene.keys[38] || scene.keys[87])) {player.y -= 1;for (i = 0; i < myObstacles.length; i += 1) {
-myObstacles[i].y += 1;myObstacles[i].update();
-} }
-    if (scene.keys && (scene.keys[40] || scene.keys[83])) {player.y += 1;for (i = 0; i < myObstacles.length; i += 1) {
-myObstacles[i].y -= 1;myObstacles[i].update();
-} }
-  }
   if (scene.x && scene.y) {
     if (myUpBtn.clicked()) {
       player.y -= 1;
+      for (i = 0; i < myObstacles.length; i += 1) {
+        myObstacles[i].y += 1;
+        myObstacles[i].update();
+      }
     }
     if (myDownBtn.clicked()) {
       player.y += 1;
+      for (i = 0; i < myObstacles.length; i += 1) {
+        myObstacles[i].y -= 1;
+        myObstacles[i].update();
+      }
     }
     if (myLeftBtn.clicked()) {
-      player.x += -1;
+      player.x -= 1;
+      for (i = 0; i < myObstacles.length; i += 1) {
+        myObstacles[i].x += 1;
+        myObstacles[i].update();
+      }
     }
     if (myRightBtn.clicked()) {
       player.x += 1;
+      for (i = 0; i < myObstacles.length; i += 1) {
+        myObstacles[i].x -= 1;
+        myObstacles[i].update();
+      }
     }
   }
   myUpBtn.update(); 
   myDownBtn.update(); 
   myLeftBtn.update(); 
   myRightBtn.update();
-  myObstacle.update();
   player.update();
   tree.update();
   rock.update();
