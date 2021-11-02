@@ -25,10 +25,10 @@ function start() {
   tree = background.tree;
   rock = background.rock;
   if (navigator.platform = 'iPad') {
-      myUpBtn = new arrowBtn(30, 10, 10);
-      myDownBtn = new arrowBtn(30, 30, 10);
-      myLeftBtn = new arrowBtn(20, 20, 10);
-      myRightBtn = new arrowBtn(40, 20, 10);
+      myUpBtn = new arrowBtn(60, 20, 10);
+      myDownBtn = new arrowBtn(60, 60, 10);
+      myLeftBtn = new arrowBtn(40, 40, 10);
+      myRightBtn = new arrowBtn(80, 40, 10);
   }
   console.log(JSON.stringify(obstacles.tree));
   scene.start();
