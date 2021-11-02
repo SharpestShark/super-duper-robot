@@ -24,7 +24,7 @@ function start() {
   player = new component(30, 30, "red", 10, 120);
   tree = background.tree;
   rock = background.rock;
-  if (navigator.userAgentData["mobile"] == 1) {
+  if (navigator.platform = 'iPad') {
       myUpBtn = new arrowBtn(50, 10, 30);
       myDownBtn = new component(30, 30, "blue", 50, 70);
       myLeftBtn = new component(30, 30, "blue", 20, 40);
