@@ -1,4 +1,4 @@
-var player, tree, rock, myUpBtn, myDownBtn, myLeftBtn, myRightBtn;
+var player, myObstacle, tree, rock, myUpBtn, myDownBtn, myLeftBtn, myRightBtn;
 const obstacles = {
 	"tree": {
 		"width": "15",
@@ -22,6 +22,7 @@ var background = {
 
 function start() {
   player = new component(30, 30, "red", 10, 120);
+  myObstacle = new component(10, 200, "green", 300, 120); 
   tree = background.tree;
   rock = background.rock;
 	var x = 20;
@@ -198,6 +199,7 @@ function updateScene() {
   myDownBtn.update(); 
   myLeftBtn.update(); 
   myRightBtn.update();
+  myObstacle.update();
   player.update();
   tree.update();
   rock.update();
