@@ -229,7 +229,7 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
 	  myObstacles[i].update();
   }
   health.width = health.value;
-  health.update;
+  health.update();
   var i;
   if (navigator.platform.startsWith('Win')) {
   if (scene.keys && (scene.keys[37] || scene.keys[65])) {
@@ -249,7 +249,8 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   if (scene.keys && (scene.keys[38] || scene.keys[87])) {
     player.y -= 1;
     for (i = 0; i < myObstacles.length; i += 1) {
-      myObstacles[i].y += 1;myObstacles[i].update();
+      myObstacles[i].y += 1;
+      myObstacles[i].update();
     }
   }
   if (scene.keys && (scene.keys[40] || scene.keys[83])) {
@@ -294,6 +295,7 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   myDownBtn.update(); 
   myLeftBtn.update(); 
   myRightBtn.update();
+  health.update;
   player.update();
   tree.update();
   rock.update();
