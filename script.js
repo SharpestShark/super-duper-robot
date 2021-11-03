@@ -25,7 +25,7 @@ var background = {
 function start() {
   try {
   player = new component(30, 30, "red", 10, 120);
-  health = new component(100,20,"green", 10, 980);
+  health = new component(100,20,"green", 10, scene.canvas.height - 20);
   health.value = 100;
   tree = background.tree;
   rock = background.rock;
