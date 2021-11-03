@@ -204,6 +204,7 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
       if ((health.width < 100) || (health.value < 100)) {
         health.value = health.width;
         health.value += 5;
+	health.width = health.value;
       }
       return;
     } 
@@ -228,8 +229,6 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   for (i = 0; i < myObstacles.length; i += 1) {
 	  myObstacles[i].update();
   }
-  health.width = health.value;
-  health.update();
   var i;
   if (navigator.platform.startsWith('Win')) {
   if (scene.keys && (scene.keys[37] || scene.keys[65])) {
@@ -295,7 +294,7 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   myDownBtn.update(); 
   myLeftBtn.update(); 
   myRightBtn.update();
-  health.update;
+  health.update();
   player.update();
   tree.update();
   rock.update();
