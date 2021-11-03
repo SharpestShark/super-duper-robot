@@ -25,7 +25,7 @@ var background = {
 function start() {
   player = new component(30, 30, "red", 10, 120);
   health = new component(100,20,"green", 10, 400);
-  hpVis = new component("12px", "Consolas", "white", 280, 40, "text");
+  hpVis = new component("12px", "Consolas", "white", 12, 390, "text");
   health.value = 100;
   tree = background.tree;
   rock = background.rock;
