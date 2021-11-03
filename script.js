@@ -22,6 +22,7 @@ var background = {
 }
 
 function start() {
+  try {
   player = new component(30, 30, "red", 10, 120);
   tree = background.tree;
   rock = background.rock;
@@ -35,6 +36,10 @@ function start() {
       myRightBtn = new arrowBtn(x+(2*m), y+m, 10);
   }
   scene.start();
+  }
+  catch(err) {
+    document.getElementById('speedometer').innerHTML = err;
+  }
 }
 
 var scene = {
