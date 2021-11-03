@@ -6,6 +6,18 @@
 <body style="user-select: none;-webkit-user-select: none !important;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;" onload="start()">
   <div id="speedometer"></div>
 	<script src="script.js"></script>
+	<script>
+		function damage() {
+			health.value -= 5;
+			health.width = health.value;
+			health.update();
+		}
+		var button = document.createElement('button');
+		var att = document.createAttribute('onclick');
+		att.value = 'damage()';
+		button.setAttributeNode(att);
+		document.body.appendChild(button);
+	</script>
 <!--<script>
 	var canvas = document.getElementById("myCanvas");
 	var ctx = canvas.getContext("2d");
