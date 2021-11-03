@@ -15,6 +15,7 @@
 		}
 		var button = document.createElement('button');
 		var att = document.createAttribute('onclick');
+		button.innerHTML = 'Damage [-5]';
 		att.value = 'damage()';
 		button.setAttributeNode(att);
 		document.body.appendChild(button);
