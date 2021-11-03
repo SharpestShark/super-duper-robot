@@ -23,9 +23,8 @@ var background = {
 }
 
 function start() {
-  try {
   player = new component(30, 30, "red", 10, 120);
-  health = new component(100,20,"green", 10, scene.canvas.height - 20);
+  health = new component(100,20,"green", 10, 400);
   health.value = 100;
   tree = background.tree;
   rock = background.rock;
@@ -39,10 +38,6 @@ function start() {
       myRightBtn = new arrowBtn(x+(2*m), y+m, 10);
   }
   scene.start();
-  }
-  catch(err) {
-    console.log(err);
-  }
 }
 
 var scene = {
