@@ -38,7 +38,7 @@ function start() {
   scene.start();
   }
   catch(err) {
-    document.getElementById('speedometer').innerHTML = err;
+    console.log(err);
   }
 }
 
