@@ -1,8 +1,6 @@
 var player, myObstacle, tree, rock, myUpBtn, myDownBtn, myLeftBtn, myRightBtn;
 var myObstacles = [];
-    this.bar = new component("30px", "Consolas", "black", 280, 40, "text");
-    this.hp = 100;
-}
+var health;
 const obstacles = {
 	"tree": {
 		"width": "15",
@@ -27,7 +25,7 @@ var background = {
 function start() {
   try {
   player = new component(30, 30, "red", 10, 120);
-	  health = new component(100,20,"green", scene.height - 20, 10);
+  health = new component(100,20,"green", scene.height - 20, 10);
   tree = background.tree;
   rock = background.rock;
 	var x = 20;
