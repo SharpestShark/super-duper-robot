@@ -119,6 +119,7 @@ function component(width, height, color, x, y, type) {
     } else {
     ctx.fillStyle = color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
   }
   this.clicked = function() {
     var myleft = this.x;
