@@ -102,7 +102,11 @@ function component(width, height, color, x, y, type) {
   this.y = y; 
   this.update = function(){
     ctx = scene.context;
-    if (type == "image") {
+    if (this.type == "text") {
+      ctx.font = this.width + " " + this.height;
+      ctx.fillStyle = color;
+      ctx.fillText(this.text, this.x, this.y);
+    } else if (type == "image") {
       ctx.drawImage(this.image, 
         this.x, 
         this.y,
