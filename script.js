@@ -1,6 +1,6 @@
 var player, myObstacle, tree, rock, myUpBtn, myDownBtn, myLeftBtn, myRightBtn;
 var myObstacles = [];
-var health;
+var health, hpVis;
 const obstacles = {
 	"tree": {
 		"width": "15",
@@ -25,6 +25,7 @@ var background = {
 function start() {
   player = new component(30, 30, "red", 10, 120);
   health = new component(100,20,"green", 10, 400);
+  hpVis = new component("12px", "Consolas", "white", 280, 40, "text");
   health.value = 100;
   tree = background.tree;
   rock = background.rock;
@@ -205,6 +206,7 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
         health.value = health.width;
         health.value += 5;
 	health.width = health.value;
+	hpVis.text = health.value;
       }
       myObstacles[i].exist = false;
     } 
@@ -294,7 +296,9 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   myDownBtn.update(); 
   myLeftBtn.update(); 
   myRightBtn.update();
+  if (health.value <= 50) {health.color = "yellow";} else if (health.value <= 25) {health.color = "orange";} else if (health.value <= 10) {health.color = "red";}
   health.update();
+  hpVis.update();
   player.update();
   tree.update();
   rock.update();
