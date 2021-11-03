@@ -92,6 +92,7 @@ function everyinterval(n) {
 }
 
 function component(width, height, color, x, y, type) {
+  this.exist = true;
   this.type = type;
   if (type == "image") {
     this.image = new Image();
@@ -104,19 +105,21 @@ function component(width, height, color, x, y, type) {
   this.x = x;
   this.y = y; 
   this.update = function(){
-    ctx = scene.context;
-    if (this.type == "text") {
-      ctx.font = this.width + " " + this.height;
-      ctx.fillStyle = color;
-      ctx.fillText(this.text, this.x, this.y);
-    } else if (type == "image") {
-      ctx.drawImage(this.image, 
-        this.x, 
-        this.y,
-        this.width, this.height);
-    } else {
-    ctx.fillStyle = color;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    if (this.exist == true) {
+      ctx = scene.context;
+      if (this.type == "text") {
+        ctx.font = this.width + " " + this.height;
+        ctx.fillStyle = color;
+        ctx.fillText(this.text, this.x, this.y);
+      } else if (type == "image") {
+        ctx.drawImage(this.image, 
+          this.x, 
+          this.y,
+          this.width, this.height);
+      } else {
+        ctx.fillStyle = color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+      }
     }
   }
   this.clicked = function() {
@@ -139,11 +142,13 @@ function component(width, height, color, x, y, type) {
     var otherright = otherobj.x + (otherobj.width);
     var othertop = otherobj.y;
     var otherbottom = otherobj.y + (otherobj.height);
+    if (this.exist == true) {
     var crash = true;
-    if ((mybottom < othertop) ||
+    }
+    if (((mybottom < othertop) ||
     (mytop > otherbottom) ||
     (myright < otherleft) ||
-    (myleft > otherright)) {
+    (myleft > otherright)) || (this.exist == false)) {
       crash = false;
     }
     return crash;
@@ -195,7 +200,7 @@ ctx.fill();
 function updateScene() {
 var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, maxGap;
   for (var i = 0; i < myObstacles.length; i += 1) {
-    if (player.crashWith(myObstacles[i])) {
+    if (player.crashWith(myObstacles[i]) && (myObstacles[i].exist == true)) {
       if ((health.width < 100) || (health.value < 100)) {
         health.value = health.width;
         health.value += 5;
