@@ -88,7 +88,12 @@ function everyinterval(n) {
   return false;
 }
 
-function component(width, height, color, x, y) {
+function component(width, height, color, x, y, type) {
+  this.type = type;
+  if (type == "image") {
+    this.image = new Image();
+    this.image.src = color;
+  }
   this.width = width;
   this.height = height;
   this.speedX = 0;
@@ -97,6 +102,12 @@ function component(width, height, color, x, y) {
   this.y = y; 
   this.update = function(){
     ctx = scene.context;
+    if (type == "image") {
+      ctx.drawImage(this.image, 
+        this.x, 
+        this.y,
+        this.width, this.height);
+    } else {
     ctx.fillStyle = color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
@@ -196,7 +207,7 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
     maxGap = 80;
     x -= Math.floor(Math.random()*(y+1));
     y -= Math.floor(Math.random()*(y+1));
-    myObstacles.push(new component(width, height, "rgba(62, 128, 0, 0.5)", x, y));
+    myObstacles.push(new component(width, height, "PNG image 2.png", x, y, "image"));
   }
   for (i = 0; i < myObstacles.length; i += 1) {
 	  myObstacles[i].update();
