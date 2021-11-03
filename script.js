@@ -1,5 +1,8 @@
 var player, myObstacle, tree, rock, myUpBtn, myDownBtn, myLeftBtn, myRightBtn;
 var myObstacles = [];
+    this.bar = new component("30px", "Consolas", "black", 280, 40, "text");
+    this.hp = 100;
+}
 const obstacles = {
 	"tree": {
 		"width": "15",
@@ -24,6 +27,7 @@ var background = {
 function start() {
   try {
   player = new component(30, 30, "red", 10, 120);
+	  health = new component(100,20,"green", scene.height - 20, 10);
   tree = background.tree;
   rock = background.rock;
 	var x = 20;
@@ -198,7 +202,9 @@ function updateScene() {
 var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, maxGap;
   for (var i = 0; i < myObstacles.length; i += 1) {
     if (player.crashWith(myObstacles[i])) {
-      scene.stop();
+      if (health < 100) {
+        health += 5;
+      }
       return;
     } 
   }
@@ -222,6 +228,8 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   for (i = 0; i < myObstacles.length; i += 1) {
 	  myObstacles[i].update();
   }
+  health.width = health;
+  health.update;
   var i;
   if (navigator.platform.startsWith('Win')) {
   if (scene.keys && (scene.keys[37] || scene.keys[65])) {
