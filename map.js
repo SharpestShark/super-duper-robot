@@ -10,7 +10,7 @@ for (i = 0;i < 10;i++) {
   map.push(i + ': {"x": ' + x + ',"y": ' + y + '}');
   if (i != 0) {
     ctx.lineTo(map[i].x,map[i].y);
-  } else if (i == 0) {
+  } else {
     ctx.moveTo(300,100);
   }
 }
