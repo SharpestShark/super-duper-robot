@@ -208,6 +208,9 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
         health.value = health.width;
         health.value += 5;
 	health.width = health.value;
+	      if (health >= 50) {
+		      
+	      }
       }
       myObstacles[i].exist = false;
     } 
