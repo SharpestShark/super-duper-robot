@@ -94,7 +94,10 @@ function everyinterval(n) {
 }
 
 function component(width, height, color, x, y, type) {
-  this.color = color;
+  this.color;
+  if (this.color != null) {
+    color = this.color;
+  }
   this.exist = true;
   this.type = type;
   if (type == "image") {
