@@ -87,9 +87,9 @@ var scene = {
     clearInterval(this.interval);
     var EndMessage = new component("45px", "Consolas", "black", 300, 300, "text");
     EndMessage.text = "Game Over";
-    var restartBtnText = new component("20px", "Consolas", "black", 300, 300, "text");
+    var restartBtnText = new component("20px", "Consolas", "black", 300, 350, "text");
     restartBtnText.text = "Restart?";
-    var restartBtn = new component(restartBtnText.width + 10, 30, "rgba(20,20,20,0.4", 295, 285);
+    var restartBtn = new component(70, 50, "rgba(20,20,20,0.4", 295, 335);
     if (restartBtn.clicked = 1) {
       // maybe add high score method (store to array, and use 'array.push(' then the score, and read/write the score, using text component, at the start. if the score is Not UNDEFINED)
       this.start();
@@ -217,12 +217,12 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
         health.value = health.width;
         health.value += 5;
 	health.width = health.value;
-	      if (health >= 50) {
+	      if (health.value >= 50) {
 	        health.color = "green";
 	      }
       }
       myObstacles[i].exist = false;
-      if (health.value == 0) {
+      if (health.value <= 0) {
 	scene.stop();
       }
     } 
