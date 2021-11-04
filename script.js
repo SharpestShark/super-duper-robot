@@ -296,7 +296,7 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   myDownBtn.update(); 
   myLeftBtn.update(); 
   myRightBtn.update();
-  if (health.value <= 50) {health.color = "yellow";} else if (health.value <= 25) {health.color = "orange";} else if (health.value <= 10) {health.color = "red";}
+  if (health.value <= 50) {color = "#fff00";} else if (health.value <= 25) {health.color = "orange";} else if (health.value <= 10) {health.color = "red";}
   health.update();
   hpVis.text = health.value.toString();
   hpVis.update();
