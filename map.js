@@ -1,3 +1,4 @@
+try {
 var map = [];
 var i;
   var x = scene.canvas.width;
@@ -16,3 +17,6 @@ for (i = 0;i < 10;i++) {
 }
 ctx.stroke();
 console.log(map);
+} catch(err) {
+ console.log(err);
+}
