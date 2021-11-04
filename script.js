@@ -125,10 +125,6 @@ function component(width, height, color, x, y, type) {
       }
     }
   }
-  this.newPos = function() {
-    this.x += this.speedX;
-    this.y += this.speedY; 
-  } 
   this.clicked = function() {
     var myleft = this.x;
     var myright = this.x + (this.width);
@@ -269,28 +265,28 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
 }
   if (scene.x && scene.y) {
     if (myUpBtn.clicked()) {
-      player.speedY -= 1;
+      player.y -= 1;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].y += 1;
         myObstacles[i].update();
       }
     }
     if (myDownBtn.clicked()) {
-      player.speedY += 1;
+      player.y += 1;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].y -= 1;
         myObstacles[i].update();
       }
     }
     if (myLeftBtn.clicked()) {
-      player.speedX -= 1;
+      player.x -= 1;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].x += 1;
         myObstacles[i].update();
       }
     }
     if (myRightBtn.clicked()) {
-      player.speedX += 1;
+      player.x += 1;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].x -= 1;
         myObstacles[i].update();
