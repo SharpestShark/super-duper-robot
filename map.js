@@ -17,5 +17,5 @@ for (i = 0;i < 10;i++) {
 }
 ctx.stroke();
 console.log(map);
-  console.log(map[1]);
+  console.log(map[1].x);
 }
