@@ -2,7 +2,8 @@ var map = [];
 var i;
 var x = scene.canvas.width;
 var y = scene.canvas.height;
-var ctx = document.getElementsByTagName('canvas')[0].getContext('2d');
+var c = document.body.getElementsByTagName('canvas')[0];
+var ctx = c.getContext('2d');
 ctx.beginPath();
 for (i = 0;i < 10;i++) {
   x -= Math.floor(Math.random()*(300+1));
