@@ -301,7 +301,6 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   health.update();
   hpVis.text = health.value.toString();
   hpVis.update();
-  player.newPos();
   player.update();
   tree.update();
   rock.update();
