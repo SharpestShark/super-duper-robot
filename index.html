@@ -13,7 +13,7 @@
     	  }
     	})
 		function damage() {
-			health.value /= 2;
+			health.value -= 5;
 			health.width = health.value;
 			health.update();
 			console.log(`Health: ${health.value} with width of ${health.width}`);
