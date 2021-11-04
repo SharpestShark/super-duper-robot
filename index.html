@@ -8,7 +8,7 @@
 	<script src="script.js"></script>
 	<script>
 		function damage() {
-			health.value -= 25;
+			health.value /= 2;
 			health.width = health.value;
 			health.update();
 			console.log(`Health: ${health.value} with width of ${health.width}`);
