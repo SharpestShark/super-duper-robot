@@ -206,7 +206,6 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
         health.value = health.width;
         health.value += 5;
 	health.width = health.value;
-	hpVis.text = health.value;
       }
       myObstacles[i].exist = false;
     } 
@@ -298,6 +297,7 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   myRightBtn.update();
   if (health.value <= 50) {health.color = "yellow";} else if (health.value <= 25) {health.color = "orange";} else if (health.value <= 10) {health.color = "red";}
   health.update();
+  hpVis.text = health.value.toString();
   hpVis.update();
   player.update();
   tree.update();
