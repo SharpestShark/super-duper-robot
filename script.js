@@ -209,7 +209,7 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
         health.value += 5;
 	health.width = health.value;
 	      if (health >= 50) {
-		      
+	        health.color = "green";
 	      }
       }
       myObstacles[i].exist = false;
