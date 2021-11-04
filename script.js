@@ -222,6 +222,9 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
 	      }
       }
       myObstacles[i].exist = false;
+      if (health.value == 0) {
+	scene.stop();
+      }
     } 
   }
   scene.clear();
