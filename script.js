@@ -309,7 +309,7 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   myDownBtn.update(); 
   myLeftBtn.update(); 
   myRightBtn.update();
-  if ((health.value <= 50) && (health.value > 25)) {health.color = "#ffff00";hpVis.color = "#ffffff";} else if ((health.value <= 25) && (health.value >= 10)) {health.color = "#ff9900";hpVis.color = "#ffffff";} else if (health.value <= 10) {health.color = "red";hpVis.color = "#000000";}
+  if ((health.value <= 50) && (health.value > 25)) {health.color = "#ffea00";hpVis.color = "#000000";} else if ((health.value <= 25) && (health.value >= 10)) {health.color = "#ff9900";hpVis.color = "#ffffff";} else if (health.value <= 10) {health.color = "red";hpVis.color = "#000000";}
   health.update();
   hpVis.text = health.value.toString();
   hpVis.update();
