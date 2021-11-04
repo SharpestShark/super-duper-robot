@@ -27,6 +27,7 @@ function start() {
   health = new component(100,20,"green", 10, 400);
   health.value = 100;
   hpVis = new component("12px", "Consolas", "black", 12, 390, "text");
+  hpVis.text = health.value.toString();
   tree = background.tree;
   rock = background.rock;
 	var x = 20;
