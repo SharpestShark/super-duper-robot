@@ -94,10 +94,7 @@ function everyinterval(n) {
 }
 
 function component(width, height, color, x, y, type) {
-  this.color;
-  if (this.color != null) {
-    color = this.color;
-  }
+  this.color = color;
   this.exist = true;
   this.type = type;
   if (type == "image") {
@@ -115,7 +112,7 @@ function component(width, height, color, x, y, type) {
       ctx = scene.context;
       if (this.type == "text") {
         ctx.font = this.width + " " + this.height;
-        ctx.fillStyle = color;
+        ctx.fillStyle = this.color;
         ctx.fillText(this.text, this.x, this.y);
       } else if (type == "image") {
         ctx.drawImage(this.image, 
@@ -123,7 +120,7 @@ function component(width, height, color, x, y, type) {
           this.y,
           this.width, this.height);
       } else {
-        ctx.fillStyle = color;
+        ctx.fillStyle = this.color;
         ctx.fillRect(this.x, this.y, this.width, this.height);
       }
     }
