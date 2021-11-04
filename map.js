@@ -1,10 +1,18 @@
 var map = [];
 var i;
-for (i = 0;i < 10;i++) {
   var x = scene.canvas.width;
   var y = scene.canvas.height;
-  x -= Math.floor(Math.random()*(x+1));
-  y -= Math.floor(Math.random()*(y+1));
+var ctx = scene.context;
+ctx.beginPath();
+for (i = 0;i < 10;i++) {
+  x -= Math.floor(Math.random()*(300+1));
+  y -= Math.floor(Math.random()*(100+1));
   map.push(i + ': {"x": ' + x + ',"y": ' + y + '}');
+  if (i != 0) {
+    ctx.lineTo(map[i].x,map[i].y);
+  } else if (i == 0) {
+    ctx.moveTo(300,100);
+  }
 }
+ctx.stroke();
 console.log(map);
