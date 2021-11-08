@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>V1 Rotate to face object</title>
+    <title>V2 Rotate to face object</title>
   </head>
   <body>
     <canvas id="myCanvas" width="600" height="600" style="border:1px solid #d3d3d3;">
@@ -9,17 +9,22 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 <script>
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
-var rect1 = new rect(300,20,100,50);
-var rect2 = new rect(400,120,100,50);
-function rect(x,y,width,height) {
-this.x = x;
-this.y = y;
-this.width = width;
-this.height = height;
-ctx.fillRect(this.x, this.y, this.width, this.height);
+var player = new circ(300,20,20);
+function circ(x,y,r) {
+  this.x = x;
+  this.y = y;
+  this.r = r;
+  ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
 }
-ctx.rotate(Math.atan((rect2.x-rect1.x)/(rect2.y-rect1.y)));
-ctx.fillRect(150,-162.5,300,50);
+function rect(x,y,width,height) {
+  this.x = x;
+  this.y = y;
+  this.width = width;
+  this.height = height;
+  ctx.fillRect(this.x, this.y, this.width, this.height);
+}
+ctx.rotate(Math.atan(player.y/player.x));
+ctx.fillRect(150,150,100,50);
 </script>
   </body>
 </html>
