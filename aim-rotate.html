@@ -14,7 +14,9 @@ function circ(x,y,r) {
   this.x = x;
   this.y = y;
   this.r = r;
+  ctx.beginPath();
   ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
+  ctx.stroke();
 }
 function rect(x,y,width,height) {
   this.x = x;
