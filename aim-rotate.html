@@ -26,7 +26,7 @@ function rect(x,y,width,height) {
   this.height = height;
   ctx.fillRect(this.x, this.y, this.width, this.height);
 }
-ctx.translate(player.x,player.y);
+ctx.translate(player.x-75,player.y-75);
 ctx.rotate(Math.atan(player.x/player.y));
 // --------------------^ 2*(Math.pow(player.r,2)/player.y)~);
 ctx.fillStyle = "rgba(0,0,0,.5)";
