@@ -10,7 +10,11 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 <script>
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
-var player = new circ(300,200,20);
+var player = new circ(200,200,20);
+ctx.beginPath();
+ctx.moveTo(0,0);
+ctx.lineTo(200,200);
+ctx.stroke();
 function circ(x,y,r) {
   this.x = x;
   this.y = y;
@@ -26,7 +30,7 @@ function rect(x,y,width,height) {
   this.height = height;
   ctx.fillRect(this.x, this.y, this.width, this.height);
 }
-ctx.translate(player.x-75,player.y-75);
+ctx.translate(player.x-50*Math.tan(Math.atan(50/75)),player.y-50*Math.tan(Math.atan(50/75)));
 ctx.rotate(Math.atan(player.x/player.y));
 // --------------------^ 2*(Math.pow(player.r,2)/player.y)~);
 ctx.fillStyle = "rgba(0,0,0,.5)";
