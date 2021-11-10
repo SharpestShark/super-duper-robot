@@ -30,7 +30,7 @@ function rect(x,y,width,height) {
   this.height = height;
   ctx.fillRect(this.x, this.y, this.width, this.height);
 }
-ctx.translate(player.x-50*Math.tan(Math.atan(50/75)),player.y-50*Math.tan(Math.atan(50/75)));
+ctx.translate(player.x*Math.tan(Math.atan(50/75)),player.y*Math.tan(Math.atan(50/75)));
 ctx.rotate(Math.atan(player.x/player.y));
 // --------------------^ 2*(Math.pow(player.r,2)/player.y)~);
 ctx.fillStyle = "rgba(0,0,0,.5)";
