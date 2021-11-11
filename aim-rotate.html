@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>V4 Rotate to face object</title>
+    <title>V5 Rotate to face object</title>
   </head>
   <body>
     <style>
@@ -44,7 +44,7 @@
 }
     </style>
     <div class="slidecontainer">
-      <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+      <input type="range" min="200" max="600" value="50" class="slider" id="myRange">
     </div>
     <button onclick="reset()">reset</button>
     <canvas id="myCanvas" width="600" height="600" style="border:1px solid #d3d3d3;">
@@ -52,9 +52,9 @@ Your browser does not support the HTML5 canvas tag.</canvas>
 
 <script>
   var slider = document.getElementById("myRange");
-  var player = new circ(slider.value,200,20);
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
+var player = new circ(slider.value,200,20);
 slider.oninput = function() {
   player = new circ(this.value,200,20);
 }
