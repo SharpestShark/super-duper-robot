@@ -96,7 +96,9 @@ var rectangX = 0;
 var rectangWidth = 150;
 var xMid = (rectangX + rectangWidth)/2;
 var angle = Math.atan(player.y/player.x);
-ctx.translate((player.x)*Math.tan(Math.atan(yGap/xMid)),(player.y+yGap)*Math.tan(Math.atan(yGap/xMid)));
+var transX = (player.x)*Math.tan(Math.atan(yGap/xMid));
+var transY = (player.y+yGap)*Math.tan(Math.atan(yGap/xMid));
+ctx.translate(transX,transY);
 ctx.rotate(angle);
 // --------------------^ 2*(Math.pow(player.r,2)/player.y)~);
 ctx.fillStyle = "rgba(0,0,0,.5)";
@@ -108,6 +110,7 @@ ctx.lineTo(600,0);
 ctx.moveTo(0,0);
 ctx.lineTo(0,600);
 ctx.stroke();*/
+rectangX = (player.x+(player.y*Math.tan((90-(180-(90+angle)))*Math.PI/180))*Math.cos(angle);
 ctx.fillRect(rectangX,yGap,rectangWidth,150);
   }
 </script>
