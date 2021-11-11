@@ -11,7 +11,7 @@ for (i = 0;i < 10;i++) {
   if (i != 0) {
     ctx.lineTo(map[i].x,map[i].y);
   } else {
-    return
+    ctx.moveTo(300,300);
   }
   ctx.stroke();
 }
