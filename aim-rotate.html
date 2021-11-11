@@ -2,7 +2,7 @@
   <head>
     <title>V5 Rotate to face object</title>
   </head>
-  <body>
+  <body onload="draw()">
     <style>
       .slidecontainer {
   width: 100%; /* Width of the outside container */
@@ -51,21 +51,10 @@
 Your browser does not support the HTML5 canvas tag.</canvas>
 
 <script>
-  var slider = document.getElementById("myRange");
+var slider = document.getElementById("myRange");
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 var player = new circ(slider.value,200,20);
-slider.oninput = function() {
-  player = new circ(this.value,200,20);
-}
-/*ctx.beginPath();
-ctx.moveTo(0,player.y);
-ctx.lineTo(player.x,player.y);
-ctx.moveTo(0,0);
-ctx.lineTo(200,200);
-ctx.moveTo(0,0);
-ctx.arc(0,0,30,0,Math.atan(player.y/player.x));
-ctx.stroke();*/
 function circ(x,y,r) {
   this.x = x;
   this.y = y;
@@ -81,6 +70,26 @@ function rect(x,y,width,height) {
   this.height = height;
   ctx.fillRect(this.x, this.y, this.width, this.height);
 }
+  function reset() {
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.resetTransform();
+    ctx.clearRect(0,0,600,600);
+  }
+  function draw() {
+slider.oninput = function() {
+  reset();
+  player = new circ(this.value,200,20);
+}
+/*ctx.beginPath();
+ctx.moveTo(0,player.y);
+ctx.lineTo(player.x,player.y);
+ctx.moveTo(0,0);
+ctx.lineTo(200,200);
+ctx.moveTo(0,0);
+ctx.arc(0,0,30,0,Math.atan(player.y/player.x));
+ctx.stroke();*/
+
 var yGap = 50;
 var rectangX = 0;
 var rectangWidth = 150;
@@ -90,8 +99,8 @@ ctx.translate((player.x)*Math.tan(Math.atan(yGap/xMid)),(player.y+yGap)*Math.tan
 ctx.rotate(angle);
 // --------------------^ 2*(Math.pow(player.r,2)/player.y)~);
 ctx.fillStyle = "rgba(0,0,0,.5)";
-ctx.beginPath();
-/* ctx.arc(75,175,75,0,2*Math.PI);
+/*ctx.beginPath();
+ctx.arc(75,175,75,0,2*Math.PI);
 ctx.arc(0,0,15,0,2*Math.PI);
 ctx.moveTo(0,0);
 ctx.lineTo(600,0);
@@ -99,11 +108,6 @@ ctx.moveTo(0,0);
 ctx.lineTo(0,600);
 ctx.stroke();*/
 ctx.fillRect(rectangX,yGap,rectangWidth,150);
-  function reset() {
-    var c = document.getElementById("myCanvas");
-    var ctx = c.getContext("2d");
-    ctx.resetTransform();
-    ctx.clearRect(0,0,600,600);
   }
 </script>
   </body>
