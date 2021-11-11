@@ -10,7 +10,7 @@ if (map.length == 0) {
     y -= Math.floor(Math.random()*(100+1));
     map.push({"x": x,"y": y});
   }
-  //window.localStorage.setItem('map',toString(map));
+  //window.localStorage.setItem('map',JSON.stringify(map));
 } else {
   for (i = 0;i < 10;i++) {
     ctx.beginPath();
@@ -29,15 +29,17 @@ function generateMap() {
   const terrain = [];
   var max = 10;
   var min = 0;
+  var b;
   for (var o = 0;o < 10;o++) {
-    var b = Math.round(Math.random());
+    b = Math.round(Math.random()) + 100;
     if (b == 1) {
       b += 10;
       b *= o;
       terrain.push({"x": b, "y": 300});
     } else {
-      b += (o * 10);
+      b += 10;
+      terrain.push({"x": b, "y": 300});
     }
   }
-  // more
+  console.log(terrain);
 }
