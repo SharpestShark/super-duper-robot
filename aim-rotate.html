@@ -39,7 +39,7 @@ var rectangX = 0;
 var rectangWidth = 150;
 var xMid = (rectangX + rectangWidth)/2;
 var angle = Math.atan(player.y/player.x);
-ctx.translate((player.x+yGap)*Math.tan(Math.atan(yGap/xMid)),(player.y+yGap)*Math.tan(Math.atan(yGap/xMid)));
+ctx.translate((player.x)*Math.tan(Math.atan(yGap/xMid)),(player.y+yGap)*Math.tan(Math.atan(yGap/xMid)));
 ctx.rotate(angle);
 // --------------------^ 2*(Math.pow(player.r,2)/player.y)~);
 ctx.fillStyle = "rgba(0,0,0,.5)";
