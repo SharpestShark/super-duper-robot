@@ -308,6 +308,7 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
       }
     }
   }
+  doMap();
   myUpBtn.update(); 
   myDownBtn.update(); 
   myLeftBtn.update(); 
