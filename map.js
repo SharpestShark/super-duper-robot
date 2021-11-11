@@ -31,7 +31,7 @@ function generateMap() {
   var min = 0;
   var b;
   for (var o = 0;o < 10;o++) {
-    b = Math.round(Math.random()) + 100;
+    b = Math.round(Math.random());
     if (b == 1) {
       b += 10;
       b *= o;
