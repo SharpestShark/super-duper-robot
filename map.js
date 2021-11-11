@@ -10,7 +10,7 @@ if (map.length == 0) {
     y -= Math.floor(Math.random()*(100+1));
     map.push({"x": x,"y": y});
   }
-  window.localStorage.setItem('map',map);
+  //window.localStorage.setItem('map',toString(map));
 } else {
   for (i = 0;i < 10;i++) {
     ctx.beginPath();
