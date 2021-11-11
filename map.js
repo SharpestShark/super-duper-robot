@@ -25,3 +25,19 @@ if (map.length == 0) {
   console.log(map[1].x);
 }
 }
+function generateMap() {
+  const terrain = [];
+  var max = 10;
+  var min = 0;
+  for (var o = 0;o < 10;o++) {
+    var b = Math.round(Math.random());
+    if (b == 1) {
+      b += 10;
+      b *= o;
+      terrain.push({"x": b, "y": 300});
+    } else {
+      b += (o * 10);
+    }
+  }
+  // more
+}
