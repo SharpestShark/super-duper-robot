@@ -111,6 +111,7 @@ ctx.moveTo(0,0);
 ctx.lineTo(0,600);
 ctx.stroke();*/
 rectangX = (player.x+(player.y*Math.tan((90-(180-(90+angle)))*Math.PI/180)))*Math.cos(angle);
+console.log(rectangX);
 ctx.fillRect(rectangX,yGap,rectangWidth,150);
   }
 </script>
