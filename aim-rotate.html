@@ -60,6 +60,10 @@ slider.oninput = function() {
   var player = new circ(this.value,200,20);
   draw(player);
 }
+  var touchX, touchY;
+  c.ontouch = function(event) {
+    touchX = player.x - event.x;
+  }
 function circ(x,y,r) {
   this.x = x;
   this.y = y;
