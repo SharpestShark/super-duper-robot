@@ -167,12 +167,16 @@ function component(width, height, color, x, y, type) {
   }
 }
 
-function arrowBtn(x,y,r) {
+function arrowBtn(x,y,r,angle) {
   this.x = x;
   this.y = y;
   this.r = r;
+  this.angle = angle * Math.PI / 180;
   this.update = function() {
     ctx = scene.context;
+    ctx.save();
+    ctx.translate(this.x,this.y);
+    ctx.rotate(this.angle);
     ctx.beginPath();
     ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
     ctx.lineTo(x+(3*r), y);
@@ -195,6 +199,7 @@ ctx.lineTo(x+(2*r),y+(2*r));
 ctx.lineTo(x+r,y+r);
 ctx.fillStyle = "#fff";
 ctx.fill();
+    ctx.restore();
   }
   this.clicked = function() {
     var myleft = this.x;
