@@ -34,10 +34,10 @@ function start() {
 	var y = 20;
 	var m = 40;
   if (navigator.platform = 'iPad') {
-      myUpBtn = new arrowBtn(x+m, y, 10);
-      myDownBtn = new arrowBtn(x+m, y+(2*m), 10);
-      myLeftBtn = new arrowBtn(x, y+m, 10);
-      myRightBtn = new arrowBtn(x+(2*m), y+m, 10);
+      myUpBtn = new arrowBtn(x+m, y, 10, 270);
+      myDownBtn = new arrowBtn(x+m, y+(2*m), 10, 90);
+      myLeftBtn = new arrowBtn(x, y+m, 10, 180);
+      myRightBtn = new arrowBtn(x+(2*m), y+m, 10, 0);
   }
   scene.start();
 }
