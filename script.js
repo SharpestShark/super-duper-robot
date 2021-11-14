@@ -175,7 +175,7 @@ function arrowBtn(x,y,r,angle) {
   this.update = function() {
     ctx = scene.context;
     ctx.save();
-    ctx.translate(this.x,this.y);
+    // ctx.translate(this.x,this.y);
     ctx.rotate(this.angle);
     ctx.beginPath();
     ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
