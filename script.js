@@ -176,11 +176,13 @@ function arrowBtn(x,y,r,angle) {
     ctx = scene.context;
     ctx.save();
     if (angle == 90) {
-      ctx.translate(600, 0);
+      ctx.translate(scene.canvas.width, 0);
     } else if (angle == 180) {
-      ctx.translate(600,-600);
+      ctx.translate(scene.canvas.width,-(scene.canvas.height));
     } else if (angle == 270) {
-
+      ctx.translate(0,-(scene.canvas.height);
+    } else {
+      ctx.translate(0,0);
     }
     // ctx.translate(this.x,this.y);
     ctx.rotate(this.angle);
