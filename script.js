@@ -178,9 +178,9 @@ function arrowBtn(x,y,r,angle) {
     if (angle == 90) {
       ctx.translate(scene.canvas.width, 0);
     } else if (angle == 180) {
-      ctx.translate(scene.canvas.width,-(scene.canvas.height));
+      ctx.translate(scene.canvas.width,-scene.canvas.height);
     } else if (angle == 270) {
-      ctx.translate(0,-(scene.canvas.height);
+      ctx.translate(0,-scene.canvas.height);
     } else {
       ctx.translate(0,0);
     }
