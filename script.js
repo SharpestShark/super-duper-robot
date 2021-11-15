@@ -175,6 +175,13 @@ function arrowBtn(x,y,r,angle) {
   this.update = function() {
     ctx = scene.context;
     ctx.save();
+    if (angle == 90) {
+      ctx.translate(600, 0);
+    } else if (angle == 180) {
+      ctx.translate(600,-600);
+    } else if (angle == 270) {
+
+    }
     // ctx.translate(this.x,this.y);
     ctx.rotate(this.angle);
     ctx.beginPath();
