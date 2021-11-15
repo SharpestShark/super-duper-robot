@@ -11,6 +11,16 @@ canvas {
 </head>
 <body onload="startGame()">
 <script>
+window.addEventListener('keydown', function(event) {
+    if (event.key = " ") {
+        accelerate(-0.2);
+    }
+});
+window.addEventListener('keyup', function(event) {
+    if (event.key = " ") {
+        accelerate(0.1);
+    }
+});
 
 var myGamePiece;
 
