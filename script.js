@@ -182,11 +182,15 @@ function arrowBtn(x,y,r,angle) {
       ty = this.x;
       y = 0;
     } else if (angle == 180) {
-      tx = scene.canvas.width;
-      ty = -scene.canvas.height;
+      tx = -this.x;
+      x = 0;
+      ty = -this.y;
+      y = 0;
     } else if (angle == 270) {
-      tx = scene.canvas.width + x;
-      ty = -scene.canvas.height - y;
+      tx = -this.y;
+      x = 0;
+      ty = this.x;
+      y = 0;
     } else {
       tx = 0;
       ty = 0;
