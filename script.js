@@ -178,7 +178,7 @@ function arrowBtn(x,y,r,angle) {
     var tx, ty;
     if (angle == 90) {
       tx = scene.canvas.width;
-      ty = 0;
+      ty = this.x;
     } else if (angle == 180) {
       tx = scene.canvas.width;
       ty = -scene.canvas.height;
