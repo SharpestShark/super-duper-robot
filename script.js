@@ -175,16 +175,21 @@ function arrowBtn(x,y,r,angle) {
   this.update = function() {
     ctx = scene.context;
     ctx.save();
+    var tx, ty;
     if (angle == 90) {
-      ctx.translate(scene.canvas.width, 0);
+      tx = scene.canvas.width;
+      ty = 0;
     } else if (angle == 180) {
-      ctx.translate(scene.canvas.width,-scene.canvas.height);
+      tx = scene.canvas.width;
+      ty = -scene.canvas.height;
     } else if (angle == 270) {
-      ctx.translate(0,-scene.canvas.height);
+      tx = 0;
+      ty = -scene.canvas.height;
     } else {
-      ctx.translate(0,0);
+      tx = 0;
+      ty = 0;
     }
-    // ctx.translate(this.x,this.y);
+    ctx.translate(tx,ty);
     ctx.rotate(this.angle);
     ctx.beginPath();
     ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
