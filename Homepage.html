@@ -3,9 +3,19 @@
     <title>SDR Homepage</title>
   </head>
   <body>
+    <script>
+      function clarify() {
+        var expl = document.getElementById('explanation').display;
+        if (expl == "none") {
+          expl = "inline";
+        } else {
+          expl = "none";
+        }
+      }
+    </script>
     <div>
-      <p>
-        The <em>SDR</em>.
+      <p style="text-decoration: underline;text-shadow: 2px 2px 5px #101010;">
+        The <strong onclick="clarify()">SDR</strong>.<br><span id="explanation" style="border-color:#000000;text-indent:50px;display:none;top:20px;left:20px;">
       </p>
     </div>
   </body>
