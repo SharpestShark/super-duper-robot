@@ -221,7 +221,7 @@ ctx.fillStyle = "#fff";
 ctx.fill();
     ctx.restore();
     console.log(this.x,this.y,x,y);
-    var imgData = ctx.getImageData(x,y,width,height);
+    var imgData = ctx.getImageData(100,60,140,100);
     ctx.rotate(this.angle);
     ctx.drawImage(imgData);
   }
