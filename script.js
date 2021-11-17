@@ -174,29 +174,31 @@ function arrowBtn(x,y,r,angle) {
   this.angle = angle * Math.PI / 180;
   this.update = function() {
     ctx = scene.context;
-    //ctx.save();
+    ctx.save();
     //var tx, ty;
-    /*if (angle == 90) {
-      tx = this.y;
-      x = 0;
-      ty = -this.x;
-      y = 0;
+    if (angle == 90) {
+      // tx = this.y;
+      x = -(y);
+      // ty = -this.x;
+      y = -(x);
     } else if (angle == 180) {
-      tx = -this.x;
-      x = 0;
-      ty = -this.y;
-      y = 0;
+      //tx = -this.x;
+      x = -(x);
+      //ty = -this.y;
+      y = -(y);
     } else if (angle == 270) {
-      tx = -this.y;
-      x = 0;
-      ty = this.x;
-      y = 0;
+      // tx = -this.y;
+      x = y;
+      // ty = this.x;
+      y = x;
     } else {
-      tx = 0;
-      ty = 0;
-    }*/
+      //tx = 0;
+      x = this.x;
+      y = this.y;
+      //ty = 0;
+    }
     //ctx.translate(tx,ty);
-    //ctx.rotate(this.angle);
+    ctx.rotate(this.angle);
     ctx.beginPath();
     ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
     ctx.lineTo(x+(3*r), y);
