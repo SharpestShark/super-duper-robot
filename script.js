@@ -175,7 +175,7 @@ function arrowBtn(x,y,r,angle) {
   this.update = function() {
     ctx = scene.context;
     //ctx.save();
-    var tx, ty;
+    //var tx, ty;
     /*if (angle == 90) {
       tx = this.y;
       x = 0;
@@ -220,11 +220,11 @@ ctx.lineTo(x+r,y+r);
 ctx.fillStyle = "#fff";
 ctx.fill();
 	  //ctx.restore();
-    var imgData = ctx.getImageData(100,60,140,100);
+    /*var imgData = ctx.getImageData(100,60,140,100);
 	  ctx.save();
     ctx.rotate(this.angle);
     ctx.drawImage(imgData,this.x,this.y);
-    ctx.restore();
+    ctx.restore();*/
   }
   this.clicked = function() {
     var myleft = this.x;
