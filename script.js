@@ -221,7 +221,7 @@ ctx.lineTo(x+(2*r),y+(2*r));
 ctx.lineTo(x+r,y+r);
 ctx.fillStyle = "#fff";
 ctx.fill();
-	  //ctx.restore();
+    ctx.restore();
     /*var imgData = ctx.getImageData(100,60,140,100);
 	  ctx.save();
     ctx.rotate(this.angle);
