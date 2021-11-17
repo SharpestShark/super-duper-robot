@@ -220,7 +220,10 @@ ctx.lineTo(x+r,y+r);
 ctx.fillStyle = "#fff";
 ctx.fill();
     ctx.restore();
-	  console.log(this.x,this.y,x,y);
+    console.log(this.x,this.y,x,y);
+    var imgData = ctx.getImageData(x,y,width,height);
+    ctx.rotate(this.angle);
+    ctx.drawImage(imgData);
   }
   this.clicked = function() {
     var myleft = this.x;
