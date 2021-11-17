@@ -339,10 +339,12 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
     }
   }
   doMap();
-  myUpBtn.update(); 
-  myDownBtn.update(); 
-  myLeftBtn.update(); 
-  myRightBtn.update();
+  if (navigator.platform == 'iPad') {
+    myUpBtn.update(); 
+    myDownBtn.update(); 
+    myLeftBtn.update(); 
+    myRightBtn.update();
+  }
   if ((health.value <= 50) && (health.value > 25)) {health.color = "#ffea00";hpVis.color = "#000000";} else if ((health.value <= 25) && (health.value > 10)) {health.color = "#ff9900";hpVis.color = "#ffffff";} else if (health.value <= 10) {health.color = "red";hpVis.color = "#ffffff";}
   if ((health.width <= 15) || ((health.value <= 25) && (health.value > 10))) {
     hpVis.color = "#000000";
@@ -353,25 +355,4 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   player.update();
   tree.update();
   rock.update();
-}
-
-function moveup() {
-  player.speedY -= 1; 
-}
-
-function movedown() {
-  player.speedY += 1; 
-}
-
-function moveleft() {
-  player.speedX -= 1;
-}
-
-function moveright() {
-  player.speedX += 1;
-}
-
-function stopMove() {
-  player.speedX = 0;
-  player.speedY = 0; 
 }
