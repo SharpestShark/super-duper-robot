@@ -177,9 +177,9 @@ function arrowBtn(x,y,r,angle) {
     ctx.save();
     var tx, ty;
     if (angle == 90) {
-      tx = -this.y;
+      tx = this.y;
       x = 0;
-      ty = this.x;
+      ty = -this.x;
       y = 0;
     } else if (angle == 180) {
       tx = -this.x;
