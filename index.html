@@ -13,21 +13,27 @@
 	<script>
     	window.addEventListener('keydown', function (e) {
     	  if (e.key == " ") {
-    	    damage();
+    	    damage(5);
     	  }
     	})
-		function damage() {
-			health.value -= 5;
+		function damage(tick) {
+			health.value -= tick;
 			health.width = health.value;
 			health.update();
 			console.log(`Health: ${health.value} with width of ${health.width}`);
 		}
 		var button = document.createElement('button');
+		var button2 = document.createElement('button');
 		var att = document.createAttribute('onclick');
+		var att2 = document.createAttribute('onclick');
 		button.innerHTML = 'Damage [-5]';
-		att.value = 'damage()';
+		button2.innerHTML = 'Damage [-100]';
+		att.value = 'damage(5)';
+		att2.value = 'damage(100)';
 		button.setAttributeNode(att);
+		button2.setAttributeNode(att2);
 		document.body.appendChild(button);
+		document.body.appendChild(button2);
 	</script>
 <!--<script>
 	var canvas = document.getElementById("myCanvas");
