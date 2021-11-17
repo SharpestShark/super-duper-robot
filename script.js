@@ -1,4 +1,4 @@
-var player, myObstacle, tree, rock, myUpBtn, myDownBtn, myLeftBtn, myRightBtn;
+var player, myObstacle, tree, rock, myUpBtn, myDownBtn, myLeftBtn, myRightBtn, endMessage, restartBtn, restartBtnText;
 var myObstacles = [];
 var health, hpVis;
 const obstacles = {
@@ -85,11 +85,11 @@ var scene = {
   },
   stop : function() {
     clearInterval(this.interval);
-    var EndMessage = new component("45px", "Consolas", "black", 300, 300, "text");
-    EndMessage.text = "Game Over";
-    var restartBtnText = new component("20px", "Consolas", "black", 300, 350, "text");
+    endMessage = new component("45px", "Consolas", "black", 300, 300, "text");
+    endMessage.text = "Game Over";
+    restartBtnText = new component("20px", "Consolas", "black", 300, 350, "text");
     restartBtnText.text = "Restart?";
-    var restartBtn = new component(70, 50, "rgba(20,20,20,0.4", 295, 335);
+    restartBtn = new component(70, 50, "rgba(20,20,20,0.4", 295, 335);
     if (restartBtn.clicked = 1) {
       // maybe add high score method (store to array, and use 'array.push(' then the score, and read/write the score, using text component, at the start. if the score is Not UNDEFINED)
       this.start();
