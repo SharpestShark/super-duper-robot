@@ -5,7 +5,10 @@
 </head>
 <body style="user-select: none;-webkit-user-select: none !important;-khtml-user-select: none;-moz-user-select: none;-ms-user-select: none;" onload="start(); doMap();">
   <div id="speedometer"></div>
-	<script src="script.js"></script>
+	<script src="script.js" id="main"></script>
+	<script>
+		console.log(document.getElementById('main').error);
+	</script>
 	<script src="map.js"></script>
 	<script>
     	window.addEventListener('keydown', function (e) {
