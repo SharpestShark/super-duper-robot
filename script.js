@@ -221,8 +221,10 @@ ctx.fillStyle = "#fff";
 ctx.fill();
 	  //ctx.restore();
     var imgData = ctx.getImageData(100,60,140,100);
+	  ctx.save();
     ctx.rotate(this.angle);
     ctx.drawImage(imgData,this.x,this.y);
+    ctx.restore();
   }
   this.clicked = function() {
     var myleft = this.x;
