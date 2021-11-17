@@ -174,7 +174,7 @@ function arrowBtn(x,y,r,angle) {
   this.angle = angle * Math.PI / 180;
   this.update = function() {
     ctx = scene.context;
-    ctx.save();
+    //ctx.save();
     var tx, ty;
     if (angle == 90) {
       tx = this.y;
@@ -219,8 +219,7 @@ ctx.lineTo(x+(2*r),y+(2*r));
 ctx.lineTo(x+r,y+r);
 ctx.fillStyle = "#fff";
 ctx.fill();
-    ctx.restore();
-    console.log(this.x,this.y,x,y);
+	  //ctx.restore();
     var imgData = ctx.getImageData(100,60,140,100);
     ctx.rotate(this.angle);
     ctx.drawImage(imgData,this.x,this.y);
