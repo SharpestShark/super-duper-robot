@@ -195,8 +195,8 @@ function arrowBtn(x,y,r,angle) {
       tx = 0;
       ty = 0;
     }
-    ctx.translate(tx,ty);
-    ctx.rotate(this.angle);
+    //ctx.translate(tx,ty);
+    //ctx.rotate(this.angle);
     ctx.beginPath();
     ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
     ctx.lineTo(x+(3*r), y);
@@ -223,7 +223,7 @@ ctx.fill();
     console.log(this.x,this.y,x,y);
     var imgData = ctx.getImageData(100,60,140,100);
     ctx.rotate(this.angle);
-    ctx.drawImage(imgData);
+    ctx.drawImage(imgData,this.x,this.y);
   }
   this.clicked = function() {
     var myleft = this.x;
