@@ -252,9 +252,6 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
 	      }
       }
       myObstacles[i].exist = false;
-      if (health.value <= 0) {
-	scene.stop();
-      }
     } 
   }
   scene.clear();
@@ -273,6 +270,9 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
     x -= Math.floor(Math.random()*(y+1));
     y -= Math.floor(Math.random()*(y+1));
     myObstacles.push(new component(width, height, "PNG image 2.png", x, y, "image"));
+    if (health.value <= 0) {
+      scene.stop();
+    }
   }
   for (i = 0; i < myObstacles.length; i += 1) {
 	  myObstacles[i].update();
