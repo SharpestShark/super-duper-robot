@@ -176,7 +176,7 @@ function arrowBtn(x,y,r,angle) {
     ctx = scene.context;
     //ctx.save();
     var tx, ty;
-    if (angle == 90) {
+    /*if (angle == 90) {
       tx = this.y;
       x = 0;
       ty = -this.x;
@@ -194,7 +194,7 @@ function arrowBtn(x,y,r,angle) {
     } else {
       tx = 0;
       ty = 0;
-    }
+    }*/
     //ctx.translate(tx,ty);
     //ctx.rotate(this.angle);
     ctx.beginPath();
