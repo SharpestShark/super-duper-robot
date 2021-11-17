@@ -220,6 +220,7 @@ ctx.lineTo(x+r,y+r);
 ctx.fillStyle = "#fff";
 ctx.fill();
     ctx.restore();
+	  console.log(this.x,this.y,x,y);
   }
   this.clicked = function() {
     var myleft = this.x;
