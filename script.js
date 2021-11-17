@@ -309,28 +309,28 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   }
 }
   if (scene.x && scene.y) {
-    if (myUpBtn.clicked()) {
+    if (myUpBtn && myUpBtn.clicked()) {
       player.y -= 1;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].y += 1;
         myObstacles[i].update();
       }
     }
-    if (myDownBtn.clicked()) {
+    if (myDownBtn && myDownBtn.clicked()) {
       player.y += 1;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].y -= 1;
         myObstacles[i].update();
       }
     }
-    if (myLeftBtn.clicked()) {
+    if (myLeftBtn && myLeftBtn.clicked()) {
       player.x -= 1;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].x += 1;
         myObstacles[i].update();
       }
     }
-    if (myRightBtn.clicked()) {
+    if (myRightBtn && myRightBtn.clicked()) {
       player.x += 1;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].x -= 1;
