@@ -182,27 +182,27 @@ function arrowBtn(x,y,r,angle) {
     ctx.save();
     // var tx, ty;
     if (angle == 90) {
-      // tx = this.y;
-      x = -(y);
-      // ty = -this.x;
-      y = -(x);
+      tx = this.x;
+      x = 0;
+      ty = this.y;
+      y = 0;
     } else if (angle == 180) {
-      // tx = -this.x;
-      x = -(x);
-      // ty = -this.y;
-      y = -(y);
+      tx = this.x;
+      x = 0;
+      ty = this.y;
+      y = 0;
     } else if (angle == 270) {
-      // tx = -this.y;
-      x = y;
-      // ty = this.x;
-      y = x;
+      tx = this.x;
+      x = 0;
+      ty = this.y;
+      y = 0;
     } else {
-      // tx = 0;
-      x = this.x;
-      y = this.y;
-      // ty = 0;
+      tx = this.x;
+      x = 0;
+      y = 0;
+      ty = this.y;
     }
-    // ctx.translate(tx,ty);
+    ctx.translate(tx,ty);
     ctx.rotate(this.angle);
     ctx.beginPath();
     ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
