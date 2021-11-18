@@ -247,7 +247,7 @@ ctx.fill();
 }
 
 function updateScene() {
-var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, maxGap;
+var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, isObstacle;
   for (var i = 0; i < myObstacles.length; i += 1) {
     if (player.crashWith(myObstacles[i]) && (myObstacles[i].exist == true)) {
       if ((health.width < 100) || (health.value < 100)) {
@@ -261,6 +261,21 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
 	      }
       }
       myObstacles[i].exist = false;
+    } 
+  }
+  for (var i = 0; i < mySpeed.length; i += 1) {
+    if (player.crashWith(mySpeed[i]) && (mySpeed[i].exist == true)) {
+      if ((health.width < 100) || (health.value < 100)) {
+        if (mySpeed[i].heal == 1) {
+          health.value = health.width;
+          health.value += 5;
+          health.width = health.value;
+        }
+	      if (health.value >= 50) {
+	        health.color = "green";
+	      }
+      }
+      mySpeed[i].exist = false;
     } 
   }
   scene.clear();
@@ -293,64 +308,76 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
 	  myObstacles[i].heal = 1;
 	  myObstacles[i].update();
   }
+  for (i = 0; i < mySpeed.length; i += 1) {
+	  mySpeed[i].heal = 0;
+	  mySpeed[i].update();
+  }
   var i;
   if (navigator.platform.startsWith('Win')) {
   if (scene.keys && (scene.keys[37] || scene.keys[65])) {
     player.x -= 1;
-    for (i = 0; i < myObstacles.length; i += 1) {
+    for (i = 0; i < myObstacles.length && i < mySpeed.length; i += 1) {
       myObstacles[i].x += 1;
       myObstacles[i].update();
+      mySpeed[i].update();
     }
   }
   if (scene.keys && (scene.keys[39] || scene.keys[68])) {
     player.x += 1;
-    for (i = 0; i < myObstacles.length; i += 1) {
+    for (i = 0; i < myObstacles.length && i < mySpeed.length; i += 1) {
       myObstacles[i].x -= 1;
       myObstacles[i].update();
+      mySpeed[i].update();
     }
   }
   if (scene.keys && (scene.keys[38] || scene.keys[87])) {
     player.y -= 1;
-    for (i = 0; i < myObstacles.length; i += 1) {
+    for (i = 0; i < myObstacles.length && i < mySpeed.length; i += 1) {
       myObstacles[i].y += 1;
       myObstacles[i].update();
+      mySpeed[i].update();
     }
   }
   if (scene.keys && (scene.keys[40] || scene.keys[83])) {
     player.y += 1;
-    for (i = 0; i < myObstacles.length; i += 1) {
+    for (i = 0; i < myObstacles.length && i < mySpeed.length; i += 1) {
       myObstacles[i].y -= 1;
       myObstacles[i].update();
+      mySpeed[i].update();
     }
   }
 }
   if (scene.x && scene.y) {
     if (myUpBtn && myUpBtn.clicked()) {
       player.y -= 1;
-      for (i = 0; i < myObstacles.length; i += 1) {
+      for (i = 0; i < myObstacles.length && i < mySpeed.length; i += 1) {
         myObstacles[i].y += 1;
         myObstacles[i].update();
+        mySpeed[i].update();
       }
     }
     if (myDownBtn && myDownBtn.clicked()) {
       player.y += 1;
-      for (i = 0; i < myObstacles.length; i += 1) {
+      for (i = 0; i < myObstacles.length && i < mySpeed.length; i += 1) {
         myObstacles[i].y -= 1;
         myObstacles[i].update();
+        mySpeed[i].update();
       }
     }
     if (myLeftBtn && myLeftBtn.clicked()) {
       player.x -= 1;
-      for (i = 0; i < myObstacles.length; i += 1) {
+      for (i = 0; i < myObstacles.length && i < mySpeed.length; i += 1) {
         myObstacles[i].x += 1;
         myObstacles[i].update();
+        mySpeed[i].update();
       }
     }
     if (myRightBtn && myRightBtn.clicked()) {
       player.x += 1;
-      for (i = 0; i < myObstacles.length; i += 1) {
+      for (i = 0; i < myObstacles.length && i < mySpeed.length; i += 1) {
         myObstacles[i].x -= 1;
         myObstacles[i].update();
+        mySpeed[i].update();
       }
     }
   }
