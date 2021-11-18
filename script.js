@@ -105,6 +105,7 @@ function everyinterval(n) {
 function component(width, height, color, x, y, type) {
   this.color = color;
   this.exist = true;
+  this.damage = '5';
   this.type = type;
   if (type == "image") {
     this.image = new Image();
@@ -277,6 +278,9 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
     }
   }
   for (i = 0; i < myObstacles.length; i += 1) {
+	  if ((myObstacles[i].x >= (player.x - 20) && myObstacles[i].x <= (player.x + 20)) || (myObstacles[i].y >= (player.y - 20) && myObstacles[i].y <= (player.y + 20))) {
+		  myObstacles[i].exist = false;
+	  }
 	  myObstacles[i].update();
   }
   var i;
