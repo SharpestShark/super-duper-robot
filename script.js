@@ -107,7 +107,7 @@ function everyinterval(n) {
 
 function component(width, height, color, x, y, type) {
   this.color = color;
-  this.heal = 1;
+  this.heal = 0;
   this.exist = true;
   this.damage = '5';
   this.type = type;
@@ -280,10 +280,11 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
     y -= Math.floor(Math.random()*(y+1));
     myObstacles.push(new component(width, height, "PNG image 2.png", x, y, "image"));
     if ((x >= (player.x - 20) && x <= (player.x + 20)) && (y >= (player.y - 20) && y <= (player.y + 20))) {
-		  this.heal = false;
+		  this.heal = 0;
 	  }
   }
   for (i = 0; i < myObstacles.length; i += 1) {
+	  myObstacles[i].heal = 1;
 	  myObstacles[i].update();
   }
   var i;
