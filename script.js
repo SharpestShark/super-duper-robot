@@ -180,16 +180,16 @@ function arrowBtn(x,y,r,angle) {
   this.update = function() {
     ctx = scene.context;
     ctx.save();
-    //var tx, ty;
+    // var tx, ty;
     if (angle == 90) {
       // tx = this.y;
       x = -(y);
       // ty = -this.x;
       y = -(x);
     } else if (angle == 180) {
-      //tx = -this.x;
+      // tx = -this.x;
       x = -(x);
-      //ty = -this.y;
+      // ty = -this.y;
       y = -(y);
     } else if (angle == 270) {
       // tx = -this.y;
@@ -197,12 +197,12 @@ function arrowBtn(x,y,r,angle) {
       // ty = this.x;
       y = x;
     } else {
-      //tx = 0;
+      // tx = 0;
       x = this.x;
       y = this.y;
-      //ty = 0;
+      // ty = 0;
     }
-    //ctx.translate(tx,ty);
+    // ctx.translate(tx,ty);
     ctx.rotate(this.angle);
     ctx.beginPath();
     ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
