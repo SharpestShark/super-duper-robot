@@ -89,11 +89,9 @@ var scene = {
     restartBtnText = new component("20px", "Consolas", "black", 300, 350, "text");
     restartBtnText.text = "Restart?";
     restartBtn = new component(70, 50, "rgba(20,20,20,0.4)", 295, 335);
-    if (endMessage && restartBtnText && restartBtn) {
-      endMessage.update();
-      restartBtnText.update();
-      restartBtn.update();
-    }
+    endMessage.update();
+    restartBtnText.update();
+    restartBtn.update();
     if (restartBtn.clicked()) {
       clearInterval(this.interval);
       // maybe add high score method (store to array, and use 'array.push(' then the score, and read/write the score, using text component, at the start. if the score is Not UNDEFINED)
