@@ -276,9 +276,6 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
     x -= Math.floor(Math.random()*(y+1));
     y -= Math.floor(Math.random()*(y+1));
     myObstacles.push(new component(width, height, "PNG image 2.png", x, y, "image"));
-    if (health.value <= 0) {
-      scene.stop();
-    }
   }
   for (i = 0; i < myObstacles.length; i += 1) {
 	  if ((myObstacles[i].x >= (player.x - 20) && myObstacles[i].x <= (player.x + 20)) || (myObstacles[i].y >= (player.y - 20) && myObstacles[i].y <= (player.y + 20))) {
@@ -364,4 +361,7 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   player.update();
   tree.update();
   rock.update();
+  if (health.value <= 0) {
+    scene.stop();
+  }
 }
