@@ -107,6 +107,7 @@ function everyinterval(n) {
 
 function component(width, height, color, x, y, type) {
   this.color = color;
+  this.heal = 1;
   this.exist = true;
   this.damage = '5';
   this.type = type;
@@ -250,9 +251,11 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   for (var i = 0; i < myObstacles.length; i += 1) {
     if (player.crashWith(myObstacles[i]) && (myObstacles[i].exist == true)) {
       if ((health.width < 100) || (health.value < 100)) {
-        health.value = health.width;
-        health.value += 5;
-	health.width = health.value;
+        if (myObstacles[i].heal == 1) {
+          health.value = health.width;
+          health.value += 5;
+          health.width = health.value;
+        }
 	      if (health.value >= 50) {
 	        health.color = "green";
 	      }
@@ -276,11 +279,11 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
     x -= Math.floor(Math.random()*(y+1));
     y -= Math.floor(Math.random()*(y+1));
     myObstacles.push(new component(width, height, "PNG image 2.png", x, y, "image"));
+    if ((x >= (player.x - 20) && x <= (player.x + 20)) && (y >= (player.y - 20) && y <= (player.y + 20))) {
+		  this.heal = false;
+	  }
   }
   for (i = 0; i < myObstacles.length; i += 1) {
-	  if ((myObstacles[i].x >= (player.x - 20) && myObstacles[i].x <= (player.x + 20)) || (myObstacles[i].y >= (player.y - 20) && myObstacles[i].y <= (player.y + 20))) {
-		  myObstacles[i].exist = false;
-	  }
 	  myObstacles[i].update();
   }
   var i;
