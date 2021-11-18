@@ -1,5 +1,6 @@
 var player, myObstacle, tree, rock, myUpBtn, myDownBtn, myLeftBtn, myRightBtn, endMessage, restartBtn, restartBtnText;
 var myObstacles = [];
+var mySpeed = [];
 var health, hpVis;
 const obstacles = {
 	"tree": {
@@ -70,7 +71,6 @@ var scene = {
     window.addEventListener('keydown', function (e) {
       scene.keys = (scene.keys || []);
       scene.keys[e.keyCode] = true;
-      console.log(e.keyCode);
     })
     window.addEventListener('keyup', function (e) {
       scene.keys[e.keyCode] = false;
@@ -278,7 +278,13 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
     maxGap = 80;
     x -= Math.floor(Math.random()*(y+1));
     y -= Math.floor(Math.random()*(y+1));
-    myObstacles.push(new component(width, height, "PNG image 2.png", x, y, "image"));
+    isObstacle = Math.round(Math.random());
+    if (isObstacle == 1) {
+    	myObstacles.push(new component(width, height, "PNG image 2.png", x, y, "image"));
+    } else if (isObstacle == 0) {
+    	mySpeed.push(new component(width, width, "coool.png", x, y, "image"));
+    }
+
     if ((x >= (player.x - 20) && x <= (player.x + 20)) && (y >= (player.y - 20) && y <= (player.y + 20))) {
 		  this.heal = 0;
 	  }
