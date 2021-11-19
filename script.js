@@ -252,6 +252,7 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   for (var i = 0; i < myObstacles.length; i += 1) {
     if (player.crashWith(myObstacles[i]) && (myObstacles[i].exist == true)) {
       if ((health.width < 100) || (health.value < 100)) {
+      health.value = 0;
         if (myObstacles[i].heal == 1) {
           health.value = health.width;
           health.value += 5;
