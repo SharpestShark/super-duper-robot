@@ -246,9 +246,81 @@ ctx.fill();
     return clicked;
   }
 }
+//measurements of apple: ctx.strokeRect(p1x - (1.7*mul),p1y - (1.3*mul),(p1x + (1.7*mul))-(p1x - (1.7*mul)),(endpy + mul)-(p1y - (.6*mul)));
+
+function apple(x, y, scale) {
+  this.x = x;
+  this.y = y;
+  this.scale = scale;
+  this.width = (x + (1.7*scale))-(x - (1.7*scale));
+  this.height = ((y+(2.5*scale)) + scale)-(y - (.6*scale));
+  this.heal = 0;
+  this.exist = true;
+  this.damage = '5';
+  this.speedX = 0;
+  this.speedY = 0;
+	this.update = function() {
+    if (this.exist == true) {
+      ctx = scene.context;
+      var mul = this.scale;
+      var p1x = this.x;
+      var p1y = this.y;
+      var endpx = p1x;
+      var endpy = p1y + (2.5*mul);
+      var bezCont1x = p1x - (2*mul);
+      var bezCont1y = p1y - mul;
+      var bezCont2x = bezCont1x;
+      var bezCont2y = endpy + mul;
+      ctx.beginPath();
+      ctx.moveTo(p1x, p1y);
+      ctx.bezierCurveTo(bezCont1x, bezCont1y, bezCont2x, bezCont2y, endpx, endpy);
+      ctx.bezierCurveTo(p1x + (2*mul), bezCont2y, p1x + (2*mul), bezCont1y, p1x, p1y);
+      ctx.fillStyle = "#ef1a00";
+      ctx.fill();
+      ctx.strokeStyle = "#ff1a00";
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.strokeStyle = "#7d4f34";
+      ctx.moveTo(p1x,p1y);
+      ctx.quadraticCurveTo(p1x + (.2*mul),p1y - (1.1*mul),p1x + (.5*mul),p1y - (1.1*mul));
+      ctx.stroke();
+    }
+  }
+  this.clicked = function() {
+    var myleft = this.x;
+    var myright = this.x + (this.width);
+    var mytop = this.y;
+    var mybottom = this.y + (this.height);
+    var clicked = true;
+    if ((mybottom < scene.y) || (mytop > scene.y) || (myright < scene.x) || (myleft > scene.x)) {
+      clicked = false;
+    }
+    return clicked;
+  },
+  this.crashWith = function(otherobj) {
+    var myleft = this.x;
+    var myright = this.x + (this.width);
+    var mytop = this.y;
+    var mybottom = this.y + (this.height);
+    var otherleft = otherobj.x;
+    var otherright = otherobj.x + (otherobj.width);
+    var othertop = otherobj.y;
+    var otherbottom = otherobj.y + (otherobj.height);
+    if (this.exist == true) {
+    var crash = true;
+    }
+    if (((mybottom < othertop) ||
+    (mytop > otherbottom) ||
+    (myright < otherleft) ||
+    (myleft > otherright)) || (this.exist == false)) {
+      crash = false;
+    }
+    return crash;
+  }
+}
 
 function updateScene() {
-var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, maxGap, isObstacle;
+var x, y, scale, isObstacle;
   for (var i = 0; i < myObstacles.length; i += 1) {
     if (player.crashWith(myObstacles[i]) && (myObstacles[i].exist == true)) {
       if ((health.width < 100) || (health.value < 100)) {
@@ -272,21 +344,14 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
   if (scene.frameNo == 1 || everyinterval(150)) {
     x = scene.canvas.width;
     y = scene.canvas.height;
-    minWidth = 20;
-    maxWidth = 40;
-    minHeight = 20;
-    maxHeight = 40;
-    height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
-    width = Math.floor(Math.random()*(maxWidth-minWidth+1)+minHeight);
-    minGap = 5;
-    maxGap = 80;
+    scale = Math.floor(Math.random()*(8-4)+5);
     x -= Math.floor(Math.random()*(y+1));
     y -= Math.floor(Math.random()*(y+1));
     isObstacle = Math.round(Math.random());
     if (isObstacle == 1) {
-    	myObstacles.push(new component(width, height, "PNG image 2.png", x, y, "image"));
+    	myObstacles.push(new apple(x, y, scale));
     } else if (isObstacle == 0) {
-    	mySpeed.push(new component(width, width, "coool.png", x, y, "image"));
+    	// mySpeed.push(new component(width, width, "coool.png", x, y, "image"));
     }
 
     if ((x >= (player.x - 20) && x <= (player.x + 20)) && (y >= (player.y - 20) && y <= (player.y + 20))) {
