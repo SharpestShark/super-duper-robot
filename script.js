@@ -182,14 +182,14 @@ function arrowBtn(x,y,r,angle) {
     ctx.save();
     // var tx, ty;
     if (angle == 90) {
-      tx = this.x;
+      tx = this.x + (4*r);
       x = 0;
       ty = this.y;
       y = 0;
     } else if (angle == 180) {
-      tx = this.x;
+      tx = this.x + (4*r);
       x = 0;
-      ty = this.y;
+      ty = this.y - (4*r);
       y = 0;
     } else if (angle == 270) {
       tx = this.x;
@@ -200,7 +200,7 @@ function arrowBtn(x,y,r,angle) {
       tx = this.x;
       x = 0;
       y = 0;
-      ty = this.y;
+      ty = this.y - (4*r);
     }
     ctx.translate(tx,ty);
     ctx.rotate(this.angle);
