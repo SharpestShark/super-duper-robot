@@ -1,4 +1,4 @@
-var player, myObstacle, tree, rock, myUpBtn, myDownBtn, myLeftBtn, myRightBtn, endMessage, restartBtn, restartBtnText;
+var player, myObstacle, tree, rock, myUpBtn, myDownBtn, myLeftBtn, myRightBtn, endMessage, restartBtn, restartBtnText, skullBtn;
 var myObstacles = [];
 var mySpeed = [];
 var health, hpVis;
@@ -31,6 +31,7 @@ function start() {
   hpVis.text = health.value.toString();
   tree = background.tree;
   rock = background.rock;
+  skullBtn = new component(30,30,"Skull.png",10, scene.canvas.height - 100,"image");
 	var x = 20;
 	var y = 20;
 	var m = 40;
@@ -41,6 +42,13 @@ function start() {
       myRightBtn = new arrowBtn(x+(2*m), y+m, 10, 0);
   }
   scene.start();
+  if (scene.canvas.requestFullscreen) {
+    scene.canvas.requestFullscreen();
+  } else if (scene.canvas.webkitRequestFullscreen) { /* Safari */
+    scene.canvas.webkitRequestFullscreen();
+  } else if (scene.canvas.msRequestFullscreen) { /* IE11 */
+    scene.canvas.msRequestFullscreen();
+  }
 }
 
 var scene = {
@@ -421,6 +429,15 @@ var x, y, scale, isObstacle;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].x -= speedX;
         myObstacles[i].update();
+      }
+    }
+    if (skullBtn.clicked()) {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) { /* Safari */
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) { /* IE11 */
+        document.msExitFullscreen();
       }
     }
   }
