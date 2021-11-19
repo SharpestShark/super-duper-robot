@@ -94,6 +94,7 @@ var scene = {
     restartBtn.update();
     if (restartBtn.clicked()) {
       clearInterval(this.interval);
+      this.clear();
       // maybe add high score method (store to array, and use 'array.push(' then the score, and read/write the score, using text component, at the start. if the score is Not UNDEFINED)
       this.start();
     }
