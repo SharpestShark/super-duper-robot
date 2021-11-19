@@ -248,7 +248,7 @@ ctx.fill();
 }
 
 function updateScene() {
-var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, maxGap;
+var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, maxGap, isObstacle;
   for (var i = 0; i < myObstacles.length; i += 1) {
     if (player.crashWith(myObstacles[i]) && (myObstacles[i].exist == true)) {
       if ((health.width < 100) || (health.value < 100)) {
