@@ -298,7 +298,7 @@ var x, y, width, height, gap, minWidth, maxWidth, minHeight, maxHeight, minGap, 
 	  myObstacles[i].update();
   }
   var i;
-  var speedX, speedY = 1;
+  var speedX = 1, speedY = 1;
   if (navigator.platform.startsWith('Win')) {
   if (scene.keys && (scene.keys[37] || scene.keys[65])) {
     player.x -= speedX;
