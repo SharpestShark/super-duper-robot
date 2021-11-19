@@ -1,5 +1,3 @@
-'use strict'
-
 var player, myObstacle, tree, rock, myUpBtn, myDownBtn, myLeftBtn, myRightBtn, endMessage, restartBtn, restartBtnText;
 var myObstacles = [];
 var mySpeed = [];
