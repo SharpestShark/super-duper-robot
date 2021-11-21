@@ -25,13 +25,13 @@ var background = {
 
 function start() {
   player = new component(30, 30, "red", 10, 120);
-  health = new component(100,20,"green", 10, window.innerHeight - 40);
+  health = new component(100,20,"green", 10, scene.canvas.height - 40);
   health.value = 100;
   hpVis = new component("12px", "Consolas", "white", health.x + 2, health.y + 13.5, "text");
   hpVis.text = health.value.toString();
   tree = background.tree;
   rock = background.rock;
-  skullBtn = new component(30,30,"Skull.png", 10, scene.canvas.height - 100,"image");
+  skullBtn = new component(30,30,"Skull.png", 10, (window.innerHeight - 100) || (scene.canvas.height - 100),"image");
 	var x = 20;
 	var y = 20;
 	var m = 40;
@@ -325,9 +325,6 @@ var x, y, scale, isObstacle;
   for (var i = 0; i < myObstacles.length; i += 1) {
     if (player.crashWith(myObstacles[i]) && (myObstacles[i].exist == true)) {
       if ((health.width < 100) || (health.value < 100)) {
-      if (health.value <= 0) {
-        health.value = 0;
-      }
         if (myObstacles[i].heal == 1) {
           health.value = health.width;
           health.value += 5;
@@ -452,6 +449,10 @@ var x, y, scale, isObstacle;
   if ((health.value <= 50) && (health.value > 25)) {health.color = "#ffea00";hpVis.color = "#000000";} else if ((health.value <= 25) && (health.value > 10)) {health.color = "#ff9900";hpVis.color = "#ffffff";} else if (health.value <= 10) {health.color = "red";hpVis.color = "#ffffff";}
   if ((health.width <= 15) || ((health.value <= 25) && (health.value > 10))) {
     hpVis.color = "#000000";
+  }
+  if (health.value < 0) {
+    health.value = 0;
+    health.width = health.value;
   }
   health.update();
   hpVis.text = health.value.toString();
