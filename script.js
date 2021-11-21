@@ -422,13 +422,18 @@ var x, y, scale, isObstacle;
       }
     }
     if (skullBtn.clicked()) {
-      if (scene.canvas.requestFullscreen) {
-        scene.canvas.onfullscreenchange = "background-color:#fff;";
-        scene.canvas.requestFullscreen(this.getComputedStyle(scene.canvas).backgroundColor = "#fff");
-      } else if (scene.canvas.webkitRequestFullscreen) { /* Safari */
-        scene.canvas.webkitRequestFullscreen();
-      } else if (scene.canvas.msRequestFullscreen) { /* IE11 */
-        scene.canvas.msRequestFullscreen();
+      if (document.documentElement.requestFullscreen) {
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => {
+              alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+            });
+          } else {
+            document.exitFullscreen();
+          }
+      } else if (document.documentElement.webkitRequestFullscreen) { /* Safari */
+        document.documentElement.webkitRequestFullscreen();
+      } else if (document.documentElement.msRequestFullscreen) { /* IE11 */
+        document.documentElement.msRequestFullscreen();
       }
       /*if (document.exitFullscreen) {
         document.exitFullscreen();
