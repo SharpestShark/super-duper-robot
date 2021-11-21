@@ -25,7 +25,7 @@ var background = {
 
 function start() {
   player = new component(30, 30, "red", 10, 120);
-  health = new component(100,20,"green", 10, scene.canvas.height - 40);
+  health = new component(100,20,"green", 10, (window.innerHeight - 40) || (scene.canvas.height - 40));
   health.value = 100;
   hpVis = new component("12px", "Consolas", "white", health.x + 2, health.y + 13.5, "text");
   hpVis.text = health.value.toString();
