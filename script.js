@@ -31,7 +31,7 @@ function start() {
   hpVis.text = health.value.toString();
   tree = background.tree;
   rock = background.rock;
-  skullBtn = new component(30,30,"Skull.png", 10, (window.innerHeight - 100) || (scene.canvas.height - 100),"image");
+  skullBtn = new component(30,30,"Skull.png", 10, scene.canvas.height - 100,"image");
 	var x = 20;
 	var y = 20;
 	var m = 40;
@@ -457,6 +457,7 @@ var x, y, scale, isObstacle;
   hpVis.text = health.value.toString();
   hpVis.update();
   player.update();
+  skullBtn.update();
   tree.update();
   rock.update();
   if (health.value <= 0) {
