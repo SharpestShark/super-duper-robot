@@ -31,7 +31,7 @@ function start() {
   hpVis.text = health.value.toString();
   tree = background.tree;
   rock = background.rock;
-  skullBtn = new component(30,30,"Skull.png",10, scene.canvas.height - 100,"image");
+  skullBtn = new component(30,30,"Skull.png", 10, (window.innerHeight - 100) || (scene.canvas.height - 100),"image");
 	var x = 20;
 	var y = 20;
 	var m = 40;
@@ -42,13 +42,6 @@ function start() {
       myRightBtn = new arrowBtn(x+(2*m), y+m, 10, 0);
   }
   scene.start();
-  if (scene.canvas.requestFullscreen) {
-    scene.canvas.requestFullscreen();
-  } else if (scene.canvas.webkitRequestFullscreen) { /* Safari */
-    scene.canvas.webkitRequestFullscreen();
-  } else if (scene.canvas.msRequestFullscreen) { /* IE11 */
-    scene.canvas.msRequestFullscreen();
-  }
 }
 
 var scene = {
@@ -432,13 +425,21 @@ var x, y, scale, isObstacle;
       }
     }
     if (skullBtn.clicked()) {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) { /* Safari */
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) { /* IE11 */
-        document.msExitFullscreen();
+      if (scene.canvas.requestFullscreen) {
+        scene.canvas.onfullscreenchange = "background-color:#fff;";
+        scene.canvas.requestFullscreen(this.getComputedStyle(scene.canvas).backgroundColor = "#fff");
+      } else if (scene.canvas.webkitRequestFullscreen) { /* Safari */
+        scene.canvas.webkitRequestFullscreen();
+      } else if (scene.canvas.msRequestFullscreen) { /* IE11 */
+        scene.canvas.msRequestFullscreen();
       }
+      /*if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) { // Safari
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) { // IE11
+        document.msExitFullscreen();
+      }*/
     }
   }
   doMap();
