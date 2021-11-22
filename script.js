@@ -423,6 +423,11 @@ var x, y, scale, isObstacle;
     }
     if (skullBtn.clicked()) {
       if (
+        document.fullscreenElement || /* Standard syntax */
+        document.webkitFullscreenElement || /* Safari and Opera syntax */
+        document.msFullscreenElement /* IE11 syntax */
+      ) {
+      if (
 	      document.fullscreenEnabled || /* Standard syntax */
         document.webkitFullscreenEnabled || /* Safari */
         document.msFullscreenEnabled/* IE11 */
@@ -436,6 +441,7 @@ var x, y, scale, isObstacle;
         } else if (document.documentElement.msRequestFullscreen) { /* IE11 */
           document.documentElement.msRequestFullscreen();
         }
+      }
       } else {
         if (document.exitFullscreen) {
           document.exitFullscreen();
