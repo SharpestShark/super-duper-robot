@@ -422,7 +422,11 @@ var x, y, scale, isObstacle;
       }
     }
     if (skullBtn.clicked()) {
-      if (!document.fullscreenElement) {
+      if (
+	      document.fullscreenEnabled || /* Standard syntax */
+        document.webkitFullscreenEnabled || /* Safari */
+        document.msFullscreenEnabled/* IE11 */
+      ) {
         if (document.documentElement.requestFullscreen) {
           document.documentElement.requestFullscreen().catch(err => {
             console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
