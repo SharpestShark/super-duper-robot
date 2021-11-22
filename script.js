@@ -423,9 +423,9 @@ var x, y, scale, isObstacle;
     }
     if (skullBtn.clicked()) {
       if (
-        document.fullscreenElement || /* Standard syntax */
-        document.webkitFullscreenElement || /* Safari and Opera syntax */
-        document.msFullscreenElement /* IE11 syntax */
+        !document.fullscreenElement || /* Standard syntax */
+        !document.webkitFullscreenElement || /* Safari and Opera syntax */
+        !document.msFullscreenElement /* IE11 syntax */
       ) {
       if (
 	      document.fullscreenEnabled || /* Standard syntax */
