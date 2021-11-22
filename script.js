@@ -395,6 +395,7 @@ var x, y, scale, isObstacle;
 }
   if (scene.x && scene.y) {
     if (myUpBtn && myUpBtn.clicked()) {
+      computer.y -= speedY;
       player.y -= speedY;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].y += speedY;
@@ -402,6 +403,7 @@ var x, y, scale, isObstacle;
       }
     }
     if (myDownBtn && myDownBtn.clicked()) {
+      computer.y += speedY;
       player.y += speedY;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].y -= speedY;
@@ -409,6 +411,7 @@ var x, y, scale, isObstacle;
       }
     }
     if (myLeftBtn && myLeftBtn.clicked()) {
+      computer.x -= speedX;
       player.x -= speedX;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].x += speedX;
@@ -416,6 +419,7 @@ var x, y, scale, isObstacle;
       }
     }
     if (myRightBtn && myRightBtn.clicked()) {
+      computer.x += speedX;
       player.x += speedX;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].x -= speedX;
@@ -472,6 +476,7 @@ var x, y, scale, isObstacle;
   health.update();
   hpVis.text = health.value.toString();
   hpVis.update();
+  computer.update();
   player.update();
   skullBtn.update();
   tree.update();
