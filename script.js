@@ -25,7 +25,7 @@ var background = {
 
 function start() {
   player = new component(30, 30, "red", 10, 120);
-  computer = new component(30, 30, "red", (window.innerWidth - 20 || scene.canvas.width - 20), ((window.innerHeight - 20)/2) || (scene.canvas.height/2));
+  computer = new component(30, 30, "red", 30, 200);
   health = new component(100,20,"green", 10, (window.innerHeight - 40) || (scene.canvas.height - 40));
   health.value = 100;
   hpVis = new component("12px", "Consolas", "white", health.x + 2, health.y + 13.5, "text");
@@ -96,9 +96,9 @@ var scene = {
     restartBtn.update();
     if (restartBtn.clicked()) {
       clearInterval(this.interval);
-      this.clear();
+      scene.clear();
       // maybe add high score method (store to array, and use 'array.push(' then the score, and read/write the score, using text component, at the start. if the score is Not UNDEFINED)
-      this.start();
+      start();
     }
   }
 }
