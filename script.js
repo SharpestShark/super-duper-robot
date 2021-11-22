@@ -340,10 +340,10 @@ var x, y, scale, isObstacle;
   }
   var speedX = 1, speedY = 1;
   if (player.crashWith(computer)) {
-    speedX = 0;
-    speedY = 0;
-    player.speedX = 0;
-    player.speedY = 0;
+    speedX = -1;
+    speedY = -1;
+    player.speedX = -1;
+    player.speedY = -1;
   } else {
     speedX = 1;
     speedY = 1;
