@@ -342,10 +342,9 @@ var x, y, scale, isObstacle;
   if (player.crashWith(computer)) {
     speedX = -1;
     speedY = -1;
-    setTimeout(function () {
-      player.speedX -= 1.3;
-      player.speedY -= 1.3;
-    }, 1000);
+    player.x -= 1.3;
+    player.y -= 1.3;
+    openComputer();
   } else {
     speedX = 1;
     speedY = 1;
@@ -498,4 +497,13 @@ var x, y, scale, isObstacle;
   if (health.value <= 0) {
     scene.stop();
   }
+}
+
+function openComputer() {
+  var ctx = scene.context;
+  scene.clear();
+  ctx.fillStyle = "rgb(100,110,70)";
+  ctx.beginPath();
+  ctx.fillRect(100,100, ((scene.canvas.width / 5) || (window.innerWidth / 5)) * 4, ((scene.canvas.height / 5) || (window.innerHeight / 5)) * 4);
+  ctx.stroke();
 }
