@@ -1,27 +1,7 @@
-var player, computer, myObstacle, tree, rock, myUpBtn, myDownBtn, myLeftBtn, myRightBtn, endMessage, restartBtn, restartBtnText, skullBtn;
+var player, computer, myUpBtn, myDownBtn, myLeftBtn, myRightBtn, endMessage, restartBtn, restartBtnText, skullBtn;
 var myObstacles = [];
 var mySpeed = [];
 var health, hpVis;
-const obstacles = {
-	"tree": {
-		"width": "15",
-		"height": "15",
-		"color": "rgba(62, 128, 0, 0.5)",
-		"x": "60",
-		"y": "140"
-	},
-	"rock": {
-		"width": "15",
-		"height": "15",
-		"color": "#131313",
-		"x": "35",
-		"y": "105"
-	}
-};
-var background = {
-	tree: new component(obstacles.tree.width,obstacles.tree.height,obstacles.tree.color,obstacles.tree.x,obstacles.tree.y),
-	rock: new component(obstacles.rock.width,obstacles.rock.height,obstacles.rock.color,obstacles.rock.x,obstacles.rock.y),
-}
 
 function start() {
   player = new component(30, 30, "red", 10, 120);
@@ -31,17 +11,15 @@ function start() {
   health.value = 100;
   hpVis = new component("12px", "Consolas", "white", health.x + 2, health.y + 13.5, "text");
   hpVis.text = health.value.toString();
-  tree = background.tree;
-  rock = background.rock;
   skullBtn = new component(30,30,"Skull.png", 10, (window.innerHeight - 100) || (scene.canvas.height - 100),"image");
-	var x = 20;
-	var y = 20;
-	var m = 40;
   if (navigator.platform == 'iPad') {
-      myUpBtn = new arrowBtn(x+m, y, 10, 270);
-      myDownBtn = new arrowBtn(x+m, y+(2*m), 10, 90);
-      myLeftBtn = new arrowBtn(x, y+m, 10, 180);
-      myRightBtn = new arrowBtn(x+(2*m), y+m, 10, 0);
+    var x = 20;
+    var y = 20;
+    var m = 40;
+    myUpBtn = new arrowBtn(x+m, y, 10, 270);
+    myDownBtn = new arrowBtn(x+m, y+(2*m), 10, 90);
+    myLeftBtn = new arrowBtn(x, y+m, 10, 180);
+    myRightBtn = new arrowBtn(x+(2*m), y+m, 10, 0);
   }
   scene.start();
 }
@@ -353,6 +331,7 @@ var x, y, scale, isObstacle;
     speedY = 1;
     player.speedX = 1;
     player.speedY = 1;
+    computer.interacted = false;
   }
   scene.clear();
   scene.frameNo += 1;
@@ -502,11 +481,17 @@ var x, y, scale, isObstacle;
 
 function openComputer(computer) {
   var ctx = scene.context;
+  var x,y,width,height;
   computer.update = function(){
     scene.clear();
+    x = ((scene.canvas.width / 5) || (window.innerWidth / 5));
+    y = ((scene.canvas.height / 5) || (window.innerHeight / 5));
+    width = ((scene.canvas.width / 5) || (window.innerWidth / 5)) * 4;
+    height = ((scene.canvas.height / 5) || (window.innerHeight / 5)) * 4;
     ctx.fillStyle = "rgb(252, 252, 232)";
+    ctx.strokeStyle = "#001aff";
     ctx.beginPath();
-    ctx.fillRect(100,100, ((scene.canvas.width / 5) || (window.innerWidth / 5)) * 4, ((scene.canvas.height / 5) || (window.innerHeight / 5)) * 4);
+    ctx.fillRect(x,y,width,height);
     ctx.stroke();
   }
 }
