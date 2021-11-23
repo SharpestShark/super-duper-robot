@@ -501,8 +501,8 @@ var x, y, scale, isObstacle;
 
 function openComputer(computer) {
   var ctx = scene.context;
-  scene.clear();
   computer.update = function(){
+    scene.clear();
     ctx.fillStyle = "rgb(252, 252, 232)";
     ctx.beginPath();
     ctx.fillRect(100,100, ((scene.canvas.width / 5) || (window.innerWidth / 5)) * 4, ((scene.canvas.height / 5) || (window.innerHeight / 5)) * 4);
