@@ -344,7 +344,7 @@ var x, y, scale, isObstacle;
     speedY = -1;
     player.x -= 1.3;
     player.y -= 1.3;
-    openComputer();
+    openComputer(computer);
   } else {
     speedX = 1;
     speedY = 1;
@@ -499,11 +499,13 @@ var x, y, scale, isObstacle;
   }
 }
 
-function openComputer() {
+function openComputer(computer) {
   var ctx = scene.context;
   scene.clear();
-  ctx.fillStyle = "rgb(100,110,70)";
-  ctx.beginPath();
-  ctx.fillRect(100,100, ((scene.canvas.width / 5) || (window.innerWidth / 5)) * 4, ((scene.canvas.height / 5) || (window.innerHeight / 5)) * 4);
-  ctx.stroke();
+  computer.update = function(){
+    ctx.fillStyle = "rgb(252, 252, 232)";
+    ctx.beginPath();
+    ctx.fillRect(100,100, ((scene.canvas.width / 5) || (window.innerWidth / 5)) * 4, ((scene.canvas.height / 5) || (window.innerHeight / 5)) * 4);
+    ctx.stroke();
+  }
 }
