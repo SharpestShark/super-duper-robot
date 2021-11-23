@@ -26,6 +26,7 @@ var background = {
 function start() {
   player = new component(30, 30, "red", 10, 120);
   computer = new component(30, 30, "red", 1200, ((window.innerHeight - 20)/2) || (scene.canvas.height/2));
+  computer.interacted = false;
   health = new component(100,20,"green", 10, (window.innerHeight - 40) || (scene.canvas.height - 40));
   health.value = 100;
   hpVis = new component("12px", "Consolas", "white", health.x + 2, health.y + 13.5, "text");
@@ -333,6 +334,7 @@ var x, y, scale, isObstacle;
         }
 	      if (health.value >= 50) {
 	        health.color = "green";
+          hpVis.color = "#ffffff";
 	      }
       }
       myObstacles[i].exist = false;
@@ -340,10 +342,11 @@ var x, y, scale, isObstacle;
   }
   var speedX = 1, speedY = 1;
   if (player.crashWith(computer)) {
-    speedX = -1;
-    speedY = -1;
-    player.x -= 1.3;
-    player.y -= 1.3;
+    speedX = 0;
+    speedY = 0;
+    player.speedX = 0;
+    player.speedY = 0;
+    computer.interacted = true;
     openComputer(computer);
   } else {
     speedX = 1;
@@ -482,21 +485,19 @@ var x, y, scale, isObstacle;
   if ((health.width <= 15) || ((health.value <= 25) && (health.value > 10))) {
     hpVis.color = "#000000";
   }
-  if (health.value < 0) {
+  if (health.value <= 0) {
     health.value = 0;
     health.width = health.value;
-  }
-  health.update();
-  hpVis.text = health.value.toString();
-  hpVis.update();
-  computer.update();
-  player.update();
-  skullBtn.update();
-  tree.update();
-  rock.update();
-  if (health.value <= 0) {
     scene.stop();
   }
+  if (computer.interacted == false) {
+    health.update();
+    hpVis.text = health.value.toString();
+    hpVis.update();
+    player.update();
+    skullBtn.update();
+  }
+  computer.update();
 }
 
 function openComputer(computer) {
