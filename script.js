@@ -485,9 +485,9 @@ function openComputer(computer) {
   computer.update = function(){
     scene.clear();
     x = ((scene.canvas.width / 5) || (window.innerWidth / 5));
-    y = ((scene.canvas.height / 5) /*|| (window.innerHeight / 5)*/);
+    y = ((scene.canvas.height / 5) || (window.innerHeight / 5));
     width = ((scene.canvas.width / 5) || (window.innerWidth / 5)) * 4;
-    height = ((scene.canvas.height / 5) /*|| (window.innerHeight / 5)*/) * 4;
+    height = ((scene.canvas.height / 5) || (window.innerHeight / 5)) * 4;
     ctx.fillStyle = "rgb(252, 252, 232)";
     ctx.strokeStyle = "#001aff";
     ctx.beginPath();
