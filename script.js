@@ -493,5 +493,70 @@ function openComputer(computer) {
     ctx.beginPath();
     ctx.fillRect(x,y,width,height);
     ctx.stroke();
+    var r = 10;
+    ctx.beginPath();
+    ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
+    ctx.lineTo(x+(3*r), y);
+    ctx.arc(x+(3*r), y+r, r,1.5 * Math.PI,0);
+    ctx.lineTo(x+(4*r),y+(3*r));
+    ctx.arc(x+(3*r), y+(3*r), r,0,.5 * Math.PI);
+    ctx.lineTo(x+r,y+(4*r));
+    ctx.arc(x+r, y+(3*r), r,.5 * Math.PI,Math.PI);
+    ctx.lineTo(x,y+r);
+    ctx.fillStyle = '#000';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(x+(1.5*r),y+(.5*r));
+ctx.lineTo(x+(2*r),y+(r));
+    // ctx.lineTo(x+(.5*r),y+(1.5*r));
+ctx.lineTo(x+(2.5*r),y+(.5*r));
+    // ctx.lineTo(x+(3.5*r),y+(2.5*r));
+ctx.lineTo(x+(3.5*r),y+(1.5*r));
+    // ctx.lineTo(x+(2.5*r),y+(3.5*r));
+ctx.lineTo(x+(3*r),y+(2*r));
+ctx.lineTo(x+(3.5*r),y+(2.5*r));
+ctx.lineTo(x+(2.5*r),y+(3.5*r));
+ctx.lineTo(x+(2*r),y+(3*r));
+ctx.lineTo(x+(1.5*r),y+(3.5*r));
+ctx.lineTo(x+(.5*r),y+(2.5*r));
+ctx.lineTo(x+r,y+(2*r));
+ctx.lineTo(x+(.5*r),y+(1.5*r));
+ctx.lineTo(x+(1.5*r),y+(.5*r));
+/*ctx.lineTo(x+(*r),y+(*r));
+ctx.lineTo(x+(*r),y+(*r));
+ctx.lineTo(x+(*r),y+(*r));
+*/
+/*    ctx.lineTo(x+(2*r),y+(2*r));
+
+    ctx.moveTo(x+(2.5*r),y+(.5*r));
+    ctx.lineTo(x+(3.5*r),y+(1.5*r));
+    ctx.lineTo(x+(1.5*r),y+(3.5*r));
+    ctx.lineTo(x+(.5*r),y+(2.5*r));
+    ctx.lineTo(x+(2.5*r),y+(.5*r));
+*/
+    ctx.fillStyle = "#ff0000";
+    ctx.strokeStyle = "#fff";
+    ctx.stroke();
+    ctx.fill();
+// inner X
+    ctx.beginPath();
+    ctx.moveTo(x+(1.75*r),y+(.75*r));
+ctx.lineTo(x+(2*r),y+r);
+    // ctx.lineTo(x+(.5*r),y+(1.5*r));
+ctx.lineTo(x+(2.5*r),y+(.5*r));
+    // ctx.lineTo(x+(3.5*r),y+(2.5*r));
+ctx.lineTo(x+(3.5*r),y+(1.5*r));
+    // ctx.lineTo(x+(2.5*r),y+(3.5*r));
+ctx.lineTo(x+(3*r),y+(2*r));
+ctx.lineTo(x+(3.5*r),y+(2.5*r));
+ctx.lineTo(x+(2.5*r),y+(3.5*r));
+ctx.lineTo(x+(2*r),y+(3*r));
+ctx.lineTo(x+(1.5*r),y+(3.5*r));
+ctx.lineTo(x+(.5*r),y+(2.5*r));
+ctx.lineTo(x+r,y+(2*r));
+ctx.lineTo(x+(.5*r),y+(1.5*r));
+ctx.lineTo(x+(1.25*r),y+(.25*r));
+ctx.fillStyle = "#fff";
+ctx.fill();
   }
 }
