@@ -540,7 +540,7 @@ function openComputer(computer) {
     ctx.stroke();
     computer.xBtn.update();
   }
-  computer.xBtn = new function(x,y) {
+  computer.xBtn = function(x,y) {
     this.r = 10;
     this.x = x;
     this.y = y;
