@@ -300,6 +300,10 @@ function apple(x, y, scale) {
   }
 }
 
+/*function longBtn(x,y,r) {
+
+}*/
+
 function updateScene() {
 var x, y, scale, isObstacle;
   for (var i = 0; i < myObstacles.length; i += 1) {
@@ -319,19 +323,36 @@ var x, y, scale, isObstacle;
     } 
   }
   var speedX = 1, speedY = 1;
-  if (player.crashWith(computer)) {
+  if ((computer.interacted == true) && (player.crashWith(computer))) {
     speedX = 0;
     speedY = 0;
     player.speedX = 0;
     player.speedY = 0;
-    computer.interacted = true;
     openComputer(computer);
-  } else {
+  } else if ((computer.interacted == false) && (player.crashWith(computer))) {
     speedX = 1;
     speedY = 1;
     player.speedX = 1;
     player.speedY = 1;
     computer.interacted = false;
+    var ctx = scene.canvas.context;
+    var r = 50;
+    ctx.beginPath();
+    ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
+    ctx.lineTo(x+(9*r), y);
+    ctx.arc(x+(9*r), y+r, r,1.5 * Math.PI,0);
+    ctx.lineTo(x+(10*r),y+(3*r));
+    ctx.arc(x+(9*r), y+(3*r), r,0,.5 * Math.PI);
+    ctx.lineTo(x+r,y+(4*r));
+    ctx.arc(x+r, y+(3*r), r,.5 * Math.PI,Math.PI);
+    ctx.lineTo(x,y+r);
+    ctx.fillStyle = 'rgb(10,10,10,.5)';
+    ctx.fill();
+    /*if (scene.keys && (scene.keys[E keycode] || scene.keys[E keycode])) {
+      computer.interacted = true;
+    } else if (interactBtn && interactBtn.clicked()) {
+      computer.interacted = true;
+    }*/
   }
   scene.clear();
   scene.frameNo += 1;
