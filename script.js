@@ -13,6 +13,8 @@ function start() {
   hpVis.text = health.value.toString();
   skullBtn = new component(30,30,"Skull.png", 10, (window.innerHeight - 100) || (scene.canvas.height - 100),"image");
   interactBtn = new longBtn(player.x,player.y,50);
+  interactBtnText = new component("30px","Consolas","black",interactBtn.x + 10,interactBtn.y + 10,"text");
+  interactBtnText.text = "E to Interact";
   if (navigator.platform == 'iPad') {
     var x = 20;
     var y = 20;
