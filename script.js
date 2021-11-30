@@ -24,7 +24,9 @@ function start() {
     myLeftBtn = new arrowBtn(x, y+m, 10, 180);
     myRightBtn = new arrowBtn(x+(2*m), y+m, 10, 0);
     interactBtnText = new component("30px","Consolas","black",interactBtn.x + 10,interactBtn.y + 10,"text");
+    interactBtn.exist = false;
     interactBtnText.text = "TAP to Interact";
+    interactBtnText.exist = false;
   }
   scene.start();
 }
@@ -371,6 +373,8 @@ var x, y, scale, isObstacle;
     computer.interacted = false;
     var ctx = scene.canvas.context;
     var r = 50;
+    interactBtn.exist = true;
+    interactBtnText.exist = true;
     if (scene.keys && (scene.keys[101])) {
       computer.interacted = true;
     } else if (interactBtn && interactBtn.clicked()) {
@@ -402,6 +406,8 @@ var x, y, scale, isObstacle;
   }
   var i;
   var speedX = 1, speedY = 1;
+  player.speedX = 1;
+  player.speedY = 1;
   if (navigator.platform.startsWith('Win')) {
   if (scene.keys && (scene.keys[37] || scene.keys[65])) {
     player.x -= player.speedX;
