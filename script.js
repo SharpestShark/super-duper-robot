@@ -308,7 +308,7 @@ function longBtn(x,y,r) {
   this.y = y;
   this.r = r;
   this.exist = true;
-  this.update() = function() {
+  this.update = function() {
     if (this.exist == true) {
       ctx.beginPath();
       ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
@@ -519,6 +519,8 @@ var x, y, scale, isObstacle;
     skullBtn.update();
   }
   computer.update();
+  interactBtn.update();
+  interactBtnText.update();
 }
 
 function openComputer(computer) {
