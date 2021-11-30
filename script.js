@@ -600,3 +600,4 @@ ctx.lineTo(x+(1.25*r),y+(.75*r));
     return clicked;
   }
 }
+}
