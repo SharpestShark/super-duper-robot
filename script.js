@@ -12,9 +12,11 @@ function start() {
   hpVis = new component("12px", "Consolas", "white", health.x + 2, health.y + 13.5, "text");
   hpVis.text = health.value.toString();
   skullBtn = new component(30,30,"Skull.png", 10, (window.innerHeight - 100) || (scene.canvas.height - 100),"image");
-  interactBtn = new longBtn(player.x,player.y,50);
+  interactBtn = new longBtn(computer.x,computer.y,10);
+  interactBtn.exist = false;
   interactBtnText = new component("30px","Consolas","black",interactBtn.x + 10,interactBtn.y + 10,"text");
   interactBtnText.text = "E to Interact";
+  interactBtnText.exist = false;
   if (navigator.platform == 'iPad') {
     var x = 20;
     var y = 20;
@@ -24,9 +26,7 @@ function start() {
     myLeftBtn = new arrowBtn(x, y+m, 10, 180);
     myRightBtn = new arrowBtn(x+(2*m), y+m, 10, 0);
     interactBtnText = new component("30px","Consolas","black",interactBtn.x + 10,interactBtn.y + 10,"text");
-    interactBtn.exist = false;
     interactBtnText.text = "TAP to Interact";
-    interactBtnText.exist = false;
   }
   scene.start();
 }
@@ -359,26 +359,19 @@ var x, y, scale, isObstacle;
     } 
   }
   var speedX = 1, speedY = 1;
-  if ((computer.interacted == true) && (player.crashWith(computer))) {
+  player.speedX = speedX;
+  player.speedY = speedY;
+  if (player.crashWith(computer)) {
     speedX = 0;
     speedY = 0;
-    player.speedX = 0;
-    player.speedY = 0;
-    openComputer(computer);
-  } else if ((computer.interacted == false) && (player.crashWith(computer))) {
-    speedX = 1;
-    speedY = 1;
-    player.speedX = 1;
-    player.speedY = 1;
-    computer.interacted = false;
-    var ctx = scene.canvas.context;
-    var r = 50;
+    player.speedX = speedX;
+    player.speedY = speedY;
     interactBtn.exist = true;
     interactBtnText.exist = true;
-    if (scene.keys && (scene.keys[101])) {
-      computer.interacted = true;
-    } else if (interactBtn && interactBtn.clicked()) {
-      computer.interacted = true;
+    if ((interactBtn && interactBtn.clicked()) || (scene.keys && (scene.keys[101]))) {
+      openComputer(computer);
+      interactBtn.exist = false;
+      interactBtnText.exist = false;
     }
   }
   scene.clear();
@@ -538,14 +531,23 @@ function openComputer(computer) {
     scene.clear();
     x = 0;
     y = 0;
-    width = ((scene.canvas.width / 5) || (window.innerWidth / 5));
-    height = ((scene.canvas.height / 5) || (window.innerHeight / 5));
+    width = ((scene.canvas.width * .8) || (window.innerWidth * .8));
+    height = ((scene.canvas.height * .8) || (window.innerHeight * .8));
     ctx.fillStyle = "rgb(252, 252, 232)";
     ctx.strokeStyle = "#001aff";
     ctx.beginPath();
     ctx.fillRect(x,y,width,height);
     ctx.stroke();
-    var r = 10;
+    computer.xBtn.update();
+  }
+  computer.xBtn = new function(x,y) {
+    this.r = 10;
+    this.x = x;
+    this.y = y;
+    this.width = x + (4*this.r);
+    this.height = y + (4*this.r);
+    this.update = function(){
+        var r = this.r;
     ctx.beginPath();
     ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
     ctx.lineTo(x+(3*r), y);
@@ -585,5 +587,16 @@ ctx.lineTo(x+(1.25*r),y+(.75*r));
     ctx.strokeStyle = "#fff";
     ctx.stroke();
     ctx.fill();
+  };
+  this.clicked = function() {
+    var myleft = x;
+    var myright = x + (width);
+    var mytop = y;
+    var mybottom = y + (height);
+    var clicked = true;
+    if ((mybottom < scene.y) || (mytop > scene.y) || (myright < scene.x) || (myleft > scene.x)) {
+      clicked = false;
+    }
+    return clicked;
   }
 }
