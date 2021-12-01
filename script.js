@@ -368,7 +368,7 @@ var x, y, scale, isObstacle;
     player.speedY = speedY;
     interactBtn.exist = true;
     interactBtnText.exist = true;
-    if ((interactBtn && interactBtn.clicked()) || (scene.keys && (scene.keys[101]))) {
+    if ((interactBtn && interactBtn.clicked()) || (scene.keys && (scene.keys[69]))) {
       openComputer(computer);
       interactBtn.exist = false;
       interactBtnText.exist = false;
@@ -527,26 +527,31 @@ var x, y, scale, isObstacle;
 function openComputer(computer) {
   var ctx = scene.context;
   var x,y,width,height;
+  x = 0;
+  y = 0;
+  width = ((scene.canvas.width * .8) || (window.innerWidth * .8));
+  height = ((scene.canvas.height * .8) || (window.innerHeight * .8));
+  computer.xBtn = new xBtn(x,y);
   computer.update = function(){
     scene.clear();
-    x = 0;
-    y = 0;
-    width = ((scene.canvas.width * .8) || (window.innerWidth * .8));
-    height = ((scene.canvas.height * .8) || (window.innerHeight * .8));
     ctx.fillStyle = "rgb(252, 252, 232)";
     ctx.strokeStyle = "#001aff";
     ctx.beginPath();
     ctx.fillRect(x,y,width,height);
     ctx.stroke();
-    computer.xBtn.update();
+    computer.x = x;
+    computer.y = y;
+    computer.width = width;
+    computer.height = height
   }
-  computer.xBtn = function(x,y) {
+}
+  function xBtn(x,y) {
     this.r = 10;
     this.x = x;
     this.y = y;
     this.width = x + (4*this.r);
     this.height = y + (4*this.r);
-    this.update = function(){
+    this.update = new function(){
         var r = this.r;
     ctx.beginPath();
     ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
@@ -599,5 +604,4 @@ ctx.lineTo(x+(1.25*r),y+(.75*r));
     }
     return clicked;
   }
-}
 }
