@@ -527,6 +527,7 @@ var x, y, scale, isObstacle;
 function openComputer(computer) {
   var ctx = scene.context;
   var x,y,width,height;
+  computer.xBtn = new xBtn(x,y);
   computer.update = function(){
     scene.clear();
     x = 0;
@@ -538,15 +539,15 @@ function openComputer(computer) {
     ctx.beginPath();
     ctx.fillRect(x,y,width,height);
     ctx.stroke();
-    computer.xBtn.update();
   }
-  computer.xBtn = function(x,y) {
+}
+  function xBtn(x,y) {
     this.r = 10;
     this.x = x;
     this.y = y;
     this.width = x + (4*this.r);
     this.height = y + (4*this.r);
-    this.update = function(){
+    this.update = new function(){
         var r = this.r;
     ctx.beginPath();
     ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
@@ -599,5 +600,4 @@ ctx.lineTo(x+(1.25*r),y+(.75*r));
     }
     return clicked;
   }
-}
 }
