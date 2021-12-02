@@ -127,7 +127,7 @@ function component(width, height, color, x, y, type) {
         ctx.fillRect(this.x, this.y, this.width, this.height);
       }
     }
-  }
+  },
   this.clicked = function() {
     var myleft = this.x;
     var myright = this.x + (this.width);
@@ -221,7 +221,7 @@ ctx.fill();
     ctx.rotate(this.angle);
     ctx.drawImage(imgData,this.x,this.y);
     ctx.restore();*/
-  }
+  },
   this.clicked = function() {
     var myleft = this.x;
     var myright = this.x + (4 * this.r);
@@ -273,7 +273,7 @@ function apple(x, y, scale) {
       ctx.quadraticCurveTo(p1x + (.2*mul),p1y - (1.1*mul),p1x + (.5*mul),p1y - (1.1*mul));
       ctx.stroke();
     }
-  }
+  },
   this.clicked = function() {
     var myleft = this.x;
     var myright = this.x + (this.width);
@@ -314,6 +314,7 @@ function longBtn(x,y,r) {
   this.exist = true;
   this.update = function() {
     if (this.exist == true) {
+      var ctx = scene.context;
       ctx.beginPath();
       ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
       ctx.lineTo(x+(9*r), y);
@@ -326,7 +327,7 @@ function longBtn(x,y,r) {
       ctx.fillStyle = 'rgb(10,10,10,.5)';
       ctx.fill();
     }
-  }
+  },
   this.clicked = function() {
     var myleft = this.x;
     var myright = this.x + (this.width);
@@ -549,59 +550,60 @@ function openComputer(computer) {
     computer.xBtn.update();
   }
 }
-  function xBtn(x,y) {
-    this.r = 10;
-    this.x = x;
-    this.y = y;
-    this.width = x + (4*this.r);
-    this.height = y + (4*this.r);
-    this.update = function(){
-        var r = this.r;
-    ctx.beginPath();
-    ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
-    ctx.lineTo(x+(3*r), y);
-    ctx.arc(x+(3*r), y+r, r,1.5 * Math.PI,0);
-    ctx.lineTo(x+(4*r),y+(3*r));
-    ctx.arc(x+(3*r), y+(3*r), r,0,.5 * Math.PI);
-    ctx.lineTo(x+r,y+(4*r));
-    ctx.arc(x+r, y+(3*r), r,.5 * Math.PI,Math.PI);
-    ctx.lineTo(x,y+r);
-    ctx.fillStyle = '#000';
-    ctx.fill();
-    ctx.beginPath();
-    ctx.moveTo(x+(1.25*r),y+(.75*r));
-ctx.lineTo(x+(2*r),y+(1.5*r));
-    // ctx.lineTo(x+(.5*r),y+(1.5*r));
-ctx.lineTo(x+(2.75*r),y+(.75*r));
-    // ctx.lineTo(x+(3.5*r),y+(2.5*r));
-ctx.lineTo(x+(3.25*r),y+(1.25*r));
-    // ctx.lineTo(x+(2.5*r),y+(3.5*r));
-    //right inner corner "<"
-ctx.lineTo(x+(2.5*r),y+(2*r));
+function xBtn(x,y) {
+  this.r = 10;
+  this.x = x;
+  this.y = y;
+  this.width = x + (4*this.r);
+  this.height = y + (4*this.r);
+  this.update = function(){
+      var r = this.r;
+      var ctx = scene.context;
+      ctx.beginPath();
+      ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
+      ctx.lineTo(x+(3*r), y);
+      ctx.arc(x+(3*r), y+r, r,1.5 * Math.PI,0);
+      ctx.lineTo(x+(4*r),y+(3*r));
+      ctx.arc(x+(3*r), y+(3*r), r,0,.5 * Math.PI);
+      ctx.lineTo(x+r,y+(4*r));
+      ctx.arc(x+r, y+(3*r), r,.5 * Math.PI,Math.PI);
+      ctx.lineTo(x,y+r);
+      ctx.fillStyle = '#000';
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(x+(1.25*r),y+(.75*r));
+      ctx.lineTo(x+(2*r),y+(1.5*r));
+      // ctx.lineTo(x+(.5*r),y+(1.5*r));
+      ctx.lineTo(x+(2.75*r),y+(.75*r));
+      // ctx.lineTo(x+(3.5*r),y+(2.5*r));
+      ctx.lineTo(x+(3.25*r),y+(1.25*r));
+      // ctx.lineTo(x+(2.5*r),y+(3.5*r));
+      //right inner corner "<"
+      ctx.lineTo(x+(2.5*r),y+(2*r));
+      
+      ctx.lineTo(x+(3.25*r),y+(2.75*r));
+      ctx.lineTo(x+(2.75*r),y+(3.25*r));
+      // bottom inner corner "^"
+      ctx.lineTo(x+(2*r),y+(2.5*r));
+      
+      ctx.lineTo(x+(1.25*r),y+(3.25*r));
+      ctx.lineTo(x+(.75*r),y+(2.75*r));
+      // left inner corner ">"
+      ctx.lineTo(x+(1.5*r),y+(2*r));
 
-ctx.lineTo(x+(3.25*r),y+(2.75*r));
-ctx.lineTo(x+(2.75*r),y+(3.25*r));
-// bottom inner corner "^"
-ctx.lineTo(x+(2*r),y+(2.5*r));
+      ctx.lineTo(x+(.75*r),y+(1.25*r));
+      ctx.lineTo(x+(1.25*r),y+(.75*r));
 
-ctx.lineTo(x+(1.25*r),y+(3.25*r));
-ctx.lineTo(x+(.75*r),y+(2.75*r));
-// left inner corner ">"
-ctx.lineTo(x+(1.5*r),y+(2*r));
-
-ctx.lineTo(x+(.75*r),y+(1.25*r));
-ctx.lineTo(x+(1.25*r),y+(.75*r));
-
-    ctx.fillStyle = "#ff0000";
-    ctx.strokeStyle = "#fff";
-    ctx.stroke();
-    ctx.fill();
-  };
-  this.clicked = function() {
-    var myleft = x;
-    var myright = x + (width);
-    var mytop = y;
-    var mybottom = y + (height);
+      ctx.fillStyle = "#ff0000";
+      ctx.strokeStyle = "#fff";
+      ctx.stroke();
+      ctx.fill();
+    },
+ this.clicked = function() {
+  var myleft = this.x;
+    var myright = x + (this.width);
+    var mytop = this.y;
+    var mybottom = this.y + (this.height);
     var clicked = true;
     if ((mybottom < scene.y) || (mytop > scene.y) || (myright < scene.x) || (myleft > scene.x)) {
       clicked = false;
