@@ -527,12 +527,12 @@ var x, y, scale, isObstacle;
 
 function openComputer(computer) {
   var ctx = scene.context;
-  var x,y,width,height;
+  var x,y,width,height,xBtn;
   x = 0;
   y = 0;
   width = ((scene.canvas.width * .8) || (window.innerWidth * .8));
   height = ((scene.canvas.height * .8) || (window.innerHeight * .8));
-  computer.xBtn = new xBtn(x,y);
+  xBtn = new xBtn(x,y);
   computer.update = function(){
     scene.clear();
     ctx.fillStyle = "rgb(252, 252, 232)";
