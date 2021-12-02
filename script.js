@@ -311,6 +311,8 @@ function longBtn(x,y,r) {
   this.x = x;
   this.y = y;
   this.r = r;
+  this.width = (10*r);
+  this.height = (4*r);
   this.exist = true;
   this.update = function() {
     if (this.exist == true) {
