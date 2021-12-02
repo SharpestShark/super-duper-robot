@@ -526,7 +526,6 @@ var x, y, scale, isObstacle;
 }
 
 function openComputer(computer) {
-  var ctx = scene.context;
   var x,y,width,height;
   x = 0;
   y = 0;
@@ -534,6 +533,7 @@ function openComputer(computer) {
   height = ((scene.canvas.height * .8) || (window.innerHeight * .8));
   computer.xBtn = new xBtn(x,y);
   computer.update = function(){
+    var ctx = scene.context;
     scene.clear();
     ctx.fillStyle = "rgb(252, 252, 232)";
     ctx.strokeStyle = "#001aff";
