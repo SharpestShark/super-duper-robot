@@ -12,7 +12,7 @@ function start() {
   hpVis = new component("12px", "Consolas", "white", health.x + 2, health.y + 13.5, "text");
   hpVis.text = health.value.toString();
   skullBtn = new component(30,30,"Skull.png", 10, (window.innerHeight - 100) || (scene.canvas.height - 100),"image");
-  interactBtn = new longBtn(computer.x,computer.y,10);
+  interactBtn = new longBtn(1200,(((window.innerHeight - 20)/2)- 30) || ((scene.canvas.height/2) - 30),10);
   interactBtn.exist = false;
   interactBtnText = new component("30px","Consolas","black",interactBtn.x + 10,interactBtn.y + 10,"text");
   interactBtnText.text = "E to Interact";
