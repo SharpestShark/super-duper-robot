@@ -498,7 +498,7 @@ var x, y, scale, isObstacle;
   if (navigator.platform == 'iPad') {
     myUpBtn.update(); 
     myDownBtn.update(); 
-    myLeftBtn.update(); 
+    myLeftBtn.update();
     myRightBtn.update();
   }
   if ((health.value <= 50) && (health.value > 25)) {health.color = "#ffea00";hpVis.color = "#000000";} else if ((health.value <= 25) && (health.value > 10)) {health.color = "#ff9900";hpVis.color = "#ffffff";} else if (health.value <= 10) {health.color = "red";hpVis.color = "#ffffff";}
@@ -532,18 +532,21 @@ function openComputer(computer) {
   width = ((scene.canvas.width * .8) || (window.innerWidth * .8));
   height = ((scene.canvas.height * .8) || (window.innerHeight * .8));
   computer.xBtn = new xBtn(x,y);
-  computer.update = function(){
+  computer.update = function() {
     var ctx = scene.context;
-    scene.clear();
-    ctx.fillStyle = "rgb(252, 252, 232)";
-    ctx.strokeStyle = "#001aff";
-    ctx.beginPath();
-    ctx.fillRect(x,y,width,height);
-    ctx.stroke();
-    computer.x = x;
-    computer.y = y;
-    computer.width = width;
-    computer.height = height;
+    if (computer.interacted == true) {
+      scene.clear();
+      ctx.fillStyle = "rgb(252, 252, 232)";
+      ctx.strokeStyle = "#001aff";
+      ctx.beginPath();
+      ctx.fillRect(x,y,width,height);
+      ctx.stroke();
+      computer.x = x;
+      computer.y = y;
+      computer.width = width;
+      computer.height = height;
+    }
+    computer.xBtn.update();
   }
 }
   function xBtn(x,y) {
