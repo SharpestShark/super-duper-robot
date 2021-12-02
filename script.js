@@ -527,12 +527,12 @@ var x, y, scale, isObstacle;
 
 function openComputer(computer) {
   var ctx = scene.context;
-  var x,y,width,height,xBtn;
+  var x,y,width,height;
   x = 0;
   y = 0;
   width = ((scene.canvas.width * .8) || (window.innerWidth * .8));
   height = ((scene.canvas.height * .8) || (window.innerHeight * .8));
-  xBtn = new xBtn(x,y);
+  computer.xBtn = new xBtn(x,y);
   computer.update = function(){
     scene.clear();
     ctx.fillStyle = "rgb(252, 252, 232)";
@@ -543,7 +543,7 @@ function openComputer(computer) {
     computer.x = x;
     computer.y = y;
     computer.width = width;
-    computer.height = height
+    computer.height = height;
   }
 }
   function xBtn(x,y) {
@@ -552,7 +552,7 @@ function openComputer(computer) {
     this.y = y;
     this.width = x + (4*this.r);
     this.height = y + (4*this.r);
-    this.update = new function(){
+    this.update = function(){
         var r = this.r;
     ctx.beginPath();
     ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
