@@ -370,10 +370,10 @@ var x, y, scale, isObstacle;
     interactBtn.exist = true;
     interactBtnText.exist = true;
     if ((interactBtn && interactBtn.clicked()) || (scene.keys && (scene.keys[69]))) {
-      openComputer(computer);
       computer.interacted = true;
       interactBtn.exist = false;
       interactBtnText.exist = false;
+      openComputer(computer);
     }
   }
   scene.clear();
