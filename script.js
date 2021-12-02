@@ -361,7 +361,7 @@ var x, y, scale, isObstacle;
   var speedX = 1, speedY = 1;
   player.speedX = speedX;
   player.speedY = speedY;
-  if (player.crashWith(computer)) {
+  if (player.crashWith(computer) && (computer.interacted == false)) {
     speedX = 0;
     speedY = 0;
     player.speedX = speedX;
@@ -370,6 +370,7 @@ var x, y, scale, isObstacle;
     interactBtnText.exist = true;
     if ((interactBtn && interactBtn.clicked()) || (scene.keys && (scene.keys[69]))) {
       openComputer(computer);
+      computer.interacted = true;
       interactBtn.exist = false;
       interactBtnText.exist = false;
     }
@@ -517,9 +518,11 @@ var x, y, scale, isObstacle;
     skullBtn.update();
   }
   computer.update();
-  computer.xBtn.update();
-  interactBtn.update();
-  interactBtnText.update();
+  if (computer.interacted == true) {
+    computer.xBtn.update();
+    interactBtn.update();
+    interactBtnText.update();
+  }
 }
 
 function openComputer(computer) {
