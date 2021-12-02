@@ -520,6 +520,7 @@ var x, y, scale, isObstacle;
     skullBtn.update();
   }
   computer.update();
+  computer.xBtn.update();
   interactBtn.update();
   interactBtnText.update();
 }
