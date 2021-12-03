@@ -523,9 +523,9 @@ var x, y, scale, isObstacle;
   }
   interactBtn.x = computer.x + 40;
   interactBtn.y = computer.y + 40;
-  interactBtn.update();
   interactBtnText.x = interactBtn.x + 15;
   interactBtnText.y = interactBtn.y + 15;
+  interactBtn.update();
   interactBtnText.update();
   computer.update();
   if (computer.interacted == true) {
