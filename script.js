@@ -378,9 +378,8 @@ var x, y, scale, isObstacle;
       interactBtnText.exist = false;
       openComputer(computer);
     } if ((computer.xBtn && computer.xBtn.exist == true) && computer.xBtn.clicked()) {
-      var ctx = scene.context;
       computer.interacted = false;
-      ctx.restore();
+      openComputer(computer);
     }
   }
   scene.clear();
@@ -558,7 +557,9 @@ function openComputer(computer) {
       computer.y = y;
       computer.width = width;
       computer.height = height;
-    } 
+    } else if (computer.interacted == false) {
+      ctx.restore();
+    }
     computer.xBtn.update();
   }
 }
