@@ -14,7 +14,7 @@ function start() {
   skullBtn = new component(30,30,"Skull.png", 10, (window.innerHeight - 100) || (scene.canvas.height - 100),"image");
   interactBtn = new longBtn(player.x + player.width,player.y + player.height,10);
   interactBtn.exist = false;
-  interactBtnText = new component("30px","Consolas","black",interactBtn.x + 10,interactBtn.y + 10,"text");
+  interactBtnText = new component("12px","Consolas","black",interactBtn.x + 10,interactBtn.y + 10,"text");
   interactBtnText.text = "E to Interact";
   interactBtnText.exist = false;
   if (navigator.platform == 'iPad') {
@@ -27,6 +27,7 @@ function start() {
     myRightBtn = new arrowBtn(x+(2*m), y+m, 10, 0);
     interactBtnText = new component("30px","Consolas","black",interactBtn.x + 10,interactBtn.y + 10,"text");
     interactBtnText.text = "TAP to Interact";
+    interactBtnText.exist = false;
   }
   scene.start();
 }
@@ -520,7 +521,11 @@ var x, y, scale, isObstacle;
     player.update();
     skullBtn.update();
   }
+  interactBtn.x = computer.x + 40;
+  interactBtn.y = computer.y + 40;
   interactBtn.update();
+  interactBtnText.x = interactBtn.x + 15;
+  interactBtnText.y = interactBtn.y + 15;
   interactBtnText.update();
   computer.update();
   if (computer.interacted == true) {
