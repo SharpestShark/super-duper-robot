@@ -25,6 +25,8 @@ function start() {
     myDownBtn = new arrowBtn(x+m, y+(2*m), 10, 90);
     myLeftBtn = new arrowBtn(x, y+m, 10, 180);
     myRightBtn = new arrowBtn(x+(2*m), y+m, 10, 0);
+	  interactBtn = new longBtn(player.x + player.width,player.y + player.height,10);
+    interactBtn.exist = false;
     interactBtnText = new component("30px","Consolas","black",interactBtn.x + 10,interactBtn.y + 10,"text");
     interactBtnText.text = "TAP to Interact";
     interactBtnText.exist = false;
