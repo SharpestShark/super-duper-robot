@@ -377,6 +377,10 @@ var x, y, scale, isObstacle;
       interactBtn.exist = false;
       interactBtnText.exist = false;
       openComputer(computer);
+    } if ((computer.xBtn && computer.xBtn.exist == true) && computer.xBtn.clicked()) {
+      var ctx = scene.context;
+      computer.interacted = false;
+      ctx.restore();
     }
   }
   scene.clear();
@@ -543,6 +547,7 @@ function openComputer(computer) {
   computer.update = function() {
     var ctx = scene.context;
     if (computer.interacted == true) {
+      ctx.save();
       scene.clear();
       ctx.fillStyle = "rgb(252, 252, 232)";
       ctx.strokeStyle = "#001aff";
@@ -553,7 +558,7 @@ function openComputer(computer) {
       computer.y = y;
       computer.width = width;
       computer.height = height;
-    }
+    } 
     computer.xBtn.update();
   }
 }
