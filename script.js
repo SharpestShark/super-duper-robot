@@ -12,7 +12,7 @@ function start() {
   hpVis = new component("12px", "Consolas", "white", health.x + 2, health.y + 13.5, "text");
   hpVis.text = health.value.toString();
   skullBtn = new component(30,30,"Skull.png", 10, (window.innerHeight - 100) || (scene.canvas.height - 100),"image");
-  interactBtn = new longBtn(player.x + player.width,player.y + player.height,10);
+	interactBtn = new longBtn(player.x + player.width,player.y + player.height,10);
   interactBtn.exist = false;
   interactBtnText = new component("12px","Consolas","black",interactBtn.x + 10,interactBtn.y + 10,"text");
   interactBtnText.text = "E to Interact";
@@ -25,8 +25,6 @@ function start() {
     myDownBtn = new arrowBtn(x+m, y+(2*m), 10, 90);
     myLeftBtn = new arrowBtn(x, y+m, 10, 180);
     myRightBtn = new arrowBtn(x+(2*m), y+m, 10, 0);
-	  interactBtn = new longBtn(player.x + player.width,player.y + player.height,10);
-    interactBtn.exist = false;
     interactBtnText = new component("30px","Consolas","black",interactBtn.x + 10,interactBtn.y + 10,"text");
     interactBtnText.text = "TAP to Interact";
     interactBtnText.exist = false;
@@ -253,7 +251,7 @@ function apple(x, y, scale) {
   this.damage = '5';
   this.speedX = 0;
   this.speedY = 0;
-	this.update = function() {
+  this.update = function() {
     if (this.exist == true) {
       ctx = scene.context;
       var mul = this.scale;
@@ -321,17 +319,17 @@ function longBtn(x,y,r) {
   this.height = (4*r);
   this.exist = true;
   this.update = function() {
+    var ctx = scene.context;
     if (this.exist == true) {
-      var ctx = scene.context;
       ctx.beginPath();
-      ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
-      ctx.lineTo(x+(9*r), y);
-      ctx.arc(x+(9*r), y+r, r,1.5 * Math.PI,0);
-      ctx.lineTo(x+(10*r),y+(3*r));
-      ctx.arc(x+(9*r), y+(3*r), r,0,.5 * Math.PI);
-      ctx.lineTo(x+r,y+(4*r));
-      ctx.arc(x+r, y+(3*r), r,.5 * Math.PI,Math.PI);
-      ctx.lineTo(x,y+r);
+      ctx.arc(this.x+r, this.y+r, r, Math.PI, 1.5 * Math.PI);
+      ctx.lineTo(this.x+(9*r), this.y);
+      ctx.arc(this.x+(9*r), this.y+r, r,1.5 * Math.PI,0);
+      ctx.lineTo(this.x+(10*r),this.y+(3*r));
+      ctx.arc(this.x+(9*r), this.y+(3*r), r,0,.5 * Math.PI);
+      ctx.lineTo(this.x+r,this.y+(4*r));
+      ctx.arc(this.x+r, this.y+(3*r), r,.5 * Math.PI,Math.PI);
+      ctx.lineTo(this.x,this.y+r);
       ctx.fillStyle = 'rgb(10,10,10,.5)';
       ctx.fill();
     }
