@@ -12,7 +12,7 @@ function start() {
   hpVis = new component("12px", "Consolas", "white", health.x + 2, health.y + 13.5, "text");
   hpVis.text = health.value.toString();
   skullBtn = new component(30,30,"Skull.png", 10, (window.innerHeight - 100) || (scene.canvas.height - 100),"image");
-	interactBtn = new longBtn(player.x + player.width,player.y + player.height,10);
+  interactBtn = new longBtn(player.x + player.width,player.y + player.height,10);
   interactBtn.exist = false;
   interactBtnText = new component("12px","Consolas","black",interactBtn.x + 10,interactBtn.y + 10,"text");
   interactBtnText.text = "E to Interact";
@@ -326,11 +326,11 @@ function longBtn(x,y,r) {
       ctx.lineTo(this.x+(9*r), this.y);
       ctx.arc(this.x+(9*r), this.y+r, r,1.5 * Math.PI,0);
       ctx.lineTo(this.x+(10*r),this.y+(3*r));
-      ctx.arc(this.x+(9*r), this.y+(3*r), r,0,.5 * Math.PI);
+      ctx.arc(this.x+(9*r), this.y+(3*r), r,0,0.5 * Math.PI);
       ctx.lineTo(this.x+r,this.y+(4*r));
-      ctx.arc(this.x+r, this.y+(3*r), r,.5 * Math.PI,Math.PI);
+      ctx.arc(this.x+r, this.y+(3*r), r,0.5 * Math.PI,Math.PI);
       ctx.lineTo(this.x,this.y+r);
-      ctx.fillStyle = 'rgb(10,10,10,.5)';
+      ctx.fillStyle = 'rgb(80,80,80,0.3)';
       ctx.fill();
     }
   },
