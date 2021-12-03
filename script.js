@@ -113,9 +113,12 @@ function component(width, height, color, x, y, type) {
   this.y = y; 
   this.update = function() {
     if (this.exist == true) {
-      ctx = scene.context;
+      var ctx = scene.context;
       if (this.type == "text") {
         ctx.font = this.width + " " + this.height;
+        if (type == "text") {
+          this.measureText = ctx.measureText(this.text);
+        }
         ctx.fillStyle = this.color;
         ctx.fillText(this.text, this.x, this.y);
       } else if (type == "image") {
@@ -524,8 +527,8 @@ var x, y, scale, isObstacle;
     player.update();
     skullBtn.update();
   }
-  interactBtn.x = computer.x + 40;
-  interactBtn.y = computer.y + 40;
+  interactBtn.x = player.x + 40;
+  interactBtn.y = player.y + 40;
   interactBtnText.x = interactBtn.x + 15;
   interactBtnText.y = interactBtn.y + 15;
   interactBtn.update();
