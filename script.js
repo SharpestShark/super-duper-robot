@@ -14,7 +14,7 @@ function start() {
   skullBtn = new component(30,30,"Skull.png", 10, (window.innerHeight - 100) || (scene.canvas.height - 100),"image");
   interactBtn = new longBtn(player.x + player.width,player.y + player.height,10);
   interactBtn.exist = false;
-  interactBtnText = new component("18px","Consolas","black",interactBtn.x + 10,interactBtn.y + interactBtn.height,"text");
+  interactBtnText = new component("18px","Consolas","black",interactBtn.x + 10,interactBtn.y + interactBtn.height - 10,"text");
   interactBtnText.text = "[E] Interact";
   interactBtnText.exist = false;
   if (navigator.platform == 'iPad') {
@@ -25,7 +25,7 @@ function start() {
     myDownBtn = new arrowBtn(x+m, y+(2*m), 10, 90);
     myLeftBtn = new arrowBtn(x, y+m, 10, 180);
     myRightBtn = new arrowBtn(x+(2*m), y+m, 10, 0);
-    interactBtnText = new component("18px","FontAwesome","black",interactBtn.x + 10,interactBtn.y + interactBtn.height,"text");
+    interactBtnText = new component("18px","FontAwesome","black",interactBtn.x + 10,interactBtn.y + interactBtn.height - 10,"text");
     interactBtnText.text = "\uf25a Interact";
     interactBtnText.exist = false;
   }
@@ -530,7 +530,7 @@ var x, y, scale, isObstacle;
   interactBtn.x = player.x + player.width;
   interactBtn.y = player.y + player.height;
   interactBtnText.x = interactBtn.x + 10;
-  interactBtnText.y = interactBtn.y + interactBtn.height;
+  interactBtnText.y = interactBtn.y + interactBtn.height - 10;
   interactBtn.update();
   interactBtnText.update();
   computer.update();
