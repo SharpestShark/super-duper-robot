@@ -110,13 +110,12 @@ function component(width, height, color, x, y, type) {
   this.speedX = 0;
   this.speedY = 0;
   this.x = x;
-  this.y = y; 
+  this.y = y;
   this.update = function() {
     if (this.exist == true) {
       var ctx = scene.context;
       if (this.type == "text") {
         ctx.font = this.width + " " + this.height;
-        this.measureText = ctx.measureText(this.text);
         ctx.fillStyle = this.color;
         ctx.fillText(this.text, this.x, this.y);
       } else if (type == "image") {
@@ -526,12 +525,13 @@ var x, y, scale, isObstacle;
     skullBtn.update();
   }
   computer.update();
-  var textMatrix = interactBtnText.measureText;
+  scene.context.font = interactBtnText.width + " " + interactBtnText.height;
+  interactBtnText.measureText = scene.context.measureText(interactBtnText.text);
   interactBtn.x = player.x + player.width;
   interactBtn.y = player.y + player.height;
   interactBtn.update();
   interactBtnText.x = interactBtn.x + 10;
-  interactBtnText.y = interactBtn.y + ((interactBtn.height - (Math.abs(textMatrix.actualBoundingBoxAscent) + Math.abs(textMatrix.actualBoundingBoxDescent)))/2);
+  interactBtnText.y = interactBtn.y + ((interactBtn.height - (Math.abs(interactBtnText.measureText.actualBoundingBoxAscent) + Math.abs(interactBtnText.measureText.actualBoundingBoxDescent)))/2);
   interactBtnText.update();
   if (computer.interacted == true) {
     computer.xBtn.update();
