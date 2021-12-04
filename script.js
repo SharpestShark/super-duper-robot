@@ -14,7 +14,7 @@ function start() {
   skullBtn = new component(30,30,"Skull.png", 10, (window.innerHeight - 100) || (scene.canvas.height - 100),"image");
   interactBtn = new longBtn(player.x + player.width,player.y + player.height,10);
   interactBtn.exist = false;
-  interactBtnText = new component("18px","Consolas","black",interactBtn.x + 10,interactBtn.y + (interactBtn.height/2),"text");
+  interactBtnText = new component("20px","Consolas","black",interactBtn.x + 10,interactBtn.y + (interactBtn.height/2),"text");
   interactBtnText.text = "[E] Interact";
   interactBtnText.exist = false;
   if (navigator.platform == 'iPad') {
@@ -534,8 +534,20 @@ var x, y, scale, isObstacle;
   interactBtn.x = player.x + player.width;
   interactBtn.y = player.y + player.height;
   interactBtn.update();
+  /*scene.context.beginPath();
+scene.context.moveTo(interactBtn.x,interactBtn.y);
+scene.context.lineTo(interactBtn.x + interactBtn.width, interactBtn.y);
+scene.context.moveTo(interactBtn.x,interactBtn.y + interactBtn.height);
+scene.context.lineTo(interactBtn.x + interactBtn.width, interactBtn.y + interactBtn.height);
+scene.context.moveTo(interactBtn.x,interactBtn.y + (interactBtn.height/2));
+scene.context.lineTo(interactBtn.x + interactBtn.width, interactBtn.y + (interactBtn.height/2));
+scene.context.moveTo(interactBtnText.x,interactBtnText.y - interactBtnText.measureText.actualBoundingBoxAscent);
+scene.context.lineTo(interactBtnText.x + interactBtnText.measureText.width, interactBtnText.y - interactBtnText.measureText.actualBoundingBoxAscent);
+scene.context.moveTo(interactBtnText.x,interactBtnText.y + interactBtnText.measureText.actualBoundingBoxDescent);
+scene.context.lineTo(interactBtnText.x + interactBtnText.measureText.width, interactBtnText.y + interactBtnText.measureText.actualBoundingBoxDescent);
+scene.context.stroke();*/
   interactBtnText.x = interactBtn.x + 10;
-  interactBtnText.y = interactBtn.y + ((interactBtn.height - (Math.abs(interactBtnText.measureText.actualBoundingBoxAscent) + Math.abs(interactBtnText.measureText.actualBoundingBoxDescent)))/2);
+  interactBtnText.y = interactBtn.y + (interactBtn.height*0.6);
   interactBtnText.update();
   if (computer.interacted == true) {
     computer.xBtn.update();
