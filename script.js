@@ -116,9 +116,7 @@ function component(width, height, color, x, y, type) {
       var ctx = scene.context;
       if (this.type == "text") {
         ctx.font = this.width + " " + this.height;
-        if (type == "text") {
-          this.measureText = ctx.measureText(this.text);
-        }
+        this.measureText = ctx.measureText(this.text);
         ctx.fillStyle = this.color;
         ctx.fillText(this.text, this.x, this.y);
       } else if (type == "image") {
@@ -530,7 +528,7 @@ var x, y, scale, isObstacle;
   interactBtn.x = player.x + player.width;
   interactBtn.y = player.y + player.height;
   interactBtnText.x = interactBtn.x + 10;
-  interactBtnText.y = interactBtn.y + (interactBtn.height/2);
+  interactBtnText.y = interactBtn.y + ((interactBtn.height - (Math.abs(interactBtnText.measureText.actualBoundingBoxAscent) + Math.abs(interactBtnText.measureText.actualBoundingBoxDescent)))/2);
   interactBtn.update();
   interactBtnText.update();
   computer.update();
