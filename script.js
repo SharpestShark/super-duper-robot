@@ -408,6 +408,7 @@ var x, y, scale, isObstacle;
   var i;
   if (navigator.platform.startsWith('Win')) {
   if (scene.keys && (scene.keys[37] || scene.keys[65])) {
+    computer.x += player.speedX;
     player.x -= player.speedX;
     for (i = 0; i < myObstacles.length; i += 1) {
       myObstacles[i].x += speedX;
@@ -415,6 +416,7 @@ var x, y, scale, isObstacle;
     }
   }
   if (scene.keys && (scene.keys[39] || scene.keys[68])) {
+    computer.x -= player.speedX;
     player.x += player.speedX;
     for (i = 0; i < myObstacles.length; i += 1) {
       myObstacles[i].x -= speedX;
@@ -422,6 +424,7 @@ var x, y, scale, isObstacle;
     }
   }
   if (scene.keys && (scene.keys[38] || scene.keys[87])) {
+    computer.y += player.speedY;
     player.y -= player.speedY;
     for (i = 0; i < myObstacles.length; i += 1) {
       myObstacles[i].y += speedY;
@@ -429,6 +432,7 @@ var x, y, scale, isObstacle;
     }
   }
   if (scene.keys && (scene.keys[40] || scene.keys[83])) {
+    computer.y -= player.speedY;
     player.y += player.speedY;
     for (i = 0; i < myObstacles.length; i += 1) {
       myObstacles[i].y -= speedY;
