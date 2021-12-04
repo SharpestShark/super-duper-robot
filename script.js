@@ -14,7 +14,7 @@ function start() {
   skullBtn = new component(30,30,"Skull.png", 10, (window.innerHeight - 100) || (scene.canvas.height - 100),"image");
   interactBtn = new longBtn(player.x + player.width,player.y + player.height,10);
   interactBtn.exist = false;
-  interactBtnText = new component("18px","Consolas","black",interactBtn.x + 10,interactBtn.y + (interactBtn.height/4),"text");
+  interactBtnText = new component("18px","Consolas","black",interactBtn.x + 10,interactBtn.y + (interactBtn.height/2),"text");
   interactBtnText.text = "[E] Interact";
   interactBtnText.exist = false;
   if (navigator.platform == 'iPad') {
