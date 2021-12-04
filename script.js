@@ -525,14 +525,14 @@ var x, y, scale, isObstacle;
     player.update();
     skullBtn.update();
   }
+  computer.update();
   var textMatrix = interactBtnText.measureText;
   interactBtn.x = player.x + player.width;
   interactBtn.y = player.y + player.height;
+  interactBtn.update();
   interactBtnText.x = interactBtn.x + 10;
   interactBtnText.y = interactBtn.y + ((interactBtn.height - (Math.abs(textMatrix.actualBoundingBoxAscent) + Math.abs(textMatrix.actualBoundingBoxDescent)))/2);
-  interactBtn.update();
   interactBtnText.update();
-  computer.update();
   if (computer.interacted == true) {
     computer.xBtn.update();
   }
