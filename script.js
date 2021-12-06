@@ -474,37 +474,12 @@ var x, y, scale, isObstacle;
       }
     }
     if (skullBtn.clicked()) {
-      if (
-        !document.fullscreenElement || /* Standard syntax */
-        !document.webkitFullscreenElement || /* Safari and Opera syntax */
-        !document.msFullscreenElement /* IE11 syntax */
-      ) {
-      if (
-	      document.fullscreenEnabled || /* Standard syntax */
-        document.webkitFullscreenEnabled || /* Safari */
-        document.msFullscreenEnabled/* IE11 */
-      ) {
-        if (document.documentElement.requestFullscreen) {
-          document.documentElement.requestFullscreen().catch(err => {
-            console.log(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
-          });
-        } else if (document.documentElement.webkitRequestFullscreen) { /* Safari */
-          document.documentElement.webkitRequestFullscreen();
-        } else if (document.documentElement.msRequestFullscreen) { /* IE11 */
-          document.documentElement.msRequestFullscreen();
-        }
-      }
-      } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) { // Safari
-          document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) { // IE11
-          document.msExitFullscreen();
-        }
+      if (document.fullscreenElement != null) {
+        openFullscreen();
+      } else if (document.fullscreenElement) {
+        closeFullscreen();
       }
     }
-  }
   doMap();
   if (navigator.platform == 'iPad') {
     myUpBtn.update(); 
@@ -640,5 +615,26 @@ function xBtn(x,y) {
       clicked = false;
     }
     return clicked;
+  }
+}
+
+function openFullscreen() {
+  var elem = scene.canvas;
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+}
+
+function closeFullscreen() {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) { /* Safari */
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) { /* IE11 */
+    document.msExitFullscreen();
   }
 }
