@@ -473,13 +473,14 @@ var x, y, scale, isObstacle;
         myObstacles[i].update();
       }
     }
-    if (skullBtn.clicked()) {
-      if (document.fullscreenElement != null) {
-        openFullscreen();
-      } else if (document.fullscreenElement) {
-        closeFullscreen();
-      }
+  }
+  if (skullBtn.clicked()) {
+    if (document.fullscreenElement != null) {
+      openFullscreen();
+    } else if (document.fullscreenElement) {
+      closeFullscreen();
     }
+  }
   doMap();
   if (navigator.platform == 'iPad') {
     myUpBtn.update(); 
