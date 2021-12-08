@@ -2,6 +2,7 @@ var player, computer, myUpBtn, myDownBtn, myLeftBtn, myRightBtn, endMessage, res
 var myObstacles = [];
 var mySpeed = [];
 var health, hpVis;
+var ctx;
 
 function start() {
   player = new component(30, 30, "red", 10, 120);
@@ -44,30 +45,30 @@ var scene = {
     window.addEventListener('mousedown', function (e) {
       scene.x = e.pageX;
       scene.y = e.pageY;
-    })
+    });
     window.addEventListener('mouseup', function (e) {
       scene.x = false;
       scene.y = false;
-    })
+    });
     window.addEventListener('touchstart', function (e) {
       scene.x = e.pageX;
       scene.y = e.pageY;
-    })
+    });
     window.addEventListener('touchend', function (e) {
       scene.x = false;
       scene.y = false;
-    })
+    });
     window.addEventListener('keydown', function (e) {
       scene.keys = (scene.keys || []);
       scene.keys[e.keyCode] = true;
-    })
+    });
     window.addEventListener('keyup', function (e) {
       scene.keys[e.keyCode] = false;
-    })
+    });
     window.addEventListener('touchmove', function (e) {
       scene.x = e.touches[0].screenX;
       scene.y = e.touches[0].screenY;
-    })
+    });
   },
   clear : function() {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -88,7 +89,7 @@ var scene = {
       start();
     }
   }
-}
+};
 
 function everyinterval(n) {
   if ((scene.frameNo / n) % 1 == 0) {return true;}
@@ -159,7 +160,7 @@ function component(width, height, color, x, y, type) {
       crash = false;
     }
     return crash;
-  }
+  };
 }
 
 function arrowBtn(x,y,r,angle) {
@@ -233,8 +234,9 @@ ctx.fill();
       clicked = false;
     }
     return clicked;
-  }
+  };
 }
+
 //measurements of apple: ctx.strokeRect(p1x - (1.7*mul),p1y - (1.3*mul),(p1x + (1.7*mul))-(p1x - (1.7*mul)),(endpy + mul)-(p1y - (.6*mul)));
 
 function apple(x, y, scale) {
@@ -305,7 +307,7 @@ function apple(x, y, scale) {
       crash = false;
     }
     return crash;
-  }
+  };
 }
 
 function longBtn(x,y,r) {
@@ -341,7 +343,7 @@ function longBtn(x,y,r) {
       clicked = false;
     }
     return clicked;
-  }
+  };
 }
 
 function updateScene() {
@@ -555,7 +557,7 @@ function openComputer(computer) {
       ctx.restore();
     }
     computer.xBtn.update();
-  }
+  };
 }
 function xBtn(x,y) {
   this.r = 10;
@@ -616,7 +618,7 @@ function xBtn(x,y) {
       clicked = false;
     }
     return clicked;
-  }
+  };
 }
 
 function openFullscreen() {
