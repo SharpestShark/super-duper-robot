@@ -35,11 +35,14 @@ function start() {
 
 var scene = {
   canvas: document.createElement("canvas"),
+  allow: document.createAttribute("allow"),
   start: function() {
     this.canvas.width = window.innerWidth - 20;
     this.canvas.height = window.innerHeight - 20;
     this.context = this.canvas.getContext("2d");
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+    this.allow.value = "fullscreen";
+    this.canvas.setAttributeNode(this.allow);
     this.frameNo = 0;
     this.interval = setInterval(updateScene, 20);
     window.addEventListener('mousedown', function (e) {
