@@ -367,14 +367,29 @@ var x, y, scale, isObstacle;
       myObstacles[i].exist = false;
     } 
   }
+  var speedT,d,time;
+  for (var i = 0; i < mySpeed.length; i += 1) {
+    if (player.crashWith(mySpeed[i]) && (mySpeed[i].exist == true)) {
+      if (speedT < 2) {
+        if (mySpeed[i].heal == 1) {
+          speedT += 0.1;
+        }
+	      if ((speedT > 1) && (speedT <= 2)) {
+          player.color = "blue"
+	      }
+      }
+      mySpeed[i].exist = false;
+      d = new Date();
+      time = Date.now();
+    }
+  }
+  if (Date.now() - time < 5000) {
+    speedT -= 0.1;
+  }
   var speedX = 1, speedY = 1;
-  player.speedX = speedX;
-  player.speedY = speedY;
   if (player.crashWith(computer) && (computer.interacted == false)) {
-    speedX = 0;
-    speedY = 0;
-    player.speedX = speedX;
-    player.speedY = speedY;
+    speedT = 0;
+    speedX,speedY = speedT;
     interactBtn.exist = true;
     interactBtnText.exist = true;
     if ((interactBtn && interactBtn.clicked()) || (scene.keys && (scene.keys[69]))) {
@@ -399,7 +414,7 @@ var x, y, scale, isObstacle;
     if (isObstacle == 1) {
     	myObstacles.push(new apple(x, y, scale));
     } else if (isObstacle == 0) {
-    	// mySpeed.push(new component(width, width, "coool.png", x, y, "image"));
+    	mySpeed.push(new component(scale, scale, "coool.png", x, y, "image"));
     }
 
     if ((x >= (player.x - 20) && x <= (player.x + 20)) && (y >= (player.y - 20) && y <= (player.y + 20))) {
@@ -409,39 +424,49 @@ var x, y, scale, isObstacle;
   for (i = 0; i < myObstacles.length; i += 1) {
 	  myObstacles[i].heal = 1;
 	  myObstacles[i].update();
+    mySpeed[i].heal = 1;
+    mySpeed[i].update();
   }
-  var i;
+  player.speedX = speedT, player.speedY = speedT;
   if (navigator.platform.startsWith('Win')) {
   if (scene.keys && (scene.keys[37] || scene.keys[65])) {
     computer.x += player.speedX;
     player.x -= player.speedX;
     for (i = 0; i < myObstacles.length; i += 1) {
-      myObstacles[i].x += speedX;
+      myObstacles[i].x += speedT;
+      mySpeed[i].x += speedT;
       myObstacles[i].update();
+      mySpeed[i].update();
     }
   }
   if (scene.keys && (scene.keys[39] || scene.keys[68])) {
     computer.x -= player.speedX;
     player.x += player.speedX;
     for (i = 0; i < myObstacles.length; i += 1) {
-      myObstacles[i].x -= speedX;
+      myObstacles[i].x -= speedT;
+      mySpeed[i].x -= speedT;
       myObstacles[i].update();
+      mySpeed[i].update();
     }
   }
   if (scene.keys && (scene.keys[38] || scene.keys[87])) {
     computer.y += player.speedY;
     player.y -= player.speedY;
     for (i = 0; i < myObstacles.length; i += 1) {
-      myObstacles[i].y += speedY;
+      myObstacles[i].y += speedT;
+      mySpeed[i].y += speedT;
       myObstacles[i].update();
+      mySpeed[i].update();
     }
   }
   if (scene.keys && (scene.keys[40] || scene.keys[83])) {
     computer.y -= player.speedY;
     player.y += player.speedY;
     for (i = 0; i < myObstacles.length; i += 1) {
-      myObstacles[i].y -= speedY;
+      myObstacles[i].y -= speedT;
+      mySpeed[i].y -= speedT;
       myObstacles[i].update();
+      mySpeed[i].update();
     }
   }
 }
@@ -450,32 +475,40 @@ var x, y, scale, isObstacle;
       computer.y += player.speedY;
       player.y -= player.speedY;
       for (i = 0; i < myObstacles.length; i += 1) {
-        myObstacles[i].y += speedY;
-        myObstacles[i].update();
+        myObstacles[i].y += speedT;
+      mySpeed[i].y += speedT;
+      myObstacles[i].update();
+      mySpeed[i].update();
       }
     }
     if (myDownBtn && myDownBtn.clicked()) {
       computer.y -= player.speedY;
       player.y += player.speedY;
       for (i = 0; i < myObstacles.length; i += 1) {
-        myObstacles[i].y -= speedY;
-        myObstacles[i].update();
+        myObstacles[i].y -= speedT;
+      mySpeed[i].y -= speedT;
+      myObstacles[i].update();
+      mySpeed[i].update();
       }
     }
     if (myLeftBtn && myLeftBtn.clicked()) {
       computer.x += player.speedX;
       player.x -= player.speedX;
       for (i = 0; i < myObstacles.length; i += 1) {
-        myObstacles[i].x += speedX;
-        myObstacles[i].update();
+        myObstacles[i].x += speedT;
+      mySpeed[i].x += speedT;
+      myObstacles[i].update();
+      mySpeed[i].update();
       }
     }
     if (myRightBtn && myRightBtn.clicked()) {
       computer.x -= player.speedX;
       player.x += player.speedX;
       for (i = 0; i < myObstacles.length; i += 1) {
-        myObstacles[i].x -= speedX;
-        myObstacles[i].update();
+        myObstacles[i].x -= speedT;
+      mySpeed[i].x -= speedT;
+      myObstacles[i].update();
+      mySpeed[i].update();
       }
     }
   }
