@@ -2,7 +2,6 @@ var player, computer, myUpBtn, myDownBtn, myLeftBtn, myRightBtn, endMessage, res
 var myObstacles = [];
 var mySpeed = [];
 var health, hpVis;
-var ctx;
 
 function start() {
   player = new component(30, 30, "red", 10, 120);
@@ -369,6 +368,7 @@ var x, y, scale, isObstacle;
     } 
   }
   var speedT,d,time;
+  speedT = 1;
   for (var i = 0; i < mySpeed.length; i += 1) {
     if (player.crashWith(mySpeed[i]) && (mySpeed[i].exist == true)) {
       if (speedT < 2) {
@@ -383,6 +383,8 @@ var x, y, scale, isObstacle;
       d = new Date();
       time = Date.now();
     }
+  } else {
+    speedT = 1;
   }
   if ((Date.now() - time) < 5000) {
     speedT -= 0.1;
@@ -390,7 +392,8 @@ var x, y, scale, isObstacle;
   var speedX = 1, speedY = 1;
   if (player.crashWith(computer) && (computer.interacted == false)) {
     speedT = 0;
-    speedX,speedY = speedT;
+    player.speedX = speedT, player.speedY = speedT;
+    speedX = speedT, speedY = speedT;
     interactBtn.exist = true;
     interactBtnText.exist = true;
     if ((interactBtn && interactBtn.clicked()) || (scene.keys && (scene.keys[69]))) {
@@ -428,7 +431,7 @@ var x, y, scale, isObstacle;
     mySpeed[i].sped = 1;
     mySpeed[i].update();
   }
-  player.speedX = speedT, player.speedY = speedT;
+  speedX = speedT, speedY = speedT, player.speedX = speedT, player.speedY = speedT;
   if (navigator.platform.startsWith('Win')) {
   if (scene.keys && (scene.keys[37] || scene.keys[65])) {
     computer.x += player.speedX;
