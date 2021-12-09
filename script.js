@@ -376,18 +376,18 @@ var x, y, scale, isObstacle;
           speedT += 0.1;
         }
 	      if ((speedT > 1) && (speedT <= 2)) {
-          player.color = "blue"
+          player.color = "blue";
 	      }
       }
       mySpeed[i].exist = false;
       d = new Date();
       time = Date.now();
     }
-  } else {
-    speedT = 1;
   }
-  if ((Date.now() - time) < 5000) {
-    speedT -= 0.1;
+  if (speedT > 1){
+    if ((time) && ((Date.now() - time) < 5000)) {
+      speedT -= 0.1;
+    }
   }
   var speedX = 1, speedY = 1;
   if (player.crashWith(computer) && (computer.interacted == false)) {
