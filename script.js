@@ -428,6 +428,8 @@ var x, y, scale, isObstacle;
   for (i = 0; i < myObstacles.length; i += 1) {
 	  myObstacles[i].heal = 1;
 	  myObstacles[i].update();
+  }
+  for (var i = 0; i < mySpeed.length; i += 1) {
     mySpeed[i].sped = 1;
     mySpeed[i].update();
   }
@@ -438,8 +440,10 @@ var x, y, scale, isObstacle;
     player.x -= player.speedX;
     for (i = 0; i < myObstacles.length; i += 1) {
       myObstacles[i].x += speedT;
-      mySpeed[i].x += speedT;
       myObstacles[i].update();
+    }
+    for (i = 0; i < mySpeed.length; i += 1) {
+      mySpeed[i].x += speedT;      
       mySpeed[i].update();
     }
   }
@@ -448,8 +452,10 @@ var x, y, scale, isObstacle;
     player.x += player.speedX;
     for (i = 0; i < myObstacles.length; i += 1) {
       myObstacles[i].x -= speedT;
-      mySpeed[i].x -= speedT;
       myObstacles[i].update();
+    }
+    for (i = 0; i < mySpeed.length; i += 1) {
+      mySpeed[i].x -= speedT;      
       mySpeed[i].update();
     }
   }
@@ -458,8 +464,10 @@ var x, y, scale, isObstacle;
     player.y -= player.speedY;
     for (i = 0; i < myObstacles.length; i += 1) {
       myObstacles[i].y += speedT;
-      mySpeed[i].y += speedT;
       myObstacles[i].update();
+    }
+    for (i = 0; i < mySpeed.length; i += 1) {
+      mySpeed[i].y += speedT;      
       mySpeed[i].update();
     }
   }
@@ -468,8 +476,10 @@ var x, y, scale, isObstacle;
     player.y += player.speedY;
     for (i = 0; i < myObstacles.length; i += 1) {
       myObstacles[i].y -= speedT;
-      mySpeed[i].y -= speedT;
       myObstacles[i].update();
+    }
+    for (i = 0; i < mySpeed.length; i += 1) {
+      mySpeed[i].y -= speedT;      
       mySpeed[i].update();
     }
   }
@@ -480,9 +490,11 @@ var x, y, scale, isObstacle;
       player.y -= player.speedY;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].y += speedT;
-      mySpeed[i].y += speedT;
-      myObstacles[i].update();
-      mySpeed[i].update();
+        myObstacles[i].update();
+      }
+      for (i = 0; i < mySpeed.length; i += 1) {
+        mySpeed[i].y += speedT;      
+        mySpeed[i].update();
       }
     }
     if (myDownBtn && myDownBtn.clicked()) {
@@ -490,9 +502,11 @@ var x, y, scale, isObstacle;
       player.y += player.speedY;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].y -= speedT;
-      mySpeed[i].y -= speedT;
-      myObstacles[i].update();
-      mySpeed[i].update();
+        myObstacles[i].update();
+      }
+      for (i = 0; i < mySpeed.length; i += 1) {
+        mySpeed[i].y -= speedT;      
+        mySpeed[i].update();
       }
     }
     if (myLeftBtn && myLeftBtn.clicked()) {
@@ -500,9 +514,11 @@ var x, y, scale, isObstacle;
       player.x -= player.speedX;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].x += speedT;
-      mySpeed[i].x += speedT;
-      myObstacles[i].update();
-      mySpeed[i].update();
+        myObstacles[i].update();
+      }
+      for (i = 0; i < mySpeed.length; i += 1) {
+        mySpeed[i].x += speedT;      
+        mySpeed[i].update();
       }
     }
     if (myRightBtn && myRightBtn.clicked()) {
@@ -510,9 +526,11 @@ var x, y, scale, isObstacle;
       player.x += player.speedX;
       for (i = 0; i < myObstacles.length; i += 1) {
         myObstacles[i].x -= speedT;
-      mySpeed[i].x -= speedT;
-      myObstacles[i].update();
-      mySpeed[i].update();
+        myObstacles[i].update();
+      }
+      for (i = 0; i < mySpeed.length; i += 1) {
+        mySpeed[i].x -= speedT;      
+        mySpeed[i].update();
       }
     }
   }
