@@ -105,6 +105,7 @@ function component(width, height, color, x, y, type) {
   this.exist = true;
   this.damage = '5';
   this.type = type;
+  this.sped = 0;
   if (type == "image") {
     this.image = new Image();
     this.image.src = color;
@@ -174,7 +175,7 @@ function arrowBtn(x,y,r,angle) {
   this.update = function() {
     ctx = scene.context;
     ctx.save();
-    // var tx, ty;
+    var tx, ty;
     if (angle == 90) {
       tx = this.x + (4*r);
       x = 0;
@@ -371,7 +372,7 @@ var x, y, scale, isObstacle;
   for (var i = 0; i < mySpeed.length; i += 1) {
     if (player.crashWith(mySpeed[i]) && (mySpeed[i].exist == true)) {
       if (speedT < 2) {
-        if (mySpeed[i].heal == 1) {
+        if (mySpeed[i].sped == 1) {
           speedT += 0.1;
         }
 	      if ((speedT > 1) && (speedT <= 2)) {
@@ -383,7 +384,7 @@ var x, y, scale, isObstacle;
       time = Date.now();
     }
   }
-  if (Date.now() - time < 5000) {
+  if ((Date.now() - time) < 5000) {
     speedT -= 0.1;
   }
   var speedX = 1, speedY = 1;
@@ -424,7 +425,7 @@ var x, y, scale, isObstacle;
   for (i = 0; i < myObstacles.length; i += 1) {
 	  myObstacles[i].heal = 1;
 	  myObstacles[i].update();
-    mySpeed[i].heal = 1;
+    mySpeed[i].sped = 1;
     mySpeed[i].update();
   }
   player.speedX = speedT, player.speedY = speedT;
