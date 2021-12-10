@@ -379,8 +379,8 @@ var x, y, scale, isObstacle;
       }
       mySpeed[i].exist = false;
       var s = [new Date().getSeconds()];
-      clock(s);
-      while ((clock < 5) && (speedT != 0)) {
+      var result = clock(s[0]);
+      while ((result < 5) && (speedT != 0)) {
         speedT -= 0.2;
       }
   }
@@ -678,11 +678,11 @@ function xBtn(x,y) {
 }
 
 function clock(s) {
-  var diffS = new Date().getSeconds() - s[0];
+  var diffS = new Date().getSeconds() - s;
   if (diffS < 5) {
     var loop = setTimeout(clock,1000);
   } else {
-    clearInterval(loop);
+    clearTimeout(loop);
   }
   return diffS;
 }
