@@ -368,8 +368,7 @@ var x, y, scale, isObstacle;
       myObstacles[i].exist = false;
     } 
   }
-  var speedT,d,time;
-  speedT = 1;
+  var speedT = 1;
   for (var i = 0; i < mySpeed.length; i += 1) {
     if (player.crashWith(mySpeed[i]) && (mySpeed[i].exist == true)) {
       if ((speedT >= 1) && (speedT < 2)) {
@@ -379,13 +378,7 @@ var x, y, scale, isObstacle;
         player.color = "blue";
       }
       mySpeed[i].exist = false;
-      d = new Date();
-      time = Date.now();
-    }
-  }
-  if (speedT > 1){
-    if ((time) && ((Date.now() - time) < 5000)) {
-      speedT -= 0.1;
+
     }
   }
   var speedX = 1, speedY = 1;
