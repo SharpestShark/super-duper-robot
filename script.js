@@ -380,8 +380,10 @@ var x, y, scale, isObstacle;
           player.color = "blue";
           player.stat.text = speedT.toString();
           player.stat.exist = true;
+          player.stat.update();
 	      } else if ((speedT <= 1) && (speedT > 0)) {
           player.stat.exist = false;
+          player.stat.update();
         }
       }
       mySpeed[i].exist = false;
@@ -575,9 +577,7 @@ var x, y, scale, isObstacle;
   interactBtn.x = player.x + player.width;
   interactBtn.y = player.y + player.height;
   interactBtn.update();
-  if ((player.stat) && (speedT > 1)) {
-    player.stat.update();
-  }
+
   /*scene.context.beginPath();
 scene.context.moveTo(interactBtn.x,interactBtn.y);
 scene.context.lineTo(interactBtn.x + interactBtn.width, interactBtn.y);
