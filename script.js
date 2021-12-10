@@ -3,7 +3,6 @@ var myObstacles = [];
 var mySpeed = [];
 var health, hpVis;
 var speedT = 1;
-var s;
 
 function start() {
   player = new component(30, 30, "red", 10, 120);
