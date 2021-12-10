@@ -373,7 +373,7 @@ var x, y, scale, isObstacle;
     if (player.crashWith(mySpeed[i]) && (mySpeed[i].exist == true)) {
       if (speedT < 2) {
         if (mySpeed[i].sped == 1) {
-          speedT += 0.1;
+          speedT += 0.2;
         }
 	      if ((speedT > 1) && (speedT <= 2)) {
           player.color = "blue";
