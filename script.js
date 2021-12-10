@@ -371,12 +371,16 @@ var x, y, scale, isObstacle;
   speedT = 1;
   for (var i = 0; i < mySpeed.length; i += 1) {
     if (player.crashWith(mySpeed[i]) && (mySpeed[i].exist == true)) {
+      player.stat = new component("20px","Consolas","black",player.x,player.y - 20,"text");
+      player.stat.text = speedT.toString();
+      player.stat.exist = false;
       if (speedT < 2) {
         if (mySpeed[i].sped == 1) {
           speedT += 0.2;
         }
 	      if ((speedT > 1) && (speedT <= 2)) {
           player.color = "blue";
+          player.stat.exist = true;
 	      }
       }
       mySpeed[i].exist = false;
@@ -570,6 +574,9 @@ var x, y, scale, isObstacle;
   interactBtn.x = player.x + player.width;
   interactBtn.y = player.y + player.height;
   interactBtn.update();
+  if (speedT > 1) {
+    player.stat.update();
+  }
   /*scene.context.beginPath();
 scene.context.moveTo(interactBtn.x,interactBtn.y);
 scene.context.lineTo(interactBtn.x + interactBtn.width, interactBtn.y);
