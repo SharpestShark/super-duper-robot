@@ -2,6 +2,8 @@ var player, computer, myUpBtn, myDownBtn, myLeftBtn, myRightBtn, endMessage, res
 var myObstacles = [];
 var mySpeed = [];
 var health, hpVis;
+var speedT = 1;
+var s;
 
 function start() {
   player = new component(30, 30, "red", 10, 120);
@@ -368,7 +370,6 @@ var x, y, scale, isObstacle;
       myObstacles[i].exist = false;
     } 
   }
-  var speedT = 1;
   for (var i = 0; i < mySpeed.length; i += 1) {
     if (player.crashWith(mySpeed[i]) && (mySpeed[i].exist == true)) {
       if ((speedT >= 1) && (speedT < 2)) {
@@ -378,8 +379,11 @@ var x, y, scale, isObstacle;
         player.color = "blue";
       }
       mySpeed[i].exist = false;
-
-    }
+      var s = [new Date().getSeconds()];
+      clock(s);
+      while ((clock < 5) && (speedT != 0)) {
+        speedT -= 0.2;
+      }
   }
   var speedX = 1, speedY = 1;
   if (player.crashWith(computer) && (computer.interacted == false)) {
@@ -672,6 +676,16 @@ function xBtn(x,y) {
     }
     return clicked;
   };
+}
+
+function clock(s) {
+  var diffS = new Date().getSeconds() - s[0];
+  if (diffS < 5) {
+    var loop = setTimeout(clock,1000);
+  } else {
+    clearInterval(loop);
+  }
+  return diffS;
 }
 
 function openFullscreen() {
