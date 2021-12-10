@@ -373,17 +373,16 @@ var x, y, scale, isObstacle;
     if (player.crashWith(mySpeed[i]) && (mySpeed[i].exist == true)) {
       player.stat = new component("20px","Consolas","black",player.x,player.y - 20,"text");
       player.stat.exist = false;
-      if (speedT < 2) {
+      if ((speedT >= 1) && (speedT < 2)) {
         if (mySpeed[i].sped == 1) {
           speedT += 0.2;
         }
-	      if ((speedT > 1) && (speedT <= 2)) {
-          player.color = "blue";
-          player.stat.text = speedT.toString();
-          player.stat.exist = true;
-	      }
+        player.color = "blue";
+        player.stat.text = speedT.toString();
+        player.stat.exist = true;
       }
       mySpeed[i].exist = false;
+      player.stat.update();
       d = new Date();
       time = Date.now();
     }
@@ -566,7 +565,6 @@ var x, y, scale, isObstacle;
     hpVis.text = health.value.toString();
     hpVis.update();
     player.update();
-    player.stat.update();
     skullBtn.update();
   }
   computer.update();
