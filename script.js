@@ -12,6 +12,7 @@ function start() {
   hpVis = new component("12px", "Consolas", "white", health.x + 2, health.y + 13.5, "text");
   hpVis.text = health.value.toString();
   skullBtn = new component(30,30,"Skull.png", 10, (window.innerHeight - 100) || (scene.canvas.height - 100),"image");
+  player.stat = new component("20px","Consolas","black",skullBtn.x,skullBtn.y - 20,"text");
   interactBtn = new longBtn(player.x + player.width,player.y + player.height,10);
   interactBtn.exist = false;
   interactBtnText = new component("20px","Consolas","black",interactBtn.x + 10,interactBtn.y + (interactBtn.height/2),"text");
@@ -371,18 +372,13 @@ var x, y, scale, isObstacle;
   speedT = 1;
   for (var i = 0; i < mySpeed.length; i += 1) {
     if (player.crashWith(mySpeed[i]) && (mySpeed[i].exist == true)) {
-      player.stat = new component("20px","Consolas","black",player.x,player.y - 20,"text");
-      player.stat.exist = false;
       if ((speedT >= 1) && (speedT < 2)) {
         if (mySpeed[i].sped == 1) {
           speedT += 0.2;
         }
         player.color = "blue";
-        player.stat.text = speedT.toString();
-        player.stat.exist = true;
       }
       mySpeed[i].exist = false;
-      player.stat.update();
       d = new Date();
       time = Date.now();
     }
@@ -566,6 +562,8 @@ var x, y, scale, isObstacle;
     hpVis.update();
     player.update();
     skullBtn.update();
+    player.stat.text = speedT.toString();
+    player.stat.update();
   }
   computer.update();
   scene.context.font = interactBtnText.width + " " + interactBtnText.height;
