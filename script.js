@@ -382,6 +382,7 @@ var x, y, scale, isObstacle;
       mySpeed[i].exist = false;
       var s = [new Date().getSeconds()];
       clock();
+    }
   }
   var speedX = 1, speedY = 1;
   if (player.crashWith(computer) && (computer.interacted == false)) {
