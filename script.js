@@ -3,6 +3,8 @@ var myObstacles = [];
 var mySpeed = [];
 var health, hpVis;
 var speedT = 1;
+// speed decrease timing variable:
+var timeSince;
 
 function start() {
   player = new component(30, 30, "red", 10, 120);
@@ -379,10 +381,7 @@ var x, y, scale, isObstacle;
       }
       mySpeed[i].exist = false;
       var s = [new Date().getSeconds()];
-      var result = clock(s[0]);
-      while ((result < 5) && (speedT != 0)) {
-        speedT -= 0.2;
-      }
+      clock();
   }
   var speedX = 1, speedY = 1;
   if (player.crashWith(computer) && (computer.interacted == false)) {
@@ -677,13 +676,13 @@ function xBtn(x,y) {
   };
 }
 
-function clock(s) {
-  var diffS = new Date().getSeconds() - s;
-  var loop = setTimeout(clock,1000);
-  if (diffS > 5) {
-    clearTimeout(loop);
-  }
-  return diffS;
+function clock() {
+if ((timeSince && (timeSince < 5)) || (!timeSince)) {
+var l = setTimeout(clock, 1000);
+timeSince = new Date().getSeconds() - s[0];
+} else if (timeSince && (timeSince = 5)) {
+clearTimeout(l);
+}
 }
 
 function openFullscreen() {
