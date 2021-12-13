@@ -683,6 +683,7 @@ var l = setTimeout(clock, 1000);
 timeSince = new Date().getSeconds() - s[0];
 } else if (timeSince && (timeSince = 5)) {
 clearTimeout(l);
+	return speedT -= 0.2;
 }
 }
 
