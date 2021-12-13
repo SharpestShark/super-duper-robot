@@ -679,9 +679,8 @@ function xBtn(x,y) {
 
 function clock(s) {
   var diffS = new Date().getSeconds() - s;
-  if (diffS < 5) {
-    var loop = setTimeout(clock,1000);
-  } else {
+  var loop = setTimeout(clock,1000);
+  if (diffS > 5) {
     clearTimeout(loop);
   }
   return diffS;
