@@ -381,7 +381,7 @@ var x, y, scale, isObstacle;
       }
       mySpeed[i].exist = false;
       var s = [new Date().getSeconds()];
-      clock();
+      clock(s);
     }
   }
   var speedX = 1, speedY = 1;
@@ -677,7 +677,7 @@ function xBtn(x,y) {
   };
 }
 
-function clock() {
+function clock(s) {
 if ((timeSince && (timeSince < 5)) || (!timeSince)) {
 var l = setTimeout(clock, 1000);
 timeSince = new Date().getSeconds() - s[0];
