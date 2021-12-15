@@ -4,7 +4,7 @@ var mySpeed = [];
 var health, hpVis;
 var speedT = 1;
 // speed decrease timing variable:
-var timeSince;
+// timeSince;
 
 function start() {
   player = new component(30, 30, "red", 10, 120);
@@ -378,10 +378,20 @@ var x, y, scale, isObstacle;
           speedT += 0.2;
         }
         player.color = "blue";
+        var s = [new Date().getSeconds()];
+        new function () {
+          if (l && ((((timeSince == null) && (timeSince < 5)) || (!timeSince)) && (speedT > 1))) {
+            var l = setTimeout(clock, 1000);
+            var timeSince = new Date().getSeconds() - s[0];
+            speedT -= 0.02;
+          } else if (timeSince && (timeSince = 5)) {
+            clearTimeout(l);
+            return;
+          }
+        }
       }
       mySpeed[i].exist = false;
-      var s = [new Date().getSeconds()];
-      clock(s);
+      clock();
     }
   }
   var speedX = 1, speedY = 1;
@@ -427,6 +437,9 @@ var x, y, scale, isObstacle;
   for (var i = 0; i < mySpeed.length; i += 1) {
     mySpeed[i].sped = 1;
     mySpeed[i].update();
+  }
+  if (speedT < 1) {
+    speedT = 1;
   }
   speedX = speedT, speedY = speedT, player.speedX = speedT, player.speedY = speedT;
   if (navigator.platform.startsWith('Win')) {
@@ -678,12 +691,13 @@ function xBtn(x,y) {
 }
 
 function clock(s) {
-if ((timeSince && (timeSince < 5)) || (!timeSince)) {
+if (((timeSince && (timeSince < 5)) || (!timeSince)) && (speedT > 1)) {
 var l = setTimeout(clock, 1000);
-timeSince = new Date().getSeconds() - s[0];
+timeSince = new Date().getSeconds() - s;
+speedT -= 0.02
 } else if (timeSince && (timeSince = 5)) {
 clearTimeout(l);
-	return speedT -= 0.2;
+return;
 }
 }
 
