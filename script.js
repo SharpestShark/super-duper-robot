@@ -364,7 +364,7 @@ function carMake(width, height, color, x, y, type) {
     this.x = x;
     this.y = y;    
     this.update = function() {
-        ctx = myGameArea.context;
+        ctx = scene.context;
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate(this.angle);
@@ -614,10 +614,10 @@ var x, y, scale, spedScale, isObstacle;
 if (car){
   car.moveAngle = 0;
     car.speed = 0;
-    if (myGameArea.keys && myGameArea.keys[37]) {car.moveAngle = -1; }
-    if (myGameArea.keys && myGameArea.keys[39]) {car.moveAngle = 1; }
-    if (myGameArea.keys && myGameArea.keys[38]) {car.speed= 1; }
-    if (myGameArea.keys && myGameArea.keys[40]) {car.speed= -1; }
+    if (scene.keys && scene.keys[37]) {car.moveAngle = -1; }
+    if (scene.keys && scene.keys[39]) {car.moveAngle = 1; }
+    if (scene.keys && scene.keys[38]) {car.speed= 1; }
+    if (scene.keys && scene.keys[40]) {car.speed= -1; }
     car.newPos();
     car.update();
 }
