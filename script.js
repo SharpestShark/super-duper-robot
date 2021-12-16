@@ -1,4 +1,4 @@
-var player, computer, myUpBtn, myDownBtn, myLeftBtn, myRightBtn, endMessage, restartBtn, restartBtnText, skullBtn, interactBtn, interactBtnText;
+var player, computer, myUpBtn, myDownBtn, myLeftBtn, myRightBtn, endMessage, restartBtn, restartBtnText, skullBtn, interactBtn, interactBtnText, car;
 var myObstacles = [];
 var mySpeed = [];
 var health, hpVis;
@@ -21,6 +21,7 @@ function start() {
   interactBtnText = new component("20px","Consolas","black",interactBtn.x + 10,interactBtn.y + (interactBtn.height/2),"text");
   interactBtnText.text = "[E] Interact";
   interactBtnText.exist = false;
+  car = new carMake(30, 30, "red", 225, 225);
   if (navigator.platform == 'iPad') {
     var x = 20;
     var y = 20;
@@ -353,6 +354,31 @@ function longBtn(x,y,r) {
   };
 }
 
+function carMake(width, height, color, x, y, type) {
+    this.type = type;
+    this.width = width;
+    this.height = height;
+    this.speed = 0;
+    this.angle = 0;
+    this.moveAngle = 0;
+    this.x = x;
+    this.y = y;    
+    this.update = function() {
+        ctx = myGameArea.context;
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.fillStyle = color;
+        ctx.fillRect(this.width / -2, this.height / -2, this.width, this.height);
+        ctx.restore();    
+    }
+    this.newPos = function() {
+        this.angle += this.moveAngle * Math.PI / 180;
+        this.x += this.speed * Math.sin(this.angle);
+        this.y -= this.speed * Math.cos(this.angle);
+    }
+}
+
 function updateScene() {
 var x, y, scale, spedScale, isObstacle;
   for (var i = 0; i < myObstacles.length; i += 1) {
@@ -585,7 +611,16 @@ var x, y, scale, spedScale, isObstacle;
   interactBtn.x = player.x + player.width;
   interactBtn.y = player.y + player.height;
   interactBtn.update();
-
+if (car){
+  car.moveAngle = 0;
+    car.speed = 0;
+    if (myGameArea.keys && myGameArea.keys[37]) {car.moveAngle = -1; }
+    if (myGameArea.keys && myGameArea.keys[39]) {car.moveAngle = 1; }
+    if (myGameArea.keys && myGameArea.keys[38]) {car.speed= 1; }
+    if (myGameArea.keys && myGameArea.keys[40]) {car.speed= -1; }
+    car.newPos();
+    car.update();
+}
   /*scene.context.beginPath();
 scene.context.moveTo(interactBtn.x,interactBtn.y);
 scene.context.lineTo(interactBtn.x + interactBtn.width, interactBtn.y);
