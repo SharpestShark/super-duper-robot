@@ -379,13 +379,13 @@ var x, y, scale, isObstacle;
         }
         player.color = "blue";
         var s = [new Date().getSeconds()];
-        new function () {
+        function clock() {
           if (l && ((((timeSince == null) && (timeSince < 5)) || (!timeSince)) && (speedT > 1))) {
-            var l = setTimeout(clock, 1000);
+            var l = setInterval(clock, 1000);
             var timeSince = new Date().getSeconds() - s[0];
             speedT -= 0.02;
           } else if (timeSince && (timeSince = 5)) {
-            clearTimeout(l);
+            clearInterval(l);
             return;
           }
         }
