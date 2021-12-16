@@ -421,7 +421,7 @@ var x, y, scale, spedScale, isObstacle;
     x = scene.canvas.width;
     y = scene.canvas.height;
     scale = Math.floor(Math.random()*(8-4)+5);
-    spedScale = Math.floor(Math.random()*(8)+5);
+    spedScale = Math.floor(Math.random()*(20)+15);
     x -= Math.floor(Math.random()*(y+1));
     y -= Math.floor(Math.random()*(y+1));
     isObstacle = Math.round(Math.random());
