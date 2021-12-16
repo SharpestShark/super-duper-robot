@@ -611,7 +611,7 @@ var x, y, scale, spedScale, isObstacle;
   interactBtn.x = player.x + player.width;
   interactBtn.y = player.y + player.height;
   interactBtn.update();
-if (car){
+if (car && (player.crashWith(car)) && (scene.keys && (scene.keys[69]))) {
   car.moveAngle = 0;
     car.speed = 0;
     if (scene.keys && scene.keys[37]) {car.moveAngle = -1; }
