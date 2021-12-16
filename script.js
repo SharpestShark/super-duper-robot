@@ -4,7 +4,7 @@ var mySpeed = [];
 var health, hpVis;
 var speedT = 1;
 // speed decrease timing variable:
-// timeSince;
+// var timeSince;
 
 function start() {
   player = new component(30, 30, "red", 10, 120);
@@ -354,7 +354,7 @@ function longBtn(x,y,r) {
 }
 
 function updateScene() {
-var x, y, scale, isObstacle;
+var x, y, scale, spedScale, isObstacle;
   for (var i = 0; i < myObstacles.length; i += 1) {
     if (player.crashWith(myObstacles[i]) && (myObstacles[i].exist == true)) {
       if ((health.width < 100) || (health.value < 100)) {
@@ -373,28 +373,30 @@ var x, y, scale, isObstacle;
   }
   for (var i = 0; i < mySpeed.length; i += 1) {
     if (player.crashWith(mySpeed[i]) && (mySpeed[i].exist == true)) {
-      if ((speedT >= 1) && (speedT < 2)) {
+      if ((speedT >= 1) && (speedT <= 2)) {
         if (mySpeed[i].sped == 1) {
           speedT += 0.2;
+          player.speedX = speedT;
+          player.speedY = speedT;
         }
         player.color = "blue";
         var s = [new Date().getSeconds()];
+        var l = setInterval(clock,1000);
         function clock() {
+          var timeSince;
           if (l && ((((timeSince == null) && (timeSince < 5)) || (!timeSince)) && (speedT > 1))) {
-            var l = setInterval(clock, 1000);
-            var timeSince = new Date().getSeconds() - s[0];
+            timeSince = new Date().getSeconds() - s[0];
             speedT -= 0.02;
-          } else if (timeSince && (timeSince = 5)) {
+          } else if ((isFinite(timeSince)) && (timeSince = 5)) {
             clearInterval(l);
-            return;
+            console.log('yes');
           }
         }
       }
       mySpeed[i].exist = false;
-      clock();
     }
   }
-  var speedX = 1, speedY = 1;
+  var speedX, speedY;
   if (player.crashWith(computer) && (computer.interacted == false)) {
     speedT = 0;
     player.speedX = speedT, player.speedY = speedT;
@@ -410,6 +412,8 @@ var x, y, scale, isObstacle;
       computer.interacted = false;
       openComputer(computer);
     }
+  } else {
+    speedX = 1, speedY = 1;
   }
   scene.clear();
   scene.frameNo += 1;
@@ -417,13 +421,14 @@ var x, y, scale, isObstacle;
     x = scene.canvas.width;
     y = scene.canvas.height;
     scale = Math.floor(Math.random()*(8-4)+5);
+    spedScale = Math.floor(Math.random()*(8)+5);
     x -= Math.floor(Math.random()*(y+1));
     y -= Math.floor(Math.random()*(y+1));
     isObstacle = Math.round(Math.random());
     if (isObstacle == 1) {
     	myObstacles.push(new apple(x, y, scale));
     } else if (isObstacle == 0) {
-    	mySpeed.push(new component(scale, scale, "coool.png", x, y, "image"));
+    	mySpeed.push(new component(spedScale, spedScale, "coool.png", x, y, "image"));
     }
 
     if ((x >= (player.x - 20) && x <= (player.x + 20)) && (y >= (player.y - 20) && y <= (player.y + 20))) {
@@ -688,17 +693,6 @@ function xBtn(x,y) {
     }
     return clicked;
   };
-}
-
-function clock(s) {
-if (((timeSince && (timeSince < 5)) || (!timeSince)) && (speedT > 1)) {
-var l = setTimeout(clock, 1000);
-timeSince = new Date().getSeconds() - s;
-speedT -= 0.02
-} else if (timeSince && (timeSince = 5)) {
-clearTimeout(l);
-return;
-}
 }
 
 function openFullscreen() {
