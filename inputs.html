@@ -3,8 +3,30 @@
     <title>Inputs testing</title>
   </head>
   <body>
-
-    <input type="text" label="Regular Text" />
-    <input type="password" label="Password:" />
+    Regular Text:
+    <input type="text" label="RegularText" />
+    <br>
+    Password:
+    <input type="password" label="Password" />
+    <br>
+    Hex to Decimal:
+    <input type="text" id="hex" oninput="convertH2D()">1a</input>
+    <br>
+    Decimal to Hex:
+    <input type="text" id="dec" oninput="convertD2H()">11</input>
+  <script>
+    var hex, dec;
+    var div = document.createElement("div");
+    function convertH2D() {
+      hex = document.getElementById("hex").value;
+      div.innerHTML = parseInt(hex,16);
+      document.body.appendChild(div);
+    }
+    function convertD2H() {
+      dec = document.getElementById("dec").value;
+      div.innerHTML = dec.toString(16);
+      document.body.appendChild(div);
+    }
+  </script>
   </body>
 </html>
