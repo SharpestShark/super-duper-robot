@@ -24,6 +24,7 @@
     }
     function convertD2H() {
       dec = document.getElementById("dec").value;
+      dec = parseInt(dec);
       div.innerHTML = dec.toString(16);
       document.body.appendChild(div);
     }
