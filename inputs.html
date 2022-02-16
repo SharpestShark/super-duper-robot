@@ -4,16 +4,18 @@
   </head>
   <body>
     Regular Text:
-    <input type="text" label="RegularText" />
+    <input type="text" label="RegularText">
     <br>
     Password:
-    <input type="password" label="Password" />
+    <input type="password" label="Password"></input>
     <br>
     Hex to Decimal:
     <input type="text" id="hex" oninput="convertH2D()" placeholder="1a"></input>
     <br>
     Decimal to Hex:
     <input type="number" id="dec" oninput="convertD2H()" placeholder="26"></input>
+    <br>
+
   <script>
     var hex, dec;
     var div = document.createElement("div");
