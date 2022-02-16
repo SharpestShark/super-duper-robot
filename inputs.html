@@ -10,10 +10,10 @@
     <input type="password" label="Password" />
     <br>
     Hex to Decimal:
-    <input type="text" id="hex" oninput="convertH2D()">1a</input>
+    <input type="text" id="hex" oninput="convertH2D()" placeholder="1a"></input>
     <br>
     Decimal to Hex:
-    <input type="number" id="dec" oninput="convertD2H()">11</input>
+    <input type="number" id="dec" oninput="convertD2H()" placeholder="26"></input>
   <script>
     var hex, dec;
     var div = document.createElement("div");
@@ -24,7 +24,7 @@
     }
     function convertD2H() {
       dec = document.getElementById("dec").value;
-      dec = parseInt(dec);
+      dec = parseInt(dec,10);
       div.innerHTML = dec.toString(16);
       document.body.appendChild(div);
     }
