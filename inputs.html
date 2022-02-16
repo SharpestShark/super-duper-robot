@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>Inputs testing</title>
@@ -7,15 +8,15 @@
     <input type="text" label="RegularText">
     <br>
     Password:
-    <input type="password" label="Password"></input>
+    <input type="password" label="Password">
     <br>
     Hex to Decimal:
-    <input type="text" id="hex" oninput="convertH2D()" placeholder="1a"></input>
+    <input type="text" id="hex" oninput="convertH2D()" placeholder="1a">
     <br>
     Decimal to Hex:
-    <input type="number" id="dec" oninput="convertD2H()" placeholder="26"></input>
+    <input type="number" id="dec" oninput="convertD2H()" placeholder="26">
     <br>
-
+    <input type="text" id="autoconv" oninput="convertD2HP()">
   <script>
     var hex, dec;
     var div = document.createElement("div");
@@ -28,6 +29,12 @@
       dec = document.getElementById("dec").value;
       dec = parseInt(dec,10);
       div.innerHTML = dec.toString(16);
+      document.body.appendChild(div);
+    }
+    function convertD2HP() {
+      dec = document.getElementById("autoconv").value;
+      var conv = parseInt(dec,10);
+      dec.value = conv.toString(16);
       document.body.appendChild(div);
     }
   </script>
