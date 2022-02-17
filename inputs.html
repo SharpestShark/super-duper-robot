@@ -16,7 +16,10 @@
     Decimal to Hex:
     <input type="number" id="dec" oninput="convertD2H()" placeholder="26">
     <br>
+    <form onsubmit="convertD2HP()">
     <input type="number" id="autoconv" oninput="convertD2HP()">
+      <input type="submit">
+    </form>
   <script>
     var hex, dec, auto, conv;
     var div = document.createElement("div");
