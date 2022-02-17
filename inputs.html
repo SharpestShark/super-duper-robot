@@ -34,7 +34,7 @@
     function convertD2HP() {
       dec = document.getElementById("autoconv").value;
       var conv = parseInt(dec,10);
-      dec = conv.toString(16);
+      document.getElementById("autoconv").innerHTML = conv.toString(16);
     }
   </script>
   </body>
