@@ -18,7 +18,7 @@
     <br>
     <input type="number" id="autoconv" oninput="convertD2HP()">
   <script>
-    var hex, dec;
+    var hex, dec, auto, conv;
     var div = document.createElement("div");
     function convertH2D() {
       hex = document.getElementById("hex").value;
@@ -32,9 +32,9 @@
       document.body.appendChild(div);
     }
     function convertD2HP() {
-      dec = document.getElementById("autoconv").value;
-      var conv = parseInt(dec,10);
-      document.getElementById("autoconv").innerHTML = conv.toString(16);
+      auto = document.getElementById("autoconv").value;
+      auto = parseInt(auto,10);
+      auto = auto.toString(16);
     }
   </script>
   </body>
