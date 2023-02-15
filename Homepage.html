@@ -8,16 +8,22 @@
   </head>
   <body>
     <style>
-      @keyframes example {
+      @keyframes sdr {
         0% {color: #ff0000;}
         25% {color: #ffff00;}
         50% {color: #00ff00;}
         75% {color: #0000ff;}
         100% {color: #ff0000;}
       }
+      @keyframes nav {
+        0% {background-color: #ff0000;}
+        33% {background-color: #ff6a6a;}
+        66% {background-color: #000;}
+        99% {background-color: #fff;}
+      }
       strong#sdr {
         color: #ff0000;
-        animation-name: example;
+        animation-name: sdr;
         animation-duration: 4s;
         animation-iteration-count: infinite;
         animation-direction: alternate-reverse;
@@ -39,6 +45,7 @@
       li a {
         display: block;
         color: white;
+        background-color: #333;
         text-align: center;
         padding: 14px 16px;
         text-decoration: none;
