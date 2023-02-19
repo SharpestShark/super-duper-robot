@@ -29,6 +29,7 @@
         animation-iteration-count: infinite;
         animation-direction: alternate-reverse;
       }
+
       ul {
         list-style-type: none;
         margin: 2px;
@@ -55,6 +56,8 @@
 /* Change the link color to #111 (black) on hover */
 li a:hover:not(.active) {
   background-color: #111;
+  transition: height 2s ease-in 1s;
+  height: height + 20px;
 }
 ​
 .active {
