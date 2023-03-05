@@ -75,6 +75,23 @@ li a:hover:not(.active) {
         }
       }
     </script>
+    <script>
+      getPages();
+        // Octokit.js
+        // https://github.com/octokit/core.js#readme
+        const octokit = new Octokit({
+            auth: 'YOUR-TOKEN'
+          })
+          
+          await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
+              owner: 'OWNER',
+              repo: 'REPO',
+              path: 'PATH',
+              headers: {
+                'X-GitHub-Api-Version': '2022-11-28'
+              }
+            })
+    </script>
     <ul>
       <li><h1><code>sharpestshark.github.io/</code></h1></li>
       <li><a href="#pages">PAGES</a></li>
