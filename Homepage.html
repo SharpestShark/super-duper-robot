@@ -79,16 +79,16 @@ li a:hover:not(.active) {
         // Octokit.js
         // https://github.com/octokit/core.js#readme
         const octokit = new Octokit({
-            auth: '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'
+            auth: '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'
           });
-          const response = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
-              owner: 'SharpestShark',
-              repo: 'super-duper-robot',
-              path: '/',
-              headers: {
-                'X-GitHub-Api-Version': '2022-11-28'
-              }
-            });
+          const response = await octokit.request('GET /repos/{owner}/{repo}/git/trees/{tree_sha}', {
+            owner: 'sharpestshark',
+            repo: 'super-duper-robot',
+            tree_sha: 'TREE_SHA',
+            headers: {
+              'X-GitHub-Api-Version': '2022-11-28'
+            }
+          });
             function getPages() {
               var info = document.createElement(div);
               info.innerHTML = response;
