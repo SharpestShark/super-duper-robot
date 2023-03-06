@@ -92,10 +92,9 @@ li a:hover:not(.active) {
           var info;
             function getPages() {
               info = document.createElement(div);
-              response.forEach(element => {
-                info.innerHTML = info.innerHTML + '<br>' + element;
+              response.tree.forEach(element=> {
+                info.innerHTML = info.innerHTML + '<br>' + element.path
               });
-              info.innerHTML = response[a];
               document.body.appendChild(info);
             }
     </script>
