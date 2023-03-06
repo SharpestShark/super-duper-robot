@@ -84,7 +84,7 @@ li a:hover:not(.active) {
           const response = await octokit.request('GET /repos/{owner}/{repo}/git/trees/{tree_sha}', {
             owner: 'sharpestshark',
             repo: 'super-duper-robot',
-            tree_sha: '03fd6891e89a0d0e24147de4e4beed8065e3373f',
+            tree_sha: 'GET https://api.github.com/repos/sharpestshark/super-duper-robot/branches/main',
             headers: {
               'X-GitHub-Api-Version': '2022-11-28'
             }
