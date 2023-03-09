@@ -93,7 +93,7 @@ li a:hover:not(.active) {
             function getPages() {
               info = document.createElement(div);
               response.tree.forEach(element=> {
-                info.innerHTML = info.innerHTML + '<br>' + element.path
+                info.innerHTML = info.innerHTML + '<br>' + element.path;
               });
               document.body.appendChild(info);
               console.log(response);
