@@ -80,12 +80,11 @@ li a:hover:not(.active) {
         // Octokit.js
         // https://github.com/octokit/core.js#readme
         const octokit = new Octokit({
-            auth: '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'
           });
-          const response = await octokit.request('GET /repos/{owner}/{repo}/git/trees/{tree_sha}', {
+          const response = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
             owner: 'sharpestshark',
             repo: 'super-duper-robot',
-            tree_sha: 'GET https://api.github.com/repos/sharpestshark/super-duper-robot/branches/main',
+            path: '',
             headers: {
               'X-GitHub-Api-Version': '2022-11-28'
             }
