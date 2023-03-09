@@ -92,11 +92,11 @@ li a:hover:not(.active) {
           var info;
             function getPages() {
               info = document.createElement(div);
-              response.tree.forEach(element=> {
+              /*response.tree.forEach(element=> {
                 info.innerHTML = info.innerHTML + '<br>' + element.path;
-              });
-              document.body.appendChild(info);
-              console.log(response);
+              });*/
+              info.innerHTML = response;
+              document.getElementById('pages').appendChild(info);
             }
     </script>
     <ul>
@@ -114,5 +114,8 @@ li a:hover:not(.active) {
           <em>Super-Duper-Robot</em> was the name that was randomly generated, for this repository (on GitHub), when I first created it. So, I decided to build this repo up to its name, and make it a super duper robot.
         </span>
     </div>
+    <section id="pages">
+
+    </section>
   </body>
 </html>
