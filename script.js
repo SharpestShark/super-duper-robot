@@ -666,7 +666,7 @@ function openComputer(computer) {
       ctx.restore();
     }
     computer.xBtn.update();
-  };
+  }
 }
 function xBtn(x,y) {
   this.r = 10;
@@ -727,7 +727,7 @@ function xBtn(x,y) {
       clicked = false;
     }
     return clicked;
-  };
+  }
 }
 
 function openFullscreen() {
