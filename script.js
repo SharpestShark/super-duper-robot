@@ -434,12 +434,12 @@ var x, y, scale, spedScale, isObstacle;
       interactBtn.exist = false;
       interactBtnText.exist = false;
       openComputer(computer);
-    } if ((computer.xBtn && computer.xBtn.exist == true) && computer.xBtn.clicked()) {
-      computer.interacted = false;
-      openComputer(computer);
     }
   } else {
     speedX = 1, speedY = 1;
+  }
+  if ((computer.interacted == true) & &((computer.xBtn && computer.xBtn.exist == true) && computer.xBtn.clicked())) {
+      computer.interacted = false;
   }
   scene.clear();
   scene.frameNo += 1;
