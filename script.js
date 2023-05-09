@@ -652,7 +652,7 @@ function openComputer(computer) {
   computer.update = function() {
     var ctx = scene.context;
     if (computer.interacted == true) {
-      canvas.event = new CustomEvent("map", { detail: ctx.save; });
+      canvas.event = new CustomEvent("map", { detail: ctx.save });
       canvas.event();
       scene.clear();
       ctx.fillStyle = "rgb(252, 252, 232)";
@@ -725,9 +725,9 @@ function xBtn(x,y) {
     var myright = x + (this.width);
     var mytop = this.y;
     var mybottom = this.y + (this.height);
-    var clicked = true;
+    var clicked = false;
     if ((mybottom < scene.y) || (mytop > scene.y) || (myright < scene.x) || (myleft > scene.x)) {
-      clicked = false;
+      clicked = true;
     }
     return clicked;
   }
