@@ -652,7 +652,8 @@ function openComputer(computer) {
   computer.update = function() {
     var ctx = scene.context;
     if (computer.interacted == true) {
-      ctx.save();
+      canvas.event = new CustomEvent("map", { detail: ctx.save; });
+      canvas.event();
       scene.clear();
       ctx.fillStyle = "rgb(252, 252, 232)";
       ctx.strokeStyle = "#001aff";
@@ -664,6 +665,7 @@ function openComputer(computer) {
       computer.width = width;
       computer.height = height;
     } else if (computer.interacted == false) {
+      canvas.event();
       ctx.restore();
     }
     computer.xBtn.update();
