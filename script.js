@@ -438,7 +438,8 @@ var x, y, scale, spedScale, isObstacle;
   } else {
     speedX = 1, speedY = 1;
   }
-  if ((computer.interacted == true) && ((computer.xBtn && computer.xBtn.exist == true) && computer.xBtn.clicked())) {
+  if ((computer.interacted == true) && ((computer.xBtn && computer.xBtn.exist == true) && (computer.xBtn.clicked() == true))) {
+      ctx.restore();
       computer.interacted = false;
   }
   scene.clear();
