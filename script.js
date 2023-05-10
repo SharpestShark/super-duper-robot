@@ -439,9 +439,10 @@ var x, y, scale, spedScale, isObstacle;
   } else {
     speedX = 1, speedY = 1;
   }
-  if ((computer.interacted == true) && ((computer.xBtn && computer.xBtn.exist == true) && (computer.xBtn.clicked() == true))) {
-      ctx.restore();
-      computer.interacted = false;
+  if ((player.crashWith(computer) == false) || (computer.interacted == false)) {
+    interactBtn.exist = false;
+    interactBtnText.exist = false;
+    computer.xBtn.exist = false;
   }
   scene.clear();
   scene.frameNo += 1;
@@ -664,6 +665,7 @@ function openComputer(computer) {
     if (computer.interacted == true) {
       dataURL = scene.canvas.toDataURL();
       ctx.clearRect(0,0,scene.canvas.width,scene.canvas.height);
+      computer.xBtn.exist = true;
       ctx.fillStyle = "rgb(252, 252, 232)";
       ctx.strokeStyle = "#001aff";
       ctx.beginPath();
@@ -687,6 +689,7 @@ function xBtn(x,y) {
   this.update = function(){
       var r = this.r;
       var ctx = scene.context;
+      if (this.exist == true) {
       ctx.beginPath();
       ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
       ctx.lineTo(x+(3*r), y);
@@ -726,6 +729,7 @@ function xBtn(x,y) {
       ctx.strokeStyle = "#fff";
       ctx.stroke();
       ctx.fill();
+      }
     },
  this.clicked = function() {
   var myleft = this.x;
