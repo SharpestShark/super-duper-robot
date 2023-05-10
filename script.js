@@ -681,6 +681,7 @@ function openComputer(computer) {
   }
 }
 function xBtn(x,y) {
+  this.exist = false;
   this.r = 10;
   this.x = x;
   this.y = y;
