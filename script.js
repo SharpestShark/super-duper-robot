@@ -1,4 +1,4 @@
-var player, computer, myUpBtn, myDownBtn, myLeftBtn, myRightBtn, endMessage, restartBtn, restartBtnText, skullBtn, interactBtn, interactBtnText, car;
+var player, computer, myUpBtn, myDownBtn, myLeftBtn, myRightBtn, endMessage, restartBtn, restartBtnText, skullBtn, interactBtn, interactBtnText, car, dataURL;
 var myObstacles = [];
 var mySpeed = [];
 var health, hpVis;
@@ -150,16 +150,17 @@ function component(width, height, color, x, y, type) {
     return clicked;
   },
   this.crashWith = function(otherobj) {
-    var myleft = this.x;
-    var myright = this.x + (this.width);
-    var mytop = this.y;
-    var mybottom = this.y + (this.height);
-    var otherleft = otherobj.x;
-    var otherright = otherobj.x + (otherobj.width);
-    var othertop = otherobj.y;
-    var otherbottom = otherobj.y + (otherobj.height);
+    var myleft, myright, mytop, mybottom, otherleft, otherright, othertop, otherbottom, crash;
+    myleft = this.x;
+    myright = this.x + (this.width);
+    mytop = this.y;
+    mybottom = this.y + (this.height);
+    otherleft = otherobj.x;
+    otherright = otherobj.x + (otherobj.width);
+    othertop = otherobj.y;
+    otherbottom = otherobj.y + (otherobj.height);
     if (this.exist == true) {
-    var crash = true;
+      crash = true;
     }
     if (((mybottom < othertop) ||
     (mytop > otherbottom) ||
@@ -639,7 +640,16 @@ scene.context.stroke();*/
   interactBtnText.update();
   if (computer.interacted == true) {
     computer.xBtn.update();
-  }
+    if (computer.xBtn.clicked() == true) {
+        scene.clear();
+        computer.interacted = false;
+        var image=new Image();
+        image.onload=function(){
+          ctx.drawImage(image,0,0);
+        }
+        image.src=dataURL;
+      }
+    }
 }
 
 function openComputer(computer) {
@@ -652,9 +662,8 @@ function openComputer(computer) {
   computer.update = function() {
     var ctx = scene.context;
     if (computer.interacted == true) {
-      scene.canvas.event = new CustomEvent("map", { detail: ctx.save });
-      scene.canvas.event();
-      scene.clear();
+      dataURL = scene.canvas.toDataURL();
+      ctx.clearRect(0,0,scene.canvas.width,scene.canvas.height);
       ctx.fillStyle = "rgb(252, 252, 232)";
       ctx.strokeStyle = "#001aff";
       ctx.beginPath();
@@ -664,9 +673,7 @@ function openComputer(computer) {
       computer.y = y;
       computer.width = width;
       computer.height = height;
-    } else if (computer.interacted == false) {
-      scene.canvas.event();
-      ctx.restore();
+      
     }
     computer.xBtn.update();
   }
