@@ -439,11 +439,6 @@ var x, y, scale, spedScale, isObstacle;
   } else {
     speedX = 1, speedY = 1;
   }
-  if ((player.crashWith(computer) == false) || (computer.interacted == false)) {
-    interactBtn.exist = false;
-    interactBtnText.exist = false;
-    computer.xBtn.exist = false;
-  }
   scene.clear();
   scene.frameNo += 1;
   if (scene.frameNo == 1 || everyinterval(150)) {
@@ -609,6 +604,11 @@ var x, y, scale, spedScale, isObstacle;
     player.stat.update();
   }
   computer.update();
+  if ((player.crashWith(computer) == false) || (computer.interacted == false)) {
+    interactBtn.exist = false;
+    interactBtnText.exist = false;
+    computer.xBtn.exist = false;
+  }
   scene.context.font = interactBtnText.width + " " + interactBtnText.height;
   interactBtnText.measureText = scene.context.measureText(interactBtnText.text);
   interactBtn.x = player.x + player.width;
