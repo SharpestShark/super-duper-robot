@@ -665,17 +665,17 @@ scene.context.stroke();*/
     interactBtnText.y = interactBtn.y + (interactBtn.height * 0.6);
     interactBtnText.update();
     if (computer.interacted == true) {
-        computer.xBtn.update();
         if (computer.xBtn.clicked() == true) {
             scene.clear();
             computer.interacted = false;
-            computer.Xbtn.exist = false;
+            computer.xBtn.exist = false;
             var image = new Image();
             image.onload = function() {
                 ctx.drawImage(image, 0, 0);
             }
             image.src = dataURL;
         }
+        computer.xBtn.update();
     }
 }
 
@@ -707,7 +707,7 @@ function openComputer(computer) {
     }
 }
 function xBtn(x, y) {
-    this.exist = false;
+    this.exist = true;
     this.r = 10;
     this.x = x;
     this.y = y;
@@ -761,13 +761,14 @@ function xBtn(x, y) {
     ,
     this.clicked = function() {
         var myleft = this.x;
-        var myright = x + (this.width);
+        var myright = this.x + (this.width);
         var mytop = this.y;
         var mybottom = this.y + (this.height);
         var clicked = false;
         if ((mybottom < scene.y) || (mytop > scene.y) || (myright < scene.x) || (myleft > scene.x)) {
             clicked = true;
         }
+        console.log(clicked);
         return clicked;
     }
 }
