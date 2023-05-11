@@ -660,12 +660,12 @@ function openComputer(computer) {
   width = ((scene.canvas.width * .8) || (window.innerWidth * .8));
   height = ((scene.canvas.height * .8) || (window.innerHeight * .8));
   computer.xBtn = new xBtn(x,y);
+  computer.xBtn.exist = true;
   computer.update = function() {
     var ctx = scene.context;
     if (computer.interacted == true) {
       dataURL = scene.canvas.toDataURL();
       ctx.clearRect(0,0,scene.canvas.width,scene.canvas.height);
-      computer.xBtn.exist = true;
       ctx.fillStyle = "rgb(252, 252, 232)";
       ctx.strokeStyle = "#001aff";
       ctx.beginPath();
@@ -675,61 +675,60 @@ function openComputer(computer) {
       computer.y = y;
       computer.width = width;
       computer.height = height;
-      
     }
     computer.xBtn.update();
   }
 }
 function xBtn(x,y) {
-  this.exist = false;
   this.r = 10;
   this.x = x;
   this.y = y;
   this.width = x + (4*this.r);
   this.height = y + (4*this.r);
+  this.exist = false;
   this.update = function(){
       var r = this.r;
       var ctx = scene.context;
       if (this.exist == true) {
-      ctx.beginPath();
-      ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
-      ctx.lineTo(x+(3*r), y);
-      ctx.arc(x+(3*r), y+r, r,1.5 * Math.PI,0);
-      ctx.lineTo(x+(4*r),y+(3*r));
-      ctx.arc(x+(3*r), y+(3*r), r,0,.5 * Math.PI);
-      ctx.lineTo(x+r,y+(4*r));
-      ctx.arc(x+r, y+(3*r), r,.5 * Math.PI,Math.PI);
-      ctx.lineTo(x,y+r);
-      ctx.fillStyle = '#000';
-      ctx.fill();
-      ctx.beginPath();
-      ctx.moveTo(x+(1.25*r),y+(.75*r));
-      ctx.lineTo(x+(2*r),y+(1.5*r));
-      // ctx.lineTo(x+(.5*r),y+(1.5*r));
-      ctx.lineTo(x+(2.75*r),y+(.75*r));
-      // ctx.lineTo(x+(3.5*r),y+(2.5*r));
-      ctx.lineTo(x+(3.25*r),y+(1.25*r));
-      // ctx.lineTo(x+(2.5*r),y+(3.5*r));
-      //right inner corner "<"
-      ctx.lineTo(x+(2.5*r),y+(2*r));
+      	ctx.beginPath();
+      	ctx.arc(x+r, y+r, r, Math.PI, 1.5 * Math.PI);
+      	ctx.lineTo(x+(3*r), y);
+      	ctx.arc(x+(3*r), y+r, r,1.5 * Math.PI,0);
+      	ctx.lineTo(x+(4*r),y+(3*r));
+      	ctx.arc(x+(3*r), y+(3*r), r,0,.5 * Math.PI);
+      	ctx.lineTo(x+r,y+(4*r));
+      	ctx.arc(x+r, y+(3*r), r,.5 * Math.PI,Math.PI);
+      	ctx.lineTo(x,y+r);
+      	ctx.fillStyle = '#000';
+      	ctx.fill();
+      	ctx.beginPath();
+      	ctx.moveTo(x+(1.25*r),y+(.75*r));
+      	ctx.lineTo(x+(2*r),y+(1.5*r));
+      	// ctx.lineTo(x+(.5*r),y+(1.5*r));
+      	ctx.lineTo(x+(2.75*r),y+(.75*r));
+      	// ctx.lineTo(x+(3.5*r),y+(2.5*r));
+      	ctx.lineTo(x+(3.25*r),y+(1.25*r));
+      	// ctx.lineTo(x+(2.5*r),y+(3.5*r));
+      	//right inner corner "<"
+      	ctx.lineTo(x+(2.5*r),y+(2*r));
       
-      ctx.lineTo(x+(3.25*r),y+(2.75*r));
-      ctx.lineTo(x+(2.75*r),y+(3.25*r));
-      // bottom inner corner "^"
-      ctx.lineTo(x+(2*r),y+(2.5*r));
+      	ctx.lineTo(x+(3.25*r),y+(2.75*r));
+      	ctx.lineTo(x+(2.75*r),y+(3.25*r));
+      	// bottom inner corner "^"
+      	ctx.lineTo(x+(2*r),y+(2.5*r));
       
-      ctx.lineTo(x+(1.25*r),y+(3.25*r));
-      ctx.lineTo(x+(.75*r),y+(2.75*r));
-      // left inner corner ">"
-      ctx.lineTo(x+(1.5*r),y+(2*r));
+      	ctx.lineTo(x+(1.25*r),y+(3.25*r));
+      	ctx.lineTo(x+(.75*r),y+(2.75*r));
+      	// left inner corner ">"
+      	ctx.lineTo(x+(1.5*r),y+(2*r));
 
-      ctx.lineTo(x+(.75*r),y+(1.25*r));
-      ctx.lineTo(x+(1.25*r),y+(.75*r));
+      	ctx.lineTo(x+(.75*r),y+(1.25*r));
+      	ctx.lineTo(x+(1.25*r),y+(.75*r));
 
-      ctx.fillStyle = "#ff0000";
-      ctx.strokeStyle = "#fff";
-      ctx.stroke();
-      ctx.fill();
+      	ctx.fillStyle = "#ff0000";
+      	ctx.strokeStyle = "#fff";
+      	ctx.stroke();
+      	ctx.fill();
       }
     },
  this.clicked = function() {
