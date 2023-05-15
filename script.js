@@ -10,6 +10,7 @@ function start() {
     player = new component(30,30,"red",10,120);
     computer = new component(30,30,"red",1200,((window.innerHeight - 20) / 2) || (scene.canvas.height / 2));
     computer.interacted = false;
+    xBtn = new xBtn(0,0,10);
     health = new component(100,20,"green",10,(window.innerHeight - 40) || (scene.canvas.height - 40));
     health.value = 100;
     hpVis = new component("12px","Consolas","white",health.x + 2,health.y + 13.5,"text");
@@ -208,9 +209,9 @@ function arrowBtn(x, y, r, angle) {
         ctx.lineTo(x + (3 * r), y);
         ctx.arc(x + (3 * r), y + r, r, 1.5 * Math.PI, 0);
         ctx.lineTo(x + (4 * r), y + (3 * r));
-        ctx.arc(x + (3 * r), y + (3 * r), r, 0, .5 * Math.PI);
+        ctx.arc(x + (3 * r), y + (3 * r), r, 0, 0.5 * Math.PI);
         ctx.lineTo(x + r, y + (4 * r));
-        ctx.arc(x + r, y + (3 * r), r, .5 * Math.PI, Math.PI);
+        ctx.arc(x + r, y + (3 * r), r, 0.5 * Math.PI, Math.PI);
         ctx.lineTo(x, y + r);
         ctx.fillStyle = '#000';
         ctx.fill();
@@ -254,7 +255,7 @@ function apple(x, y, scale) {
     this.y = y;
     this.scale = scale;
     this.width = (x + (1.7 * scale)) - (x - (1.7 * scale));
-    this.height = ((y + (2.5 * scale)) + scale) - (y - (.6 * scale));
+    this.height = ((y + (2.5 * scale)) + scale) - (y - (0.6 * scale));
     this.heal = 0;
     this.exist = true;
     this.damage = '5';
@@ -283,11 +284,10 @@ function apple(x, y, scale) {
             ctx.beginPath();
             ctx.strokeStyle = "#7d4f34";
             ctx.moveTo(p1x, p1y);
-            ctx.quadraticCurveTo(p1x + (.2 * mul), p1y - (1.1 * mul), p1x + (.5 * mul), p1y - (1.1 * mul));
+            ctx.quadraticCurveTo(p1x + (0.2 * mul), p1y - (1.1 * mul), p1x + (0.5 * mul), p1y - (1.1 * mul));
             ctx.stroke();
         }
-    }
-    ,
+    },
     this.clicked = function() {
         var myleft = this.x;
         var myright = this.x + (this.width);
@@ -298,9 +298,9 @@ function apple(x, y, scale) {
             clicked = false;
         }
         return clicked;
-    }
-    ,
+    },
     this.crashWith = function(otherobj) {
+        var crash;
         var myleft = this.x;
         var myright = this.x + (this.width);
         var mytop = this.y;
@@ -310,14 +310,13 @@ function apple(x, y, scale) {
         var othertop = otherobj.y;
         var otherbottom = otherobj.y + (otherobj.height);
         if (this.exist == true) {
-            var crash = true;
+            crash = true;
         }
         if (((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) || (this.exist == false)) {
             crash = false;
         }
         return crash;
-    }
-    ;
+    };
 }
 
 function longBtn(x, y, r) {
@@ -342,8 +341,7 @@ function longBtn(x, y, r) {
             ctx.fillStyle = 'rgb(80,80,80,0.3)';
             ctx.fill();
         }
-    }
-    ,
+    },
     this.clicked = function() {
         var myleft = this.x;
         var myright = this.x + (this.width);
@@ -354,8 +352,7 @@ function longBtn(x, y, r) {
             clicked = false;
         }
         return clicked;
-    }
-    ;
+    };
 }
 
 function carMake(width, height, color, x, y, type) {
@@ -686,7 +683,6 @@ function openComputer(computer) {
     y = 0;
     width = ((scene.canvas.width * .8) || (window.innerWidth * .8));
     height = ((scene.canvas.height * .8) || (window.innerHeight * .8));
-    xBtn = new xBtn(x,y,10);
     computer.update = function() {
         var ctx = scene.context;
         if (computer.interacted == true) {
@@ -723,9 +719,9 @@ function xBtn(x, y, r) {
             ctx.lineTo(x + (3 * r), y);
             ctx.arc(x + (3 * r), y + r, r, 1.5 * Math.PI, 0);
             ctx.lineTo(x + (4 * r), y + (3 * r));
-            ctx.arc(x + (3 * r), y + (3 * r), r, 0, .5 * Math.PI);
+            ctx.arc(x + (3 * r), y + (3 * r), r, 0, 0.5 * Math.PI);
             ctx.lineTo(x + r, y + (4 * r));
-            ctx.arc(x + r, y + (3 * r), r, .5 * Math.PI, Math.PI);
+            ctx.arc(x + r, y + (3 * r), r, 0.5 * Math.PI, Math.PI);
             ctx.lineTo(x, y + r);
             ctx.fillStyle = '#000';
             ctx.fill();
