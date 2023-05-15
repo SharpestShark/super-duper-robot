@@ -1,4 +1,4 @@
-var player, computer, myUpBtn, myDownBtn, myLeftBtn, myRightBtn, endMessage, restartBtn, restartBtnText, skullBtn, interactBtn, interactBtnText, car, dataURL;
+var player, computer, xBtn, myUpBtn, myDownBtn, myLeftBtn, myRightBtn, endMessage, restartBtn, restartBtnText, skullBtn, interactBtn, interactBtnText, car, dataURL;
 var myObstacles = [];
 var mySpeed = [];
 var health, hpVis;
@@ -624,6 +624,20 @@ function updateScene() {
         skullBtn.update();
         player.stat.text = speedT.toString();
         player.stat.update();
+        computer.update();
+    }
+    if ((computer.interacted == true) && (xBtn.clicked() == true)) {
+        if (xBtn.clicked() == true) {
+            scene.clear();
+            computer.interacted = false;
+            xBtn.exist = false;
+            var image = new Image();
+            image.onload = function() {
+                ctx.drawImage(image, 0, 0);
+            }
+            image.src = dataURL;
+        }
+        xBtn.update();
     }
     computer.update();
     scene.context.font = interactBtnText.width + " " + interactBtnText.height;
@@ -664,19 +678,6 @@ scene.context.stroke();*/
     interactBtnText.x = interactBtn.x + 10;
     interactBtnText.y = interactBtn.y + (interactBtn.height * 0.6);
     interactBtnText.update();
-    if (computer.interacted == true) {
-        if (computer.xBtn.clicked() == true) {
-            scene.clear();
-            computer.interacted = false;
-            computer.xBtn.exist = false;
-            var image = new Image();
-            image.onload = function() {
-                ctx.drawImage(image, 0, 0);
-            }
-            image.src = dataURL;
-        }
-        computer.xBtn.update();
-    }
 }
 
 function openComputer(computer) {
@@ -685,13 +686,13 @@ function openComputer(computer) {
     y = 0;
     width = ((scene.canvas.width * .8) || (window.innerWidth * .8));
     height = ((scene.canvas.height * .8) || (window.innerHeight * .8));
-    computer.xBtn = new xBtn(x,y);
+    xBtn = new xBtn(x,y,10);
     computer.update = function() {
         var ctx = scene.context;
         if (computer.interacted == true) {
             dataURL = scene.canvas.toDataURL();
             ctx.clearRect(0, 0, scene.canvas.width, scene.canvas.height);
-            computer.xBtn.exist = true;
+            xBtn.exist = true;
             ctx.fillStyle = "rgb(252, 252, 232)";
             ctx.strokeStyle = "#001aff";
             ctx.beginPath();
@@ -703,14 +704,14 @@ function openComputer(computer) {
             computer.height = height;
 
         }
-        computer.xBtn.update();
+        xBtn.update();
     }
 }
-function xBtn(x, y) {
+function xBtn(x, y, r) {
     this.exist = true;
-    this.r = 10;
     this.x = x;
     this.y = y;
+    this.r = r;
     this.width = x + (4 * this.r);
     this.height = y + (4 * this.r);
     this.update = function() {
@@ -763,10 +764,10 @@ function xBtn(x, y) {
         var myleft = this.x;
         var myright = this.x + (this.width);
         var mytop = this.y;
-        var mybottom = this.y + (this.height);
-        var clicked = false;
+        var mybottom =  this.y + (this.height);
+        var clicked = true;
         if ((mybottom < scene.y) || (mytop > scene.y) || (myright < scene.x) || (myleft > scene.x)) {
-            clicked = true;
+          clicked = false;
         }
         console.log(clicked);
         return clicked;
