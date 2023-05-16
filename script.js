@@ -53,30 +53,30 @@ var scene = {
         window.addEventListener('mousedown', function(e) {
             scene.x = e.pageX;
             scene.y = e.pageY;
-        });
+        })
         window.addEventListener('mouseup', function(e) {
             scene.x = false;
             scene.y = false;
-        });
+        })
         window.addEventListener('touchstart', function(e) {
             scene.x = e.pageX;
             scene.y = e.pageY;
-        });
+        })
         window.addEventListener('touchend', function(e) {
             scene.x = false;
             scene.y = false;
-        });
+        })
         window.addEventListener('keydown', function(e) {
             scene.keys = (scene.keys || []);
             scene.keys[e.keyCode] = true;
-        });
+        })
         window.addEventListener('keyup', function(e) {
             scene.keys[e.keyCode] = false;
-        });
+        })
         window.addEventListener('touchmove', function(e) {
             scene.x = e.touches[0].screenX;
             scene.y = e.touches[0].screenY;
-        });
+        })
     },
     clear: function() {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -580,6 +580,9 @@ function updateScene() {
                 mySpeed[i].update();
             }
         }
+        if (xBtn && xBtn.clicked()){
+            console.log("yes")
+        }
     }
     if (skullBtn.clicked()) {
         if (document.fullscreenElement != null) {
@@ -588,6 +591,7 @@ function updateScene() {
             closeFullscreen();
         }
     }
+    
     doMap();
     if (navigator.platform == 'iPad') {
         myUpBtn.update();
@@ -613,29 +617,29 @@ function updateScene() {
         health.width = health.value;
         scene.stop();
     }
+
     if (computer.interacted == false) {
-        health.update();
-        hpVis.text = health.value.toString();
-        hpVis.update();
-        player.update();
-        skullBtn.update();
-        player.stat.text = speedT.toString();
-        player.stat.update();
-        computer.update();
-    }
-    if ((computer.interacted == true) && (xBtn.clicked() == true)) {
-        if (xBtn.clicked() == true) {
-            scene.clear();
-            computer.interacted = false;
-            xBtn.exist = false;
-            var image = new Image();
-            image.onload = function() {
-                ctx.drawImage(image, 0, 0);
+                health.update();
+                hpVis.text = health.value.toString();
+                hpVis.update();
+                player.update();
+                skullBtn.update();
+                player.stat.text = speedT.toString();
+                player.stat.update();
+                computer.update();
+            } else if ((computer.interacted == true) && (xBtn.exist == true)) {
+                if (xBtn && xBtn.clicked == true) {
+                    scene.clear();
+                    computer.interacted = false;
+                    xBtn.exist = false;
+                    var image = new Image();
+                    image.onload = function() {
+                        ctx.drawImage(image, 0, 0);
+                    }
+                    image.src = dataURL;
+                }
+                xBtn.update();
             }
-            image.src = dataURL;
-        }
-        xBtn.update();
-    }
     computer.update();
     scene.context.font = interactBtnText.width + " " + interactBtnText.height;
     interactBtnText.measureText = scene.context.measureText(interactBtnText.text);
@@ -708,8 +712,8 @@ function xBtn(x, y, r) {
     this.x = x;
     this.y = y;
     this.r = r;
-    this.width = x + (4 * this.r);
-    this.height = y + (4 * this.r);
+    this.width = x + (4 * r);
+    this.height = y + (4 * r);
     this.update = function() {
         var r = this.r;
         var ctx = scene.context;
@@ -754,8 +758,7 @@ function xBtn(x, y, r) {
             ctx.stroke();
             ctx.fill();
         }
-    }
-    ,
+    },
     this.clicked = function() {
         var myleft = this.x;
         var myright = this.x + (this.width);
@@ -794,3 +797,26 @@ function closeFullscreen() {
         document.msExitFullscreen();
     }
 }
+
+
+/*
+
+make xBtn NOT update when computer is not interacted. 
+
+&& remove "xBtn.exist" variable
+
+
+< Theoretical working code: >
+if (computer.interacted == 1) {
+    xBtn.update();
+    if (xBtn && xBtn.clicked() == 1) {
+        scene.clear();
+        computer.interacted = false;
+        var image = new Image();
+        image.onload = function() {
+            ctx.drawImage(image, 0, 0);
+        }
+        image.src = dataURL;
+    }
+}
+*/
