@@ -87,7 +87,7 @@ li a.active {
           const response = await octokit.request('GET /repos/{owner}/{repo}/contents/{path}', {
             owner: 'sharpestshark',
             repo: 'super-duper-robot',
-            path: '',
+            path: '/super-duper-robot/',
             headers: {
               'X-GitHub-Api-Version': '2022-11-28'
             }
