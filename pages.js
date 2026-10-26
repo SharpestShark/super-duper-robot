@@ -17,7 +17,7 @@ async function fetchHTMLPages() {
         // console.log(`HTML content of ${page.name}:`, pageHtml);
         var a = document.createElement("a");
         a.innerHTML = page.name.split('.')[0] + '<br>';
-        a.href = "/" + page.name;
+        a.href = "/super-duper-robot/" + page.name;
         document.getElementById('pages').appendChild(a);
         // Do something with the HTML content, like displaying it on the page
       } catch (error) {
